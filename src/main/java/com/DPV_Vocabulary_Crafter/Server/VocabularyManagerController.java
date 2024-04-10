@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
-public class VocabularyManager_Controller {
+public class VocabularyManagerController {
 
-    private final Web_DAO_Server web_dao_svr = new Web_DAO_Server();
+    private final WebDAOServer web_dao_svr = new WebDAOServer();
     private final VocabularyManipulation vocabularyManipulation = new VocabularyManipulation();
     private final Model origDPV = web_dao_svr.get_DPV_ghb();
     private Model tempDPV;

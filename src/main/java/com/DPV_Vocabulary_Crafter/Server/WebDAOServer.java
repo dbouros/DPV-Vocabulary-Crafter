@@ -14,12 +14,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
-public class Web_DAO_Server {
+public class WebDAOServer {
     private final RestTemplate restTemplate;
     private final String dpv_Url;
 
     // Default Constructor!
-    public Web_DAO_Server(){
+    public WebDAOServer(){
         this.restTemplate = new RestTemplate();
         this.dpv_Url = "https://raw.githubusercontent.com/w3c/dpv/master/dpv/dpv.rdf";
     }

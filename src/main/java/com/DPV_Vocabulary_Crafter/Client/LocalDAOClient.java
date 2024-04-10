@@ -7,7 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class Local_DAO_Client {
+public class LocalDAOClient {
 
     public void write_VocabularyToFile(byte[] fileBytes, String folder_Path, String filename){
 

@@ -3,14 +3,14 @@ package com.DPV_Vocabulary_Crafter.Client;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
-public class Web_DAO_Client {
+public class WebDAOClient {
 
     private final RestTemplate restTemplate;
-    private final Local_DAO_Client lcl_dao_clnt;
+    private final LocalDAOClient lcl_dao_clnt;
 
-    public Web_DAO_Client(){
+    public WebDAOClient(){
         this.restTemplate = new RestTemplate();
-        this.lcl_dao_clnt = new Local_DAO_Client();
+        this.lcl_dao_clnt = new LocalDAOClient();
     }
 
     public String get_view_DPV(String Url){

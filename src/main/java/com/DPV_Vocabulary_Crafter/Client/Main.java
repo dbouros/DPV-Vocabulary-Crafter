@@ -5,7 +5,7 @@ public class Main {
 
 
         // Client's DAO object!
-        Web_DAO_Client web_dao_clnt = new Web_DAO_Client();
+        WebDAOClient web_dao_clnt = new WebDAOClient();
 
         // Get a "Hello" response from "Server".
         System.out.println(web_dao_clnt.get_hello("http://localhost:8080/api/hello"));
