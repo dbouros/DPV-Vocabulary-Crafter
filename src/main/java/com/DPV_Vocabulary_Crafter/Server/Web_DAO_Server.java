@@ -24,7 +24,7 @@ public class Web_DAO_Server {
         this.dpv_Url = "https://raw.githubusercontent.com/w3c/dpv/master/dpv/dpv.rdf";
     }
 
-    public Model get_OG_DPV_ghb(){
+    public Model get_DPV_ghb(){
 
         try {
 
