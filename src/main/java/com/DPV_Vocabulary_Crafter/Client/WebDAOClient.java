@@ -13,7 +13,7 @@ public class WebDAOClient {
         this.lcl_dao_clnt = new LocalDAOClient();
     }
 
-    public String get_view_DPV(String Url){
+    public String getViewDPV(String Url){
 
         ResponseEntity<String> response = restTemplate.getForEntity(Url, String.class);
         String model_String = response.getBody();
@@ -27,21 +27,21 @@ public class WebDAOClient {
 
     }
 
-    public void get_download_DPV_RDFFile(String Url, String folder_Path, String filename){
+    public void getDownloadDPVrdfFile(String Url, String folder_Path, String filename){
 
         ResponseEntity<byte[]> response = restTemplate.getForEntity(Url, byte[].class);
 
         if (response.getStatusCode().is2xxSuccessful())
-            lcl_dao_clnt.write_VocabularyToFile(response.getBody(), folder_Path, filename);
+            lcl_dao_clnt.writeVocabularyToFile(response.getBody(), folder_Path, filename);
         else
             System.out.println("Failed to download file! Status code: " + response.getStatusCode());
     }
 
-    public void get_upload_DPV_RDFFile(String Url, String folder_Path, String filename){
+    public void postUploadDPVrdfFile(String Url, String folder_Path, String filename){
 
         try {
 
-            byte[] fileBytes = lcl_dao_clnt.read_VocabularyFromFile(folder_Path, filename);
+            byte[] fileBytes = lcl_dao_clnt.readVocabularyFromFile(folder_Path, filename);
 
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_XML);
@@ -64,7 +64,7 @@ public class WebDAOClient {
         }
     }
 
-    public String get_hello(String Url){
+    public String getHello(String Url){
 
         ResponseEntity<String> response = restTemplate.getForEntity(Url, String.class);
         if (response.getStatusCode().is2xxSuccessful()){

@@ -14,12 +14,12 @@ public class VocabularyManagerController {
 
     private final WebDAOServer web_dao_svr = new WebDAOServer();
     private final VocabularyManipulation vocabularyManipulation = new VocabularyManipulation();
-    private final Model origDPV = web_dao_svr.get_DPV_ghb();
+    private final Model origDPV = web_dao_svr.getDPVghb();
     private Model tempDPV;
 
-    // GET Command: "curl -X GET http://localhost:8080/api/view_DPV/id"
-    @GetMapping("/view_DPV/{id}")
-    public String view_DPV(@PathVariable("id") Integer id){
+    // GET Command: "curl -X GET http://localhost:8080/api/viewDPV/id"
+    @GetMapping("/viewDPV/{id}")
+    public String viewDPV(@PathVariable("id") Integer id){
 
         String modelString;
 
@@ -48,14 +48,14 @@ public class VocabularyManagerController {
     status, headers, and body content as needed.
     */
 
-    // GET Command: "curl -X GET http://localhost:8080/api/download_DPV_RDFFile"
-    @GetMapping("/download_DPV_RDFFile")
-    public ResponseEntity<byte[]> download_DPV_RDFFile(){
+    // GET Command: "curl -X GET http://localhost:8080/api/downloadDPVrdfFile"
+    @GetMapping("/downloadDPVrdfFile")
+    public ResponseEntity<byte[]> downloadDPVrdfFile(){
 
         Model model = tempDPV;
 
         // Convert RDF Model to RDF/XML format.
-        byte[] modelBytes = web_dao_svr.convertModelToRDFXML_BtArr(model);
+        byte[] modelBytes = web_dao_svr.convertModelToRDFXMLBtArr(model);
 
         // Object "headers" is an "HttpHeaders" object that specifies the content type of the response.
         // Set HTTP headers.
@@ -73,12 +73,12 @@ public class VocabularyManagerController {
 
     }
 
-    // POST Command: "curl -X POST -H "Content-Type: ..." -d @tempDPV.rdf http://localhost:8080/api/upload_DPV_RDFFile"
-    @PostMapping("/upload_DPV_RDFFile")
-    public ResponseEntity<byte[]> upload_DPV_RDFFile(@RequestBody byte[] fileBytes){
+    // POST Command: "curl -X POST -H "Content-Type: ..." -d @tempDPV.rdf http://localhost:8080/api/uploadDPVrdfFile"
+    @PostMapping("/uploadDPVrdfFile")
+    public ResponseEntity<byte[]> uploadDPVrdfFile(@RequestBody byte[] fileBytes){
 
         try {
-            tempDPV = web_dao_svr.convertRDFXML_BtArrToModel(fileBytes);
+            tempDPV = web_dao_svr.convertRDFXMLBtArrToModel(fileBytes);
 
             // Checking "tempDPV" to see if it uploaded successfully from "Client" to "Server".
             if (tempDPV.isEmpty()) {

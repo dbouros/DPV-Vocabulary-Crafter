@@ -24,7 +24,7 @@ public class WebDAOServer {
         this.dpv_Url = "https://raw.githubusercontent.com/w3c/dpv/master/dpv/dpv.rdf";
     }
 
-    public Model get_DPV_ghb(){
+    public Model getDPVghb(){
 
         try {
 
@@ -52,7 +52,7 @@ public class WebDAOServer {
         }
     }
     // Convert "Model" to RDF/XML ByteArray.
-    public byte[] convertModelToRDFXML_BtArr(Model model){
+    public byte[] convertModelToRDFXMLBtArr(Model model){
         try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()){
             Rio.write(model, outputStream, RDFFormat.RDFXML);
             return outputStream.toByteArray();
@@ -63,7 +63,7 @@ public class WebDAOServer {
     }
 
     // Convert RDF/XML ByteArray to "Model".
-    public Model convertRDFXML_BtArrToModel(byte[] fileBytes){
+    public Model convertRDFXMLBtArrToModel(byte[] fileBytes){
         try (ByteArrayInputStream inputStream = new ByteArrayInputStream(fileBytes)){
             return Rio.parse(inputStream, "", RDFFormat.RDFXML);
         }catch (IOException e){

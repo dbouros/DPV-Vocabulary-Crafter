@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 
 public class LocalDAOClient {
 
-    public void write_VocabularyToFile(byte[] fileBytes, String folder_Path, String filename){
+    public void writeVocabularyToFile(byte[] fileBytes, String folder_Path, String filename){
 
         Path filePath = Paths.get(folder_Path, filename);
 
@@ -34,7 +34,7 @@ public class LocalDAOClient {
         System.out.println("File downloaded successfully! Download Path: " + filePath);
     }
 
-    public byte[] read_VocabularyFromFile(String folder_Path, String filename){
+    public byte[] readVocabularyFromFile(String folder_Path, String filename){
 
         Path filePath = Paths.get(folder_Path, filename);
 
