@@ -12,7 +12,7 @@ public class Main {
 
         // View original DPV from "Server".
         System.out.println("Original DPV:");
-        System.out.println(web_dao_clnt.getViewDPV("http://localhost:8080/api/viewDPV/0"));
+        web_dao_clnt.getViewDPV("http://localhost:8080/api/viewDPV/0");
 
         String folder_Path = "C:\\Users\\lenovo\\Desktop";
         String filename = "dpv.rdf";
@@ -22,10 +22,10 @@ public class Main {
 
         // View our uploaded personal DPV from Server.
         System.out.println("Personal DPV:");
-        System.out.println(web_dao_clnt.getViewDPV("http://localhost:8080/api/viewDPV/1"));
+        web_dao_clnt.getViewDPV("http://localhost:8080/api/viewDPV/1");
 
         // Download our personal DPV from "Server".
-			/*
+        /*
 			 No matter the specified "filename" from the "Server" we as a "Client" can specify our own
 			 preferred name for the file when we download it. Keeping the name of an already existing
 			 model will overwrite that model with the one we will download.

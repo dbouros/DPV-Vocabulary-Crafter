@@ -13,16 +13,15 @@ public class WebDAOClient {
         this.lcl_dao_clnt = new LocalDAOClient();
     }
 
-    public String getViewDPV(String Url){
+    public void getViewDPV(String Url){
 
         ResponseEntity<String> response = restTemplate.getForEntity(Url, String.class);
         String model_String = response.getBody();
 
         if (model_String != null) {
-            return model_String;
+            System.out.println(model_String);
         }else {
             System.out.println("String representation of model is null!");
-            return null;
         }
 
     }
