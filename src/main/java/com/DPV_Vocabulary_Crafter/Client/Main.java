@@ -27,7 +27,8 @@ public class Main {
         // Download our personal DPV from "Server".
 			/*
 			 No matter the specified "filename" from the "Server" we as a "Client" can specify our own
-			 preferred name for the file when we download it.
+			 preferred name for the file when we download it. Keeping the name of an already existing
+			 model will overwrite that model with the one we will download.
 			*/
         web_dao_clnt.getDownloadDPVrdfFile("http://localhost:8080/api/downloadDPVrdfFile", folder_Path, filename);
 
