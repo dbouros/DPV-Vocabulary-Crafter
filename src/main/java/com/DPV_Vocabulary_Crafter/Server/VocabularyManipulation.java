@@ -8,28 +8,35 @@ public class VocabularyManipulation {
         if (model.isEmpty()){
             System.out.println("The requested model is empty!");
             return "";
-        }
+        }else{
 
-        String modelString = "";
-        // Print RDF Model(DPV) to "Client" screen.
-        // This code is for the "View" method !
-        for (Statement st : model) {
-            IRI subject = (IRI) st.getSubject();
-            IRI predicate = st.getPredicate();
-            Value object = st.getObject();
-            if(object.isLiteral()){
-                modelString += subject.getLocalName() + " -->> " + predicate.getLocalName()  + " -->> " + ((Literal)object).getLabel() + "\n";
-                //System.out.println(subject.getLocalName() + " -->> " + predicate.getLocalName()  + " -->> " + ((Literal)object).getLabel());
-            } else if (object.isIRI()) {
-                modelString += subject.getLocalName() + " -->> " + predicate.getLocalName()  + " -->> " + ((IRI)object).getLocalName() + "\n";
-                //System.out.println(subject.getLocalName() + " -->> " + predicate.getLocalName()  + " -->> " + ((IRI)object).getLocalName());
-            }else {
-                modelString += subject.getLocalName() + " -->> " + predicate.getLocalName()  + " -->> " + object + "\n";
-                //System.out.println(subject.getLocalName() + " -->> " + predicate.getLocalName()  + " -->> " + object);
+            String modelString = "";
+
+            // Print RDF Model(DPV) to screen.
+            for (Statement st : model) {
+                modelString += modifyStatement(st);
             }
-            // System.out.println(st.getSubject() + " >> " + st.getPredicate() + " >> " + st.getObject());
+
+            return modelString;}
+    }
+    public String modifyStatement(Statement st){
+
+        IRI subject = (IRI) st.getSubject();
+        IRI predicate = st.getPredicate();
+        Value object = st.getObject();
+
+        //System.out.println(st.getSubject() + " >> " + st.getPredicate() + " >> " + st.getObject());
+
+        if(object.isLiteral()){
+            return subject.getLocalName() + " -->> " + predicate.getLocalName()  + " -->> " + ((Literal)object).getLabel() + "\n";
+            //System.out.println(subject.getLocalName() + " -->> " + predicate.getLocalName()  + " -->> " + ((Literal)object).getLabel());
+        } else if (object.isIRI()) {
+            return subject.getLocalName() + " -->> " + predicate.getLocalName()  + " -->> " + ((IRI)object).getLocalName() + "\n";
+            //System.out.println(subject.getLocalName() + " -->> " + predicate.getLocalName()  + " -->> " + ((IRI)object).getLocalName());
+        }else {
+            return subject.getLocalName() + " -->> " + predicate.getLocalName()  + " -->> " + object + "\n";
+            //System.out.println(subject.getLocalName() + " -->> " + predicate.getLocalName()  + " -->> " + object);
         }
 
-        return modelString;
     }
 }
