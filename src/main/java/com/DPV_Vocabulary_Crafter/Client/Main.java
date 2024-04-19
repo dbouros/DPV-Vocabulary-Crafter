@@ -11,20 +11,20 @@ public class Main {
         System.out.println(web_dao_clnt.getHello("http://localhost:8080/api/hello"));
 
         // View original DPV from "Server".
-        System.out.println("Original DPV:");
-        web_dao_clnt.getViewDPV("http://localhost:8080/api/viewDPV/0");
+        //System.out.println("Original DPV:");
+        //web_dao_clnt.getViewDPV("http://localhost:8080/api/viewDPV/0");
 
         String folder_Path = "C:\\Users\\lenovo\\Desktop";
         String filename = "dpv.rdf";
 
-        // Upload our personal DPV to "Server".
+        // Upload personal DPV to "Server".
         web_dao_clnt.postUploadDPVrdfFile("http://localhost:8080/api/uploadDPVrdfFile", folder_Path, filename);
 
-        // View our uploaded personal DPV from Server.
+        // View uploaded personal DPV from Server.
         System.out.println("Personal DPV:");
         web_dao_clnt.getViewDPV("http://localhost:8080/api/viewDPV/1");
 
-        // Download our personal DPV from "Server".
+        // Download personal DPV from "Server".
         /*
 			 No matter the specified "filename" from the "Server" we as a "Client" can specify our own
 			 preferred name for the file when we download it. Keeping the name of an already existing

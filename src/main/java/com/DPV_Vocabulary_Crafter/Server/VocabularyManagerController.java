@@ -52,6 +52,7 @@ public class VocabularyManagerController {
     @GetMapping("/downloadDPVrdfFile")
     public ResponseEntity<byte[]> downloadDPVrdfFile(){
 
+        // For github's "update" purposes, change from "tempDPV" to "origDPV".
         Model model = tempDPV;
 
         // Convert RDF Model to RDF/XML format.
