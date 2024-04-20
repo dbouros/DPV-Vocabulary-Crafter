@@ -55,6 +55,8 @@ public class VocabularyManipulation {
 /*
         for (Statement st : origModel){
         IRI subject = (IRI) st.getSubject();
+        IRI predicate = st.getPredicate();
+        Value object = st.getObject();
         if (subject.getLocalName().equals("dpv")){
             tempModel.add(st);
         }
