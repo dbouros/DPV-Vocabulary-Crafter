@@ -32,7 +32,7 @@ public class Main {
 			*/
         //web_dao_clnt.getDownloadDPVrdfFile("http://localhost:8080/api/downloadDPVrdfFile", folder_Path, filename);
 
-// Create, View, Download new DPV from "Server".
+// Create, Add term, View, Remove term, Download new DPV from "Server".
         String filename2 = "new_dpv.rdf";
 
         // Create new personal DPV in "Server".
