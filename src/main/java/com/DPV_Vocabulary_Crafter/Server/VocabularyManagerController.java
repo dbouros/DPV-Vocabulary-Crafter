@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class VocabularyManagerController {
 
     private final WebDAOServer web_dao_svr = new WebDAOServer();
+    private final QueryProcessor queryProcessor = new QueryProcessor();
     private final VocabularyManipulation vocabularyManipulation = new VocabularyManipulation();
     private final Model origDPV = web_dao_svr.getDPVghb();
     private Model tempDPV = new LinkedHashModel();
@@ -25,9 +26,9 @@ public class VocabularyManagerController {
         String modelString;
 
         if (id.equals(0)){
-            modelString = vocabularyManipulation.View(origDPV);
+            modelString = queryProcessor.View(origDPV);
         }else if (id.equals(1)){
-            modelString = vocabularyManipulation.View(tempDPV);
+            modelString = queryProcessor.View(tempDPV);
         }else{
             System.out.println("Non-valid 'id' for model given! Only two models exist that can be printed");
             // modelString = "" == modelString.isEmpty()
@@ -46,7 +47,7 @@ public class VocabularyManagerController {
     @GetMapping("/createNewDPV")
     public String createNewDPV(){
 
-        vocabularyManipulation.createNewEmptyDPV(origDPV, tempDPV);
+        vocabularyManipulation.initializeEmptyDPV(origDPV, tempDPV);
         return "Created new temporary personal DPV!";
     }
 
@@ -62,10 +63,9 @@ public class VocabularyManagerController {
     public ResponseEntity<byte[]> downloadDPVrdfFile(){
 
         // For github's "update" purposes, change from "tempDPV" to "origDPV".
-        Model model = tempDPV;
 
         // Convert RDF Model to RDF/XML format.
-        byte[] modelBytes = web_dao_svr.convertModelToRDFXMLBtArr(model);
+        byte[] modelBytes = web_dao_svr.convertModelToRDFXMLBtArr(tempDPV);
 
         // Object "headers" is an "HttpHeaders" object that specifies the content type of the response.
         // Set HTTP headers.
