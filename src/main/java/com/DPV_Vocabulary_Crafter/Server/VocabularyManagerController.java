@@ -1,6 +1,7 @@
 package com.DPV_Vocabulary_Crafter.Server;
 
 import org.eclipse.rdf4j.model.*;
+import org.eclipse.rdf4j.model.impl.LinkedHashModel;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -15,7 +16,7 @@ public class VocabularyManagerController {
     private final WebDAOServer web_dao_svr = new WebDAOServer();
     private final VocabularyManipulation vocabularyManipulation = new VocabularyManipulation();
     private final Model origDPV = web_dao_svr.getDPVghb();
-    private Model tempDPV;
+    private Model tempDPV = new LinkedHashModel();
 
     // GET Command: "curl -X GET http://localhost:8080/api/viewDPV/id"
     @GetMapping("/viewDPV/{id}")
@@ -39,6 +40,14 @@ public class VocabularyManagerController {
         }
 
         return modelString;
+    }
+
+    @GetMapping("/createNewDPV")
+    public String createNewDPV(){
+
+        vocabularyManipulation.createEmptyDPVModel(origDPV, tempDPV);
+
+        return "Created new temporary personal DPV!";
     }
 
     /*

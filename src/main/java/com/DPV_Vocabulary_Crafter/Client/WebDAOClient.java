@@ -63,6 +63,15 @@ public class WebDAOClient {
         }
     }
 
+    public void getCreateNewDPV(String Url){
+        ResponseEntity<String> response = restTemplate.getForEntity(Url, String.class);
+        if (response.getStatusCode().is2xxSuccessful()){
+            System.out.println(response.getBody());
+        }else{
+            System.out.println("Internal Server Error! Status code: " + response.getStatusCode());
+        }
+    }
+
     public String getHello(String Url){
 
         ResponseEntity<String> response = restTemplate.getForEntity(Url, String.class);

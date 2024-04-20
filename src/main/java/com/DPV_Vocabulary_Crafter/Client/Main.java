@@ -14,15 +14,15 @@ public class Main {
         //System.out.println("Original DPV:");
         //web_dao_clnt.getViewDPV("http://localhost:8080/api/viewDPV/0");
 
+// Upload, View, Download Personal DPV from "Server".
         String folder_Path = "C:\\Users\\lenovo\\Desktop";
         String filename = "dpv.rdf";
-
         // Upload personal DPV to "Server".
-        web_dao_clnt.postUploadDPVrdfFile("http://localhost:8080/api/uploadDPVrdfFile", folder_Path, filename);
+        //web_dao_clnt.postUploadDPVrdfFile("http://localhost:8080/api/uploadDPVrdfFile", folder_Path, filename);
 
-        // View uploaded personal DPV from Server.
-        System.out.println("Personal DPV:");
-        web_dao_clnt.getViewDPV("http://localhost:8080/api/viewDPV/1");
+        // View uploaded personal DPV from "Server".
+        //System.out.println("Personal DPV:");
+        //web_dao_clnt.getViewDPV("http://localhost:8080/api/viewDPV/1");
 
         // Download personal DPV from "Server".
         /*
@@ -32,5 +32,17 @@ public class Main {
 			*/
         //web_dao_clnt.getDownloadDPVrdfFile("http://localhost:8080/api/downloadDPVrdfFile", folder_Path, filename);
 
+// Create, View, Download new DPV from "Server".
+        String filename2 = "new_dpv.rdf";
+
+        // Create new personal DPV in "Server".
+        web_dao_clnt.getCreateNewDPV("http://localhost:8080/api/createNewDPV");
+
+        // View new personal DPV from "Server".
+        System.out.println("Personal DPV:");
+        web_dao_clnt.getViewDPV("http://localhost:8080/api/viewDPV/1");
+
+        // Download new personal DPV from "Server".
+        web_dao_clnt.getDownloadDPVrdfFile("http://localhost:8080/api/downloadDPVrdfFile", folder_Path, filename2);
     }
 }

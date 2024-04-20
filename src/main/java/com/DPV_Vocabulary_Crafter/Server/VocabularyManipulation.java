@@ -39,4 +39,13 @@ public class VocabularyManipulation {
         }
 
     }
+
+    public void createEmptyDPVModel(Model origModel, Model tempModel){
+
+        for (Namespace ns : origModel.getNamespaces()){
+            tempModel.setNamespace(ns.getPrefix(), ns.getName());
+        }
+
+    }
+
 }
