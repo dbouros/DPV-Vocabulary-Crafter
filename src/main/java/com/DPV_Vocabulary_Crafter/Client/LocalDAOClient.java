@@ -31,7 +31,7 @@ public class LocalDAOClient {
             System.out.println("File Not Found! IOException!");
         }
 
-        System.out.println("File downloaded successfully! Download Path: " + filePath);
+        System.out.println("File downloaded successfully! Path: " + filePath);
     }
 
     public byte[] readVocabularyFromFile(String folder_Path, String filename){

@@ -42,11 +42,11 @@ public class VocabularyManagerController {
         return modelString;
     }
 
+    // GET Command: "curl -X GET http://localhost:8080/api/createNewDPV"
     @GetMapping("/createNewDPV")
     public String createNewDPV(){
 
-        vocabularyManipulation.createEmptyDPVModel(origDPV, tempDPV);
-
+        vocabularyManipulation.createNewEmptyDPV(origDPV, tempDPV);
         return "Created new temporary personal DPV!";
     }
 
@@ -110,6 +110,7 @@ public class VocabularyManagerController {
         }
     }
 
+    // GET Command: "curl -X GET http://localhost:8080/api/hello"
     @GetMapping("/hello")
     public String hello() {
         return "Hello from REST controller!";

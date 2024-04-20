@@ -40,12 +40,25 @@ public class VocabularyManipulation {
 
     }
 
-    public void createEmptyDPVModel(Model origModel, Model tempModel){
+    public void createNewEmptyDPV(Model origModel, Model tempModel){
 
+        // The xml declaration "<?xml version="1.0" encoding="UTF-8"?>" is added automatically.
+
+        // Adding only the namespaces from the "original DPV" to the "temporary DPV".
         for (Namespace ns : origModel.getNamespaces()){
             tempModel.setNamespace(ns.getPrefix(), ns.getName());
         }
 
     }
+
+// This code is meant for the "add Statement" method.
+/*
+        for (Statement st : origModel){
+        IRI subject = (IRI) st.getSubject();
+        if (subject.getLocalName().equals("dpv")){
+            tempModel.add(st);
+        }
+    }
+*/
 
 }

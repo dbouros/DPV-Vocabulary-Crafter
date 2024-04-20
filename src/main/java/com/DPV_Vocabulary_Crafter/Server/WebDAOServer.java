@@ -57,7 +57,7 @@ public class WebDAOServer {
             Rio.write(model, outputStream, RDFFormat.RDFXML);
             return outputStream.toByteArray();
         }catch (IOException e){
-            System.out.println("IOException in method: 'convertModelToRDFXML_BtArr'.");
+            System.out.println("IOException in method: 'convertModelToRDFXMLBtArr'.");
             return new byte[0];
         }
     }
@@ -67,7 +67,7 @@ public class WebDAOServer {
         try (ByteArrayInputStream inputStream = new ByteArrayInputStream(fileBytes)){
             return Rio.parse(inputStream, "", RDFFormat.RDFXML);
         }catch (IOException e){
-            System.out.println("IOException in method: 'convertRDFXML_BtArrToModel'.");
+            System.out.println("IOException in method: 'convertRDFXMLBtArrToModel'.");
             return null;
         }
     }
