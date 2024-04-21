@@ -12,7 +12,7 @@ public class Main {
 
         // View original DPV from "Server".
         //System.out.println("Original DPV:");
-        //web_dao_clnt.getViewDPV("http://localhost:8080/api/viewDPV/0");
+        //System.out.println(web_dao_clnt.getViewDPV("http://localhost:8080/api/viewDPV/0"));
 
 // Upload, View, Download Personal DPV from "Server".
         String folder_Path = "C:\\Users\\lenovo\\Desktop";
@@ -22,7 +22,7 @@ public class Main {
 
         // View uploaded personal DPV from "Server".
         //System.out.println("Personal DPV:");
-        //web_dao_clnt.getViewDPV("http://localhost:8080/api/viewDPV/1");
+        //System.out.println(web_dao_clnt.getViewDPV("http://localhost:8080/api/viewDPV/1"));
 
         // Download personal DPV from "Server".
         /*
@@ -40,9 +40,21 @@ public class Main {
 
         // View new personal DPV from "Server".
         System.out.println("Personal DPV:");
-        web_dao_clnt.getViewDPV("http://localhost:8080/api/viewDPV/1");
+        System.out.println(web_dao_clnt.getViewDPV("http://localhost:8080/api/viewDPV/1"));
 
         // Download new personal DPV from "Server".
         web_dao_clnt.getDownloadDPVrdfFile("http://localhost:8080/api/downloadDPVrdfFile", folder_Path, filename2);
     }
 }
+
+
+// UI Panel checking code !!
+/*UIPanel UIPanel = new UIPanel();
+        UIPanel.run();
+
+        Scanner scanner = new Scanner(System.in);
+        do {
+            System.out.println("Press any non-zero number if you want to stay or zero if you want to exit the program!");
+            System.out.print("Command: ");
+        }while (scanner.nextInt() != 0);
+*/
