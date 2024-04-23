@@ -18,7 +18,8 @@ public class QueryProcessor {
                 modelString += modifyStatement(st);
             }
 
-            return modelString;}
+            return modelString;
+        }
     }
     public String modifyStatement(Statement st){
 
@@ -40,4 +41,7 @@ public class QueryProcessor {
         }
 
     }
+
+
+
 }
