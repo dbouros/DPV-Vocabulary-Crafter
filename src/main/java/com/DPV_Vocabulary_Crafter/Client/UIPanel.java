@@ -6,8 +6,9 @@ public class UIPanel {
 
     public void createAndShowGUI() {
 
-        JTextArea textArea = new JTextArea();
         Font monospacedFont = new Font(Font.MONOSPACED, Font.PLAIN, 24);
+
+        JTextArea textArea = new JTextArea();
 
         textArea.setText("Your large text goes here... !!");
         textArea.setFont(monospacedFont);
@@ -16,17 +17,13 @@ public class UIPanel {
         textArea.setForeground(new Color(0xbcbec4)); // Set text's color to white (Color.WHITE) or intellij IDEA's color: "0x1e1f22" (new Color(0xbcbec4)).
 
         JScrollPane scrollPane = new JScrollPane(textArea);
-
-        // Get the content pane of the frame and set its background color to black
-        // Container contentPane = frame.getContentPane();
-        // contentPane.setBackground(new Color(0x1e1f22)); // intellij IDEA's color: "0x1e1f22" (new Color(0x1e1f22)).
-
         JFrame frame = new JFrame();
 
         frame.getContentPane().add(scrollPane);
-        frame.getContentPane().setBackground(new Color(0x1e1f22));
+        frame.getContentPane().setBackground(new Color(0x1e1f22)); // intellij IDEA's color: "0x1e1f22" (new Color(0x1e1f22)).
         frame.setTitle("Panel Title");
-        frame.setSize(400, 300);
+        frame.setSize(1366, 545);
+        frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setVisible(true);
 
