@@ -36,6 +36,7 @@ public class VocabularyManagerController {
         }
 
         if (modelString.isEmpty()) {
+            // Needs to be removed at the end, so it's not printed on the "Server" console.
             System.out.println("String representation of model is null!");
             return null;
         }

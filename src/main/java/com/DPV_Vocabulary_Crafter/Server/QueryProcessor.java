@@ -6,6 +6,7 @@ public class QueryProcessor {
     public String View(Model model){
 
         if (model.isEmpty()){
+            // Needs to be removed at the end, so it's not printed on the "Server" console.
             System.out.println("The requested model is empty!");
             return "";
         }else{
