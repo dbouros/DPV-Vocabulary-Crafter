@@ -19,30 +19,6 @@ public class VocabularyManagerController {
     private final Model origDPV = web_dao_svr.getDPVghb();
     private Model tempDPV = new LinkedHashModel();
 
-    // GET Command: "curl -X GET http://localhost:8080/api/viewDPV/id"
-    @GetMapping("/viewDPV/{id}")
-    public String viewDPV(@PathVariable("id") Integer id){
-
-        String modelString;
-
-        if (id.equals(0)){
-            modelString = queryProcessor.View(origDPV);
-        }else if (id.equals(1)){
-            modelString = queryProcessor.View(tempDPV);
-        }else{
-            System.out.println("Non-valid 'id' for model given! Only two models exist that can be printed");
-            // modelString = "" == modelString.isEmpty()
-            modelString = "";
-        }
-
-        if (modelString.isEmpty()) {
-            // Needs to be removed at the end, so it's not printed on the "Server" console.
-            System.out.println("String representation of model is null!");
-            return null;
-        }
-
-        return modelString;
-    }
 
     // GET Command: "curl -X GET http://localhost:8080/api/createNewDPV"
     @GetMapping("/createNewDPV")
@@ -51,6 +27,26 @@ public class VocabularyManagerController {
         vocabularyManipulation.initializeEmptyDPV(origDPV, tempDPV);
         return "Created new temporary personal DPV!";
     }
+
+    // GET Command: "curl -X GET http://localhost:8080/api/viewDPV/id"
+    @GetMapping("/viewDPV/{id}")
+    public String viewDPV(@PathVariable("id") Integer id){
+
+        // modelString = "" == modelString.isEmpty()
+        String modelString = "";
+
+        if (id.equals(0)) modelString = queryProcessor.View(origDPV);
+        else if (id.equals(1)) modelString = queryProcessor.View(tempDPV);
+        else System.out.println("Non-valid 'id' for model given! Only two models exist that can be printed");
+
+        if (modelString.isEmpty()) {
+            // Needs to be removed at the end, so it's not printed on the "Server" console.
+            System.out.println("String representation of model is null!");
+        }
+
+        return modelString;
+    }
+
 
     /*
     1) ResponseEntity: Represents an HTTP response.

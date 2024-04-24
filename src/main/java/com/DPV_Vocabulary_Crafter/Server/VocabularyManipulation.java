@@ -16,7 +16,7 @@ public class VocabularyManipulation {
 
     }
 
-// This code is meant for the "add Statement" method.
+// This code is meant for the "add Term" method.
 /*
         for (Statement st : origModel){
         IRI subject = (IRI) st.getSubject();

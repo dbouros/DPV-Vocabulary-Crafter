@@ -12,10 +12,17 @@ public class QueryProcessor {
         }else{
 
             String modelString = "";
+            String previousSubject = "";
 
             // Print RDF Model(DPV) to screen.
             for (Statement st : model) {
-                modelString += modifyStatement(st);
+
+                if (((IRI) st.getSubject()).getLocalName().equals(previousSubject)){
+                    modelString += modifyStatement(st);
+                }else{
+                    modelString += "\n" + modifyStatement(st);
+                }
+                previousSubject = ((IRI) st.getSubject()).getLocalName();
             }
 
             return modelString;
@@ -39,6 +46,8 @@ public class QueryProcessor {
             return subject.getLocalName() + " -->> " + predicate.getLocalName()  + " -->> " + object + "\n";
             //System.out.println(subject.getLocalName() + " -->> " + predicate.getLocalName()  + " -->> " + object);
         }
+
+
 
     }
 

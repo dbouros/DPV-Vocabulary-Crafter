@@ -11,8 +11,8 @@ public class Main {
         System.out.println(web_dao_clnt.getHello("http://localhost:8080/api/hello"));
 
         // View original DPV from "Server".
-        //System.out.println("Original DPV:");
-        //System.out.println(web_dao_clnt.getViewDPV("http://localhost:8080/api/viewDPV/0"));
+        System.out.println("Original DPV:");
+        System.out.println(web_dao_clnt.getViewDPV("http://localhost:8080/api/viewDPV/0"));
 
 // Upload, View, Download Personal DPV from "Server".
         String folder_Path = "C:\\Users\\lenovo\\Desktop";
