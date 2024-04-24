@@ -93,8 +93,8 @@ public class VocabularyManagerController {
 
             // Checking "tempDPV" to see if it uploaded successfully from "Client" to "Server".
             if (tempDPV.isEmpty()) {
-                System.out.println("Temporary model upload failed! There is something wrong with the data given from the Client!");
-                throw new NullPointerException("model is empty!");
+                System.out.println("Temporary model upload failed!");
+                throw new NullPointerException("Model is empty!");
             }else {
                 System.out.println("Server: File Uploaded Successfully!");
             }

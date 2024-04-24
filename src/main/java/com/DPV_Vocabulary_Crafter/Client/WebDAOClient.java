@@ -18,10 +18,14 @@ public class WebDAOClient {
         ResponseEntity<String> response = restTemplate.getForEntity(Url, String.class);
         String model_String = response.getBody();
 
-        if (model_String != null) {
-            return model_String;
-        }else {
-            return "String representation of model is null!";
+        if (response.getStatusCode().is2xxSuccessful()){
+            if (model_String != null) {
+                return model_String;
+            }else {
+                return "String representation of model is null!";
+            }
+        }else{
+            return "Internal Server Error! Status code: " + response.getStatusCode();
         }
 
     }
@@ -55,10 +59,11 @@ public class WebDAOClient {
                 // byte[] responseBody = response.getBody();
                 System.out.println("File uploaded successfully!");
             } else {
-                throw new Exception("File failed to upload! Status code: " + response.getStatusCode());
+                throw new Exception("File failed to upload or it was empty! Status code: " + response.getStatusCode());
             }
 
         }catch (Exception e){
+            System.out.println("If your file is empty, there is no need to upload! You can just create a new DPV!");
             System.out.println("Upload Failed!, Exception occurred!");
         }
     }
