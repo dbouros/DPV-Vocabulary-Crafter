@@ -32,11 +32,11 @@ public class VocabularyManagerController {
     @GetMapping("/viewDPV/{id}")
     public String viewDPV(@PathVariable("id") Integer id){
 
-        // modelString = "" == modelString.isEmpty()
+        // modelString = "" -->> modelString.isEmpty() = true
         String modelString = "";
 
-        if (id.equals(0)) modelString = queryProcessor.View(origDPV);
-        else if (id.equals(1)) modelString = queryProcessor.View(tempDPV);
+        if (id.equals(0)) modelString = queryProcessor.view(origDPV);
+        else if (id.equals(1)) modelString = queryProcessor.view(tempDPV);
         else System.out.println("Non-valid 'id' for model given! Only two models exist that can be printed");
 
         if (modelString.isEmpty()) {

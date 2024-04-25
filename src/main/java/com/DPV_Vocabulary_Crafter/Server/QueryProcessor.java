@@ -3,7 +3,7 @@ package com.DPV_Vocabulary_Crafter.Server;
 import org.eclipse.rdf4j.model.*;
 
 public class QueryProcessor {
-    public String View(Model model){
+    public String view(Model model){
 
         if (model.isEmpty()){
             // Needs to be removed at the end, so it's not printed on the "Server" console.
@@ -12,8 +12,8 @@ public class QueryProcessor {
         }else{
 
             String modelString = "";
-            String previousSubject = "";
 
+            String previousSubject = "";
             // Print RDF Model(DPV) to screen.
             for (Statement st : model) {
 
