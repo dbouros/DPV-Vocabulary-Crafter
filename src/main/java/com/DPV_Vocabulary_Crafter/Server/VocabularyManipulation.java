@@ -15,18 +15,15 @@ public class VocabularyManipulation {
 
     public void addOntologyAndSchemes(Model origModel, Model tempModel){
 
-        String dpvOntology = "dpv";
-        String conceptScheme = "ConceptScheme";
-
         for (Statement st : origModel){
 
             IRI subject = (IRI) st.getSubject();
             Value object = st.getObject();
 
-            if (subject.getLocalName().equals(dpvOntology)){
+            if (subject.getLocalName().equals("dpv")){
                 tempModel.add(st);
             }
-            if (object.isIRI() && ((IRI)object).getLocalName().equals(conceptScheme)){
+            if (object.isIRI() && ((IRI)object).getLocalName().equals("ConceptScheme")){
                 tempModel.add(st);
             }
         }

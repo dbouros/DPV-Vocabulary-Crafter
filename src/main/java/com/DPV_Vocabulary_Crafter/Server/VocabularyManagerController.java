@@ -59,7 +59,7 @@ public class VocabularyManagerController {
                 response += "Your personal DPV model is empty! \nAuto-Created Model: New empty temporary personal DPV.\n";
                 vocabularyManipulation.initializeEmptyDPV(origDPV, tempDPV);
                 vocabularyManipulation.addOntologyAndSchemes(origDPV, tempDPV);
-                response += "Added to model: 'ConceptSchemes' and 'dpv' Ontology term. \n";
+                response += "Added Ontology Term: 'dpv' + all 'ConceptSchemes'. \n";
             }else {
                 response += "Your personal DPV model only has the 'ConceptSchemes' and 'dpv' Ontology term.";
             }
