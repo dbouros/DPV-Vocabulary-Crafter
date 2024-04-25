@@ -22,12 +22,30 @@ public class WebDAOClient {
             if (model_String != null) {
                 return model_String;
             }else {
-                return "String representation of model is null!";
+                System.out.println("Model is empty! String representation of model is null.");
+                return null;
             }
         }else{
             return "Internal Server Error! Status code: " + response.getStatusCode();
         }
+    }
 
+    public void getCreateNewDPV(String Url){
+        ResponseEntity<String> response = restTemplate.getForEntity(Url, String.class);
+        if (response.getStatusCode().is2xxSuccessful()){
+            System.out.println(response.getBody());
+        }else{
+            System.out.println("Internal Server Error! Status code: " + response.getStatusCode());
+        }
+    }
+
+    public void getEditDPV(String Url){
+        ResponseEntity<String> response = restTemplate.getForEntity(Url, String.class);
+        if (response.getStatusCode().is2xxSuccessful()){
+            System.out.println(response.getBody());
+        }else{
+            System.out.println("Internal Server Error! Status code: " + response.getStatusCode());
+        }
     }
 
     public void getDownloadDPVrdfFile(String Url, String folder_Path, String filename){
@@ -59,21 +77,11 @@ public class WebDAOClient {
                 // byte[] responseBody = response.getBody();
                 System.out.println("File uploaded successfully!");
             } else {
-                throw new Exception("File failed to upload or it was empty! Status code: " + response.getStatusCode());
+                throw new Exception();
             }
 
         }catch (Exception e){
-            System.out.println("If your file is empty, there is no need to upload! You can just create a new DPV!");
-            System.out.println("Upload Failed!, Exception occurred!");
-        }
-    }
-
-    public void getCreateNewDPV(String Url){
-        ResponseEntity<String> response = restTemplate.getForEntity(Url, String.class);
-        if (response.getStatusCode().is2xxSuccessful()){
-            System.out.println(response.getBody());
-        }else{
-            System.out.println("Internal Server Error! Status code: " + response.getStatusCode());
+            System.out.println("Upload Failed!");
         }
     }
 

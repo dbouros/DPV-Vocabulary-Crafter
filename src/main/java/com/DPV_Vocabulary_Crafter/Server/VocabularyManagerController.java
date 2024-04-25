@@ -19,16 +19,7 @@ public class VocabularyManagerController {
     private final Model origDPV = web_dao_svr.getDPVghb();
     private Model tempDPV = new LinkedHashModel();
 
-
-    // GET Command: "curl -X GET http://localhost:8080/api/createNewDPV"
-    @GetMapping("/createNewDPV")
-    public String createNewDPV(){
-
-        vocabularyManipulation.initializeEmptyDPV(origDPV, tempDPV);
-        return "Created new temporary personal DPV!";
-    }
-
-    // GET Command: "curl -X GET http://localhost:8080/api/viewDPV/id"
+    // GET Command: "curl -X GET http://localhost:8080/api/viewDPV/{id}"
     @GetMapping("/viewDPV/{id}")
     public String viewDPV(@PathVariable("id") Integer id){
 
@@ -37,16 +28,48 @@ public class VocabularyManagerController {
 
         if (id.equals(0)) modelString = queryProcessor.view(origDPV);
         else if (id.equals(1)) modelString = queryProcessor.view(tempDPV);
-        else System.out.println("Non-valid 'id' for model given! Only two models exist that can be printed");
+        else {
+            System.out.println("Invalid 'id' given for model! Only two models exist that can be printed! Status Code: " + HttpStatus.INTERNAL_SERVER_ERROR);
+        }
 
         if (modelString.isEmpty()) {
             // Needs to be removed at the end, so it's not printed on the "Server" console.
-            System.out.println("String representation of model is null!");
+            System.out.println("Model is empty! String representation of model is null.");
         }
 
         return modelString;
     }
 
+
+    // GET Command: "curl -X GET http://localhost:8080/api/createNewDPV"
+    @GetMapping("/createNewDPV")
+    public String createNewDPV(){
+        vocabularyManipulation.initializeEmptyDPV(origDPV, tempDPV);
+        return "Created Model: New empty temporary personal DPV.";
+    }
+
+    // GET Command: "curl -X GET http://localhost:8080/api/editDPV/{dpvTerm}/{id}"
+    @GetMapping("/editDPV/{dpvTerm}/{id}")
+    public String editDPV(@PathVariable("dpvTerm") String dpvTerm, @PathVariable("id") Integer id){
+
+        String response = "";
+
+        if (id.equals(0)){
+            if (tempDPV.isEmpty()){
+                response += "Your personal DPV model is empty! \nAuto-Created Model: New empty temporary personal DPV.\n";
+                vocabularyManipulation.initializeEmptyDPV(origDPV, tempDPV);
+                vocabularyManipulation.addOntologyAndSchemes(origDPV, tempDPV);
+                response += "Added to model: 'ConceptSchemes' and 'dpv' Ontology term. \n";
+            }else {
+                response += "Your personal DPV model only has the 'ConceptSchemes' and 'dpv' Ontology term.";
+            }
+            return response;
+        }else if (id.equals(1)){
+            return response;
+        }else {
+            return "Invalid 'id' given in URL! Status Code: " + HttpStatus.INTERNAL_SERVER_ERROR;
+        }
+    }
 
     /*
     1) ResponseEntity: Represents an HTTP response.
@@ -100,7 +123,7 @@ public class VocabularyManagerController {
             // case, it sets the HTTP status to 200 (OK) and empty body.
             return ResponseEntity.ok().build();
         }catch (Exception e){
-            System.out.println("Server: Upload Failed!, Exception occurred! INTERNAL_SERVER_ERROR");
+            System.out.println("Server: Upload Failed!, Exception occurred! INTERNAL_SERVER_ERROR.");
             // 1) HttpStatus.INTERNAL_SERVER_ERROR = HTTP status of 500 (Internal Server Error).
             // 2) .build() empty body will be returned here as well.
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();

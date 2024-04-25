@@ -11,8 +11,8 @@ public class Main {
         System.out.println(web_dao_clnt.getHello("http://localhost:8080/api/hello"));
 
         // View original DPV from "Server".
-        System.out.println("Original DPV:");
-        System.out.println(web_dao_clnt.getViewDPV("http://localhost:8080/api/viewDPV/0"));
+        //System.out.println("Original DPV:");
+        //System.out.println(web_dao_clnt.getViewDPV("http://localhost:8080/api/viewDPV/0"));
 
 // Upload, View, Download Personal DPV from "Server".
         String folderPath = "C:\\Users\\lenovo\\Desktop";
@@ -32,18 +32,25 @@ public class Main {
 			*/
         //web_dao_clnt.getDownloadDPVrdfFile("http://localhost:8080/api/downloadDPVrdfFile", folderPath, filename);
 
-// Create, Add term, View, Remove term, Download new DPV from "Server".
+// Create or Upload, Edit, View, Download new DPV from "Server".
         String filename2 = "new_dpv.rdf";
 
-        // Create new personal DPV in "Server".
+        // Create new empty personal DPV in "Server".
         //web_dao_clnt.getCreateNewDPV("http://localhost:8080/api/createNewDPV");
 
+        // Upload personal DPV to "Server".
+        web_dao_clnt.postUploadDPVrdfFile("http://localhost:8080/api/uploadDPVrdfFile", folderPath, filename2);
+
+        // Edit new empty personal DPV in "Server".
+        String dpvTerm = "nothing";
+        web_dao_clnt.getEditDPV("http://localhost:8080/api/editDPV/" + dpvTerm + "/0");
+
         // View new personal DPV from "Server".
-        //System.out.println("Personal DPV:");
-        //System.out.println(web_dao_clnt.getViewDPV("http://localhost:8080/api/viewDPV/1"));
+        System.out.println("Personal DPV:");
+        System.out.println(web_dao_clnt.getViewDPV("http://localhost:8080/api/viewDPV/1"));
 
         // Download new personal DPV from "Server".
-        //web_dao_clnt.getDownloadDPVrdfFile("http://localhost:8080/api/downloadDPVrdfFile", folderPath, filename2);
+        web_dao_clnt.getDownloadDPVrdfFile("http://localhost:8080/api/downloadDPVrdfFile", folderPath, filename2);
     }
 }
 
