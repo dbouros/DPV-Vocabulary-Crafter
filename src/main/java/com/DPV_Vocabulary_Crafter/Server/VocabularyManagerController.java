@@ -56,12 +56,13 @@ public class VocabularyManagerController {
 
         if (id.equals(0)){
             if (tempDPV.isEmpty()){
-                // Inside Class: "VocabularyManipulation" create methods: isDPVEmpty, isDPVTerm, edit !!
+                // TODO: In Class "VocabularyManipulation" create methods: isDPVEmpty, isDPVTerm, edit !!
                 response += "Your personal DPV model is empty! \n" + "Auto-Created Model: New empty temporary personal DPV. \n";
                 vocabularyManipulation.initializeEmptyDPV(origDPV, tempDPV);
                 vocabularyManipulation.addOntologyAndSchemes(origDPV, tempDPV);
                 response += "Added Ontology Term: 'dpv' + all 'ConceptSchemes'. \n";
             }
+            response += "Model not empty!";
             return response;
         }else if (id.equals(1)){
             return response;
