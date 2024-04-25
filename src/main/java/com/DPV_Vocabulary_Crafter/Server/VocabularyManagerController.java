@@ -50,13 +50,13 @@ public class VocabularyManagerController {
 
     // GET Command: "curl -X GET http://localhost:8080/api/editDPV/{dpvTerm}/{id}"
     @GetMapping("/editDPV/{dpvTerm}/{id}")
-    public String editDPV(@PathVariable("dpvTerm") String dpvTerm, @PathVariable("id") Integer id){
+    public String editDPV(@PathVariable("dpvTerm") String term, @PathVariable("id") Integer id){
 
         String response = "";
 
         if (id.equals(0)){
             if (tempDPV.isEmpty()){
-                response += "Your personal DPV model is empty! \nAuto-Created Model: New empty temporary personal DPV.\n";
+                response += "Your personal DPV model is empty! \n" + "Auto-Created Model: New empty temporary personal DPV. \n";
                 vocabularyManipulation.initializeEmptyDPV(origDPV, tempDPV);
                 vocabularyManipulation.addOntologyAndSchemes(origDPV, tempDPV);
                 response += "Added Ontology Term: 'dpv' + all 'ConceptSchemes'. \n";
