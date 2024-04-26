@@ -65,5 +65,5 @@ public class QueryProcessor {
         }
         return exists;
     }
-    
+
 }
