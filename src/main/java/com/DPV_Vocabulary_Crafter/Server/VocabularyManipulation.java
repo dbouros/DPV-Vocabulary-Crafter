@@ -22,7 +22,7 @@ public class VocabularyManipulation {
     public String edit(Model origModel, Model tempModel, String term, Integer id, String response){
 
         if (tempModel.isEmpty()){
-            response += personalDPVisEmpty(origModel, tempModel, response);
+            response += personalModelIsEmpty(origModel, tempModel, response);
         }
 
         // TODO: Create new methods: 'add', 'remove'.
@@ -54,7 +54,7 @@ public class VocabularyManipulation {
         return response;
     }
 
-    public String personalDPVisEmpty(Model origModel, Model tempModel, String response){
+    public String personalModelIsEmpty(Model origModel, Model tempModel, String response){
         response += "Your personal DPV model is empty!\n";
 
         initializeEmptyDPV(origModel, tempModel);
