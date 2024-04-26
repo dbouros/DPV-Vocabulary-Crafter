@@ -54,21 +54,12 @@ public class VocabularyManagerController {
 
         String response = "";
 
-        if (id.equals(0)){
-            if (tempDPV.isEmpty()){
-                // TODO: In Class "VocabularyManipulation" create methods: isDPVEmpty, isDPVTerm, edit !!
-                response += "Your personal DPV model is empty! \n" + "Auto-Created Model: New empty temporary personal DPV. \n";
-                vocabularyManipulation.initializeEmptyDPV(origDPV, tempDPV);
-                vocabularyManipulation.addOntologyAndSchemes(origDPV, tempDPV);
-                response += "Added Ontology Term: 'dpv' + all 'ConceptSchemes'. \n";
-            }
-            response += "Model not empty!";
-            return response;
-        }else if (id.equals(1)){
-            return response;
+        if (id.equals(0) || id.equals(1)){
+            response = vocabularyManipulation.edit(origDPV, tempDPV, term, id, response);
         }else {
-            return "Invalid 'id' given in URL! Status Code: " + HttpStatus.INTERNAL_SERVER_ERROR;
+            response += "Invalid 'id' given in URL! Status Code: " + HttpStatus.INTERNAL_SERVER_ERROR;
         }
+        return response;
     }
 
     /*
@@ -112,8 +103,8 @@ public class VocabularyManagerController {
 
             // Checking "tempDPV" to see if it uploaded successfully from "Client" to "Server".
             if (tempDPV.isEmpty()) {
-                System.out.println("Temporary model upload failed!");
-                throw new NullPointerException("Model is empty!");
+                System.out.println("Model is empty!");
+                throw new NullPointerException();
             }else {
                 System.out.println("Server: File Uploaded Successfully!");
             }
@@ -123,7 +114,7 @@ public class VocabularyManagerController {
             // case, it sets the HTTP status to 200 (OK) and empty body.
             return ResponseEntity.ok().build();
         }catch (Exception e){
-            System.out.println("Server: Upload Failed!, Exception occurred! INTERNAL_SERVER_ERROR.");
+            System.out.println("Server: Upload Failed! Exception occurred.");
             // 1) HttpStatus.INTERNAL_SERVER_ERROR = HTTP status of 500 (Internal Server Error).
             // 2) .build() empty body will be returned here as well.
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();

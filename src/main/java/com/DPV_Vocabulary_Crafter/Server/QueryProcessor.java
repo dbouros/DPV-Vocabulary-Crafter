@@ -46,11 +46,25 @@ public class QueryProcessor {
             return subject.getLocalName() + " -->> " + predicate.getLocalName()  + " -->> " + object + "\n";
             //System.out.println(subject.getLocalName() + " -->> " + predicate.getLocalName()  + " -->> " + object);
         }
-
-
-
     }
 
+    public boolean isDPVTerm(Model origModel, String term){
+        boolean isTerm = false;
+        for (Statement st : origModel){
+            IRI subject = (IRI) st.getSubject();
+            isTerm = subject.getLocalName().equals(term);
+        }
+        return isTerm;
+    }
+
+    public boolean existsInModel(Model tempModel, String term){
+        boolean exists = false;
+        for (Statement st : tempModel){
+            IRI subject = (IRI) st.getSubject();
+            exists = subject.getLocalName().equals(term);
+        }
+        return exists;
+    }
 
 
 }

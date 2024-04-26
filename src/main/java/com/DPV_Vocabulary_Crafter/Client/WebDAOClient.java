@@ -23,6 +23,8 @@ public class WebDAOClient {
                 return model_String;
             }else {
                 System.out.println("Model is empty! String representation of model is null.");
+                // This is the "null" that is sometimes printed in the console. DO NOT REMOVE IT we need
+                // it for the UI later!
                 return null;
             }
         }else{
