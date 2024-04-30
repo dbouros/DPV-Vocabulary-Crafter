@@ -42,7 +42,10 @@ public class Main {
         web_dao_clnt.postUploadDPVrdfFile("http://localhost:8080/api/uploadDPVrdfFile", folderPath, filename2);
 
         // Edit new empty personal DPV in "Server".
-        String dpvTerm = "nothing";
+        String dpvTerm = "Compliance Unknown";
+        // Removing all possible spaces from "dpvTerm".
+        dpvTerm = dpvTerm.replace(" ", "");
+        // id == 0 (Method: add), id == 1 (Method: remove).
         web_dao_clnt.getEditDPV("http://localhost:8080/api/editDPV/" + dpvTerm + "/0");
 
         // View new personal DPV from "Server".

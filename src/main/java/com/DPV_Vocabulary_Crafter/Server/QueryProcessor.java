@@ -52,7 +52,10 @@ public class QueryProcessor {
         boolean isTerm = false;
         for (Statement st : origModel){
             IRI subject = (IRI) st.getSubject();
-            isTerm = subject.getLocalName().equals(term);
+            if (subject.getLocalName().equals(term)){
+             isTerm = true;
+             break;
+            }
         }
         return isTerm;
     }
@@ -61,7 +64,10 @@ public class QueryProcessor {
         boolean exists = false;
         for (Statement st : tempModel){
             IRI subject = (IRI) st.getSubject();
-            exists = subject.getLocalName().equals(term);
+            if (subject.getLocalName().equals(term)){
+                exists = true;
+                break;
+            }
         }
         return exists;
     }

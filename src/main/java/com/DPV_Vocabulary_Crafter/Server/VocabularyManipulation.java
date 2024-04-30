@@ -2,6 +2,8 @@ package com.DPV_Vocabulary_Crafter.Server;
 
 import org.eclipse.rdf4j.model.*;
 
+import javax.swing.plaf.nimbus.State;
+
 public class VocabularyManipulation {
 
     private final QueryProcessor queryProcessor;
@@ -19,6 +21,18 @@ public class VocabularyManipulation {
         }
     }
 
+    public String personalModelIsEmpty(Model origModel, Model tempModel, String response){
+        response += "Your personal DPV model is empty!\n";
+
+        initializeEmptyDPV(origModel, tempModel);
+        response += "Auto-Created new model: New empty temporary personal DPV.\n";
+
+        addOntologyAndSchemes(origModel, tempModel);
+        response += "Added Ontology Term: 'dpv' + all 'ConceptSchemes'. \n";
+
+        return response;
+    }
+
     public String edit(Model origModel, Model tempModel, String term, Integer id, String response){
 
         if (tempModel.isEmpty()){
@@ -30,6 +44,7 @@ public class VocabularyManipulation {
             if (queryProcessor.isDPVTerm(origModel, term)){
                 if (!queryProcessor.existsInModel(tempModel, term)){
                     // Launch "add" method here.
+                    add(origModel, tempModel, term);
                     response += "Added Term: '" + term + "'\n";
                 }else {
                     response += "Error: Term already exists!\n";
@@ -42,6 +57,7 @@ public class VocabularyManipulation {
             if (queryProcessor.isDPVTerm(origModel, term)){
                 if (queryProcessor.existsInModel(tempModel, term)){
                     // Launch "remove" method here.
+                    remove(origModel, tempModel, term);
                     response += "Removed Term: '" + term + "'\n";
                 }else {
                     response += "Error: Term not in model!\n";
@@ -54,16 +70,26 @@ public class VocabularyManipulation {
         return response;
     }
 
-    public String personalModelIsEmpty(Model origModel, Model tempModel, String response){
-        response += "Your personal DPV model is empty!\n";
+    public void add(Model origModel, Model tempModel, String term){
 
-        initializeEmptyDPV(origModel, tempModel);
-        response += "Auto-Created new model: New empty temporary personal DPV.\n";
+        for (Statement st : origModel){
+            IRI subject = (IRI) st.getSubject();
 
-        addOntologyAndSchemes(origModel, tempModel);
-        response += "Added Ontology Term: 'dpv' + all 'ConceptSchemes'. \n";
+            if (subject.getLocalName().equals(term)){
+                tempModel.add(st);
+            }
+        }
+    }
 
-        return response;
+    public void remove(Model origModel, Model tempModel, String term){
+
+        for (Statement st : origModel){
+            IRI subject = (IRI) st.getSubject();
+
+            if (subject.getLocalName().equals(term)){
+                tempModel.remove(st);
+            }
+        }
     }
 
     public void addOntologyAndSchemes(Model origModel, Model tempModel){
