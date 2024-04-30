@@ -31,7 +31,7 @@ public class WebDAOServer {
             ResponseEntity<String> response = restTemplate.getForEntity(dpv_Url, String.class);
 
             if (response.getStatusCode() != HttpStatus.OK)
-                throw new Exception("GET request for the original DPV from github failed. HTTP Status Code: " + response.getStatusCode());
+                throw new Exception();
 
             String rdfData = response.getBody();
             InputStream inputStream;
@@ -47,8 +47,8 @@ public class WebDAOServer {
             return model;
 
         }catch (Exception e){
-            System.out.println("Failed to fetch the original DPV from github!");
-            throw new NullPointerException("NullPointerException");
+            System.out.println("GET request for the original DPV from github failed.\nFailed to fetch the original DPV from github!");
+            throw new NullPointerException();
         }
     }
     // Convert "Model" to RDF/XML ByteArray.
