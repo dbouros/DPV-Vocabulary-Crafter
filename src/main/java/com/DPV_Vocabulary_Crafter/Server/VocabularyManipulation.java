@@ -2,8 +2,6 @@ package com.DPV_Vocabulary_Crafter.Server;
 
 import org.eclipse.rdf4j.model.*;
 
-import javax.swing.plaf.nimbus.State;
-
 public class VocabularyManipulation {
 
     private final QueryProcessor queryProcessor;
