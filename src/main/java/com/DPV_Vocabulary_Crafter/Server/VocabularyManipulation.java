@@ -39,7 +39,6 @@ public class VocabularyManipulation {
             response += personalModelIsEmpty(origModel, tempModel, response);
         }
 
-        // TODO: Create new methods: 'add', 'remove'.
         if (id.equals(0)){
             if (queryProcessor.isDPVTerm(origModel, term)){
                 if (!queryProcessor.existsInModel(tempModel, term)){

@@ -29,12 +29,14 @@ public class VocabularyManagerController {
         if (id.equals(0)) modelString = queryProcessor.view(origDPV);
         else if (id.equals(1)) modelString = queryProcessor.view(tempDPV);
         else {
-            System.out.println("Invalid 'id' given for model! Only two models exist that can be printed! Status Code: " + HttpStatus.INTERNAL_SERVER_ERROR);
+            System.out.println("Invalid 'id' given in URL for method 'view'! Status Code: " + HttpStatus.INTERNAL_SERVER_ERROR);
+            modelString += "Invalid 'id' given in URL for method 'view'! Status Code: " + HttpStatus.INTERNAL_SERVER_ERROR;
         }
 
-        if (modelString.isEmpty()) {
+        if (modelString.isEmpty() && (id.equals(0) || id.equals(1))) {
             // Needs to be removed at the end, so it's not printed on the "Server" console.
             System.out.println("Model is empty! String representation of model is null.");
+            modelString += "Model is empty! String representation of model is null.";
         }
 
         return modelString;
@@ -57,7 +59,7 @@ public class VocabularyManagerController {
         if (id.equals(0) || id.equals(1)){
             response = vocabularyManipulation.edit(origDPV, tempDPV, term, id, response);
         }else {
-            response += "Invalid 'id' given in URL! Status Code: " + HttpStatus.INTERNAL_SERVER_ERROR;
+            response += "Invalid 'id' given in URL for method 'edit'! Status Code: " + HttpStatus.INTERNAL_SERVER_ERROR;
         }
         return response;
     }

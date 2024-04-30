@@ -3,14 +3,12 @@ package com.DPV_Vocabulary_Crafter.Client;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
-public class WebDAOClient {
+public class WebDAOClient extends LocalDAOClient{
 
     private final RestTemplate restTemplate;
-    private final LocalDAOClient lcl_dao_clnt;
 
     public WebDAOClient(){
         this.restTemplate = new RestTemplate();
-        this.lcl_dao_clnt = new LocalDAOClient();
     }
 
     public String getViewDPV(String Url){
@@ -55,7 +53,7 @@ public class WebDAOClient {
         ResponseEntity<byte[]> response = restTemplate.getForEntity(Url, byte[].class);
 
         if (response.getStatusCode().is2xxSuccessful())
-            lcl_dao_clnt.writeVocabularyToFile(response.getBody(), folder_Path, filename);
+            writeVocabularyToFile(response.getBody(), folder_Path, filename);
         else
             System.out.println("Failed to download file! Status code: " + response.getStatusCode());
     }
@@ -64,7 +62,7 @@ public class WebDAOClient {
 
         try {
 
-            byte[] fileBytes = lcl_dao_clnt.readVocabularyFromFile(folder_Path, filename);
+            byte[] fileBytes = readVocabularyFromFile(folder_Path, filename);
 
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_XML);
