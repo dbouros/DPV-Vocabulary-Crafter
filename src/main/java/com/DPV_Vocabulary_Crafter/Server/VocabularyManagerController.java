@@ -48,16 +48,12 @@ public class VocabularyManagerController {
         String modelString;
         String response;
 
-        if (voc_id.equals(0)) {
-            modelString = queryProcessor.view(origDPV);
-            if (modelString.isEmpty()){
-                response = "Model is empty! String representation of model is null.";
-                return response;
+        if (voc_id.equals(0) || voc_id.equals(1)) {
+            if (voc_id.equals(0)){
+                modelString = queryProcessor.view(origDPV);
             }else {
-                return modelString;
+                modelString = queryProcessor.view(tempDPV);
             }
-        } else if (voc_id.equals(1)) {
-            modelString = queryProcessor.view(tempDPV);
             if (modelString.isEmpty()){
                 response = "Model is empty! String representation of model is null.";
                 return response;
@@ -65,8 +61,8 @@ public class VocabularyManagerController {
                 return modelString;
             }
         } else {
-                System.out.println("Invalid 'id' given in URL for method 'view'! Status Code: " + HttpStatus.INTERNAL_SERVER_ERROR);
-                response = "Invalid 'id' given in URL for method 'view'! Status Code: " + HttpStatus.INTERNAL_SERVER_ERROR;
+                System.out.println("Error: Invalid 'id' given in URL for method 'view'! Status Code: " + HttpStatus.INTERNAL_SERVER_ERROR);
+                response = "Error: Invalid 'id' given in URL for method 'view'! Status Code: " + HttpStatus.INTERNAL_SERVER_ERROR;
                 return response;
         }
     }
@@ -92,8 +88,6 @@ public class VocabularyManagerController {
     @GetMapping("/downloadDPVrdfFile")
     public ResponseEntity<byte[]> downloadDPVrdfFile(){
 
-        // For github's "update" purposes, change from "tempDPV" to "origDPV".
-
         // Convert RDF Model to RDF/XML format.
         byte[] modelBytes = web_dao_svr.convertModelToRDFXMLBtArr(tempDPV);
 
@@ -113,7 +107,7 @@ public class VocabularyManagerController {
 
     }
 
-    // POST Command: "curl -X POST -H "Content-Type: ..." -d @tempDPV.rdf http://localhost:8080/api/uploadDPVrdfFile"
+    // POST Command: "curl -X POST -H "Content-Type: ..." -d @myDPV.rdf http://localhost:8080/api/uploadDPVrdfFile"
     @PostMapping("/uploadDPVrdfFile")
     public ResponseEntity<byte[]> uploadDPVrdfFile(@RequestBody byte[] fileBytes){
 
@@ -125,7 +119,7 @@ public class VocabularyManagerController {
                 System.out.println("Model is empty!");
                 throw new NullPointerException();
             }else {
-                System.out.println("Server: File Uploaded Successfully!");
+                System.out.println("File Uploaded Successfully!");
             }
 
             // 1) ResponseEntity.ok() creates a builder with the HTTP status set to 200 (OK).
@@ -133,7 +127,7 @@ public class VocabularyManagerController {
             // case, it sets the HTTP status to 200 (OK) and empty body.
             return ResponseEntity.ok().build();
         }catch (Exception e){
-            System.out.println("Server: Upload Failed! Exception occurred.");
+            System.out.println("Upload Failed! Exception occurred.");
             // 1) HttpStatus.INTERNAL_SERVER_ERROR = HTTP status of 500 (Internal Server Error).
             // 2) .build() empty body will be returned here as well.
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
