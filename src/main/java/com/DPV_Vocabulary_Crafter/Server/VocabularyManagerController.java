@@ -33,9 +33,9 @@ public class VocabularyManagerController {
         String response = "";
 
         if (id.equals(0) || id.equals(1)){
-            response += vocabularyManipulation.edit(origDPV, tempDPV, term, id, response);
+            response = vocabularyManipulation.edit(origDPV, tempDPV, term, id, response);
         }else {
-            response += "Invalid 'id' given in URL for method 'edit'! Status Code: " + HttpStatus.INTERNAL_SERVER_ERROR;
+            response = "Invalid 'id' given in URL for method 'edit'! Status Code: " + HttpStatus.INTERNAL_SERVER_ERROR;
         }
         return response;
     }
@@ -72,7 +72,14 @@ public class VocabularyManagerController {
     }
 
     @GetMapping("/searchDPV")
-    public String searchDPV(){return "";}
+    public String searchDPV(){
+        
+        // modelString = "" -->> modelString.isEmpty() == true
+        String modelString;
+        String response;
+
+        return "";
+    }
 
     /*
     1) ResponseEntity: Represents an HTTP response.
