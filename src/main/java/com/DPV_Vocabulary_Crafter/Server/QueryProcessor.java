@@ -3,7 +3,7 @@ package com.DPV_Vocabulary_Crafter.Server;
 import org.eclipse.rdf4j.model.*;
 
 public class QueryProcessor {
-    
+
     public String view(Model model){
 
         if (model.isEmpty()){
