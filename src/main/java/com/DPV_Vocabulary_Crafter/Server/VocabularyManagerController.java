@@ -19,30 +19,6 @@ public class VocabularyManagerController {
     private final Model origDPV = web_dao_svr.getDPVghb();
     private Model tempDPV = new LinkedHashModel();
 
-    // GET Command: "curl -X GET http://localhost:8080/api/viewDPV/{id}"
-    @GetMapping("/viewDPV/{voc_id}")
-    public String viewDPV(@PathVariable("voc_id") Integer voc_id){
-
-        // modelString = "" -->> modelString.isEmpty() = true
-        String modelString = "";
-
-        if (voc_id.equals(0)) modelString = queryProcessor.view(origDPV);
-        else if (voc_id.equals(1)) modelString = queryProcessor.view(tempDPV);
-        else {
-            System.out.println("Invalid 'id' given in URL for method 'view'! Status Code: " + HttpStatus.INTERNAL_SERVER_ERROR);
-            modelString += "Invalid 'id' given in URL for method 'view'! Status Code: " + HttpStatus.INTERNAL_SERVER_ERROR;
-        }
-
-        if (modelString.isEmpty() && (voc_id.equals(0) || voc_id.equals(1))) {
-            // Needs to be removed at the end, so it's not printed on the "Server" console.
-            System.out.println("Model is empty! String representation of model is null.");
-            modelString += "Model is empty! String representation of model is null.";
-        }
-
-        return modelString;
-    }
-
-
     // GET Command: "curl -X GET http://localhost:8080/api/createNewDPV"
     @GetMapping("/createNewDPV")
     public String createNewDPV(){
@@ -63,6 +39,40 @@ public class VocabularyManagerController {
         }
         return response;
     }
+
+    // GET Command: "curl -X GET http://localhost:8080/api/viewDPV/{id}"
+    @GetMapping("/viewDPV/{voc_id}")
+    public String viewDPV(@PathVariable("voc_id") Integer voc_id){
+
+        // modelString = "" -->> modelString.isEmpty() == true
+        String modelString;
+        String response;
+
+        if (voc_id.equals(0)) {
+            modelString = queryProcessor.view(origDPV);
+            if (modelString.isEmpty()){
+                response = "Model is empty! String representation of model is null.";
+                return response;
+            }else {
+                return modelString;
+            }
+        } else if (voc_id.equals(1)) {
+            modelString = queryProcessor.view(tempDPV);
+            if (modelString.isEmpty()){
+                response = "Model is empty! String representation of model is null.";
+                return response;
+            }else {
+                return modelString;
+            }
+        } else {
+                System.out.println("Invalid 'id' given in URL for method 'view'! Status Code: " + HttpStatus.INTERNAL_SERVER_ERROR);
+                response = "Invalid 'id' given in URL for method 'view'! Status Code: " + HttpStatus.INTERNAL_SERVER_ERROR;
+                return response;
+        }
+    }
+
+    @GetMapping("/searchDPV")
+    public String searchDPV(){return "";}
 
     /*
     1) ResponseEntity: Represents an HTTP response.

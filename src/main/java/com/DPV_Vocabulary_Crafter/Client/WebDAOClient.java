@@ -11,6 +11,24 @@ public class WebDAOClient extends LocalDAOClient{
         this.restTemplate = new RestTemplate();
     }
 
+    public void getCreateNewDPV(String Url){
+        ResponseEntity<String> response = restTemplate.getForEntity(Url, String.class);
+        if (response.getStatusCode().is2xxSuccessful()){
+            System.out.println(response.getBody());
+        }else{
+            System.out.println("Internal Server Error! Status code: " + response.getStatusCode());
+        }
+    }
+
+    public void getEditDPV(String Url){
+        ResponseEntity<String> response = restTemplate.getForEntity(Url, String.class);
+        if (response.getStatusCode().is2xxSuccessful()){
+            System.out.println(response.getBody());
+        }else{
+            System.out.println("Internal Server Error! Status code: " + response.getStatusCode());
+        }
+    }
+
     public String getViewDPV(String Url){
 
         ResponseEntity<String> response = restTemplate.getForEntity(Url, String.class);
@@ -30,23 +48,7 @@ public class WebDAOClient extends LocalDAOClient{
         }
     }
 
-    public void getCreateNewDPV(String Url){
-        ResponseEntity<String> response = restTemplate.getForEntity(Url, String.class);
-        if (response.getStatusCode().is2xxSuccessful()){
-            System.out.println(response.getBody());
-        }else{
-            System.out.println("Internal Server Error! Status code: " + response.getStatusCode());
-        }
-    }
-
-    public void getEditDPV(String Url){
-        ResponseEntity<String> response = restTemplate.getForEntity(Url, String.class);
-        if (response.getStatusCode().is2xxSuccessful()){
-            System.out.println(response.getBody());
-        }else{
-            System.out.println("Internal Server Error! Status code: " + response.getStatusCode());
-        }
-    }
+    public String getSearchDPV(String Url){return "";}
 
     public void getDownloadDPVrdfFile(String Url, String folder_Path, String filename){
 

@@ -13,7 +13,6 @@ public class QueryProcessor {
         }else{
 
             String modelString = "";
-
             String previousSubject = "";
 
             for (Statement st : model) {
@@ -24,7 +23,7 @@ public class QueryProcessor {
                 }else{
                     modelString += "\n" + modifyStatement(st);
                 }
-
+                // Each time the previous "subject" differs from the current one, a new line "\n" is added.
                 previousSubject = ((IRI) st.getSubject()).getLocalName();
             }
 
