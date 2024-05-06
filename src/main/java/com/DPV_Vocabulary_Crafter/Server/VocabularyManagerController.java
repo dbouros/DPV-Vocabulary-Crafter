@@ -20,20 +20,20 @@ public class VocabularyManagerController {
     private Model tempDPV = new LinkedHashModel();
 
     // GET Command: "curl -X GET http://localhost:8080/api/viewDPV/{id}"
-    @GetMapping("/viewDPV/{id}")
-    public String viewDPV(@PathVariable("id") Integer id){
+    @GetMapping("/viewDPV/{voc_id}")
+    public String viewDPV(@PathVariable("voc_id") Integer voc_id){
 
         // modelString = "" -->> modelString.isEmpty() = true
         String modelString = "";
 
-        if (id.equals(0)) modelString = queryProcessor.view(origDPV);
-        else if (id.equals(1)) modelString = queryProcessor.view(tempDPV);
+        if (voc_id.equals(0)) modelString = queryProcessor.view(origDPV);
+        else if (voc_id.equals(1)) modelString = queryProcessor.view(tempDPV);
         else {
             System.out.println("Invalid 'id' given in URL for method 'view'! Status Code: " + HttpStatus.INTERNAL_SERVER_ERROR);
             modelString += "Invalid 'id' given in URL for method 'view'! Status Code: " + HttpStatus.INTERNAL_SERVER_ERROR;
         }
 
-        if (modelString.isEmpty() && (id.equals(0) || id.equals(1))) {
+        if (modelString.isEmpty() && (voc_id.equals(0) || voc_id.equals(1))) {
             // Needs to be removed at the end, so it's not printed on the "Server" console.
             System.out.println("Model is empty! String representation of model is null.");
             modelString += "Model is empty! String representation of model is null.";
@@ -47,7 +47,7 @@ public class VocabularyManagerController {
     @GetMapping("/createNewDPV")
     public String createNewDPV(){
         vocabularyManipulation.initializeEmptyDPV(origDPV, tempDPV);
-        return "Created Model: New empty temporary personal DPV.";
+        return "Created Model: New empty personal DPV.";
     }
 
     // GET Command: "curl -X GET http://localhost:8080/api/editDPV/{dpvTerm}/{id}"

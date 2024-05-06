@@ -3,6 +3,7 @@ package com.DPV_Vocabulary_Crafter.Server;
 import org.eclipse.rdf4j.model.*;
 
 public class QueryProcessor {
+    
     public String view(Model model){
 
         if (model.isEmpty()){
@@ -14,20 +15,23 @@ public class QueryProcessor {
             String modelString = "";
 
             String previousSubject = "";
-            // Print RDF Model(DPV) to screen.
+
             for (Statement st : model) {
 
+                // Add an empty line "\n" between each new term.
                 if (((IRI) st.getSubject()).getLocalName().equals(previousSubject)){
                     modelString += modifyStatement(st);
                 }else{
                     modelString += "\n" + modifyStatement(st);
                 }
+
                 previousSubject = ((IRI) st.getSubject()).getLocalName();
             }
 
             return modelString;
         }
     }
+
     public String modifyStatement(Statement st){
 
         IRI subject = (IRI) st.getSubject();

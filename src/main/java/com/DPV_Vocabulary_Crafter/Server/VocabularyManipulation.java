@@ -23,7 +23,7 @@ public class VocabularyManipulation {
         response += "Your personal DPV model is empty!\n";
 
         initializeEmptyDPV(origModel, tempModel);
-        response += "Auto-Created new model: New empty temporary personal DPV.\n";
+        response += "Auto-Created new model: New empty personal DPV.\n";
 
         addOntologyAndSchemes(origModel, tempModel);
         response += "Added Ontology Term: 'dpv' + all 'ConceptSchemes'. \n";
