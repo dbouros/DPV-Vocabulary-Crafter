@@ -73,7 +73,7 @@ public class VocabularyManagerController {
 
     @GetMapping("/searchDPV")
     public String searchDPV(){
-        
+
         // modelString = "" -->> modelString.isEmpty() == true
         String modelString;
         String response;
