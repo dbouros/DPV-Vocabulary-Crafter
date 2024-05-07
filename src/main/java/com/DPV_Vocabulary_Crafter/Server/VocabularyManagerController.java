@@ -26,9 +26,9 @@ public class VocabularyManagerController {
         return "Created Model: New empty personal DPV.";
     }
 
-    // GET Command: "curl -X GET http://localhost:8080/api/editDPV/{dpvTerm}/{id}"
-    @GetMapping("/editDPV/{dpvTerm}/{id}")
-    public String editDPV(@PathVariable("dpvTerm") String term, @PathVariable("id") Integer id){
+    // GET Command: "curl -X GET http://localhost:8080/api/editDPV/{dpvSubject}/{id}"
+    @GetMapping("/editDPV/{dpvSubject}/{id}")
+    public String editDPV(@PathVariable("dpvSubject") String term, @PathVariable("id") Integer id){
 
         String response = "";
 
@@ -54,6 +54,7 @@ public class VocabularyManagerController {
             }else {
                 modelString = queryProcessor.view(tempDPV);
             }
+
             if (modelString.isEmpty()){
                 response = "Model is empty! String representation of model is null.";
                 return response;
@@ -61,14 +62,18 @@ public class VocabularyManagerController {
                 return modelString;
             }
         } else {
-                System.out.println("Error: Invalid 'id' given in URL for method 'view'! Status Code: " + HttpStatus.INTERNAL_SERVER_ERROR);
-                response = "Error: Invalid 'id' given in URL for method 'view'! Status Code: " + HttpStatus.INTERNAL_SERVER_ERROR;
+                System.out.println("Error: Invalid 'vocabulary id' given in URL for method 'view'! Status Code: " + HttpStatus.INTERNAL_SERVER_ERROR);
+                response = "Error: Invalid 'vocabulary id' given in URL for method 'view'! Status Code: " + HttpStatus.INTERNAL_SERVER_ERROR;
                 return response;
         }
     }
 
-    @GetMapping("/searchDPV")
-    public String searchDPV(){
+    @GetMapping({"/searchDPV/{voc_id}/{dpvSubject}/{id}", "/searchDPV/{voc_id}/{dpvSubject}/{dpvPredicate}/{id}"})
+    public String searchDPV(
+            @PathVariable("voc_id") Integer voc_id,
+            @PathVariable("dpvSubject") String term,
+            @PathVariable("dpvPredicate") String predicate,
+            @PathVariable("id") Integer id){
 
         // modelString = "" -->> modelString.isEmpty() == true
         String modelString;
