@@ -103,7 +103,7 @@ public class VocabularyManagerController {
         headers.setContentLength(modelBytes.length);
         headers.setContentDispositionFormData("filename", "myDPV.rdf");
         /*
-         The filename: "?.rdf" will be the suggested name by the "Server" when we try to access
+         The filename: "myDPV.rdf" will be the suggested name by the "Server" when we try to access
          the API from the browser, but when the code of the "Client" runs, the specified file name
          will be the one that will be downloaded.
         */
