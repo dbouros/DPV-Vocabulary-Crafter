@@ -1,8 +1,15 @@
 package com.DPV_Vocabulary_Crafter.Server;
 
 import org.eclipse.rdf4j.model.*;
+import org.eclipse.rdf4j.model.impl.LinkedHashModel;
 
 public class QueryProcessor {
+
+    private final VocabularyManipulation vocabularyManipulation;
+
+    public QueryProcessor(){
+        this.vocabularyManipulation = new VocabularyManipulation();
+    }
 
     public String view(Model model){
 
@@ -51,11 +58,37 @@ public class QueryProcessor {
         }
     }
 
-    public boolean isDPVTerm(Model origModel, String term){
+    public String search(Model origModel, Model tempModel, Integer voc_id, String term, String predicate, Integer id){
+
+        if (origModel.isEmpty()){
+            return "Error: Original DPV model is empty";
+        } else if (tempModel.isEmpty()) {
+            return "Error: Personal DPV model is empty";
+        }
+
+        if (voc_id.equals(0)){
+            return searchById(origModel, term, predicate, id);
+        }else {
+            return searchById(tempModel, term, predicate, id);
+        }
+    }
+
+    public String searchById(Model model, String term, String predicate, Integer id){
+
+        // TODO: Validate input for the variables (term, predicate, object), inside of each of the
+        //  "id" case's respective methods!
+
+        Model searchModel = new LinkedHashModel();
+        vocabularyManipulation.initializeEmptyDPV(model, searchModel);
+
+        return "";
+    }
+
+    public boolean isDPVSubject(Model origModel, String subject){
         boolean isTerm = false;
         for (Statement st : origModel){
-            IRI subject = (IRI) st.getSubject();
-            if (subject.getLocalName().equals(term)){
+            IRI subjectIRI = (IRI) st.getSubject();
+            if (subjectIRI.getLocalName().equals(subject)){
              isTerm = true;
              break;
             }
@@ -63,7 +96,34 @@ public class QueryProcessor {
         return isTerm;
     }
 
-    public boolean existsInModel(Model tempModel, String term){
+    public boolean isDPVPredicate(Model origModel, String predicate){
+        // TODO: Requires Testing!!
+        boolean isPredicate = false;
+        for (Statement st : origModel){
+            IRI predicateIRI = st.getPredicate();
+            if (predicateIRI.getLocalName().equals(predicate)){
+                isPredicate = true;
+                break;
+            }
+        }
+        return isPredicate;
+    }
+
+    public boolean isDPVObject(Model origModel, String object){
+        // TODO: Requires Testing!!
+        boolean isObject = false;
+        for (Statement st : origModel){
+            Value objectVAL = st.getObject();
+            if ((objectVAL.isLiteral() && ((Literal)objectVAL).getLabel().equals(object)) ||
+                (objectVAL.isIRI() && ((IRI)objectVAL).getLocalName().equals(object)) ||
+                objectVAL.stringValue().equals(object)){
+                isObject = true;
+            }
+        }
+        return isObject;
+    }
+
+    public boolean subjectExistsInModel(Model tempModel, String term){
         boolean exists = false;
         for (Statement st : tempModel){
             IRI subject = (IRI) st.getSubject();

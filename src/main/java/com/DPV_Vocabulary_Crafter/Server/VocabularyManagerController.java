@@ -62,16 +62,17 @@ public class VocabularyManagerController {
                 return modelString;
             }
         } else {
-                System.out.println("Error: Invalid 'vocabulary id' given in URL for method 'view'! Status Code: " + HttpStatus.INTERNAL_SERVER_ERROR);
                 response = "Error: Invalid 'vocabulary id' given in URL for method 'view'! Status Code: " + HttpStatus.INTERNAL_SERVER_ERROR;
                 return response;
         }
     }
 
-    @GetMapping({"/searchDPV/{voc_id}/{dpvSubject}/{id}", "/searchDPV/{voc_id}/{dpvSubject}/{dpvPredicate}/{id}"})
+    @GetMapping({"/searchDPV/{voc_id}/{dpvTerm}/{id}",
+                "/searchDPV/{voc_id}/{dpvTerm}/{dpvPredicate}/{id}",})
+    // "dpvTerm" can be a Statement's subject, predicate, or object.
     public String searchDPV(
             @PathVariable("voc_id") Integer voc_id,
-            @PathVariable("dpvSubject") String term,
+            @PathVariable("dpvTerm") String term,
             @PathVariable("dpvPredicate") String predicate,
             @PathVariable("id") Integer id){
 
@@ -79,7 +80,13 @@ public class VocabularyManagerController {
         String modelString;
         String response;
 
-        return "";
+        if ((voc_id.equals(0) || voc_id.equals(1)) && (id >= 0 && id <=4)){
+            modelString = queryProcessor.search(origDPV, tempDPV, voc_id, term, predicate, id);
+            return modelString;
+        }else {
+            response = "Error: Invalid 'vocabulary id' or 'id' given in URL for method 'search'! Status Code: " + HttpStatus.INTERNAL_SERVER_ERROR;
+            return response;
+        }
     }
 
     /*

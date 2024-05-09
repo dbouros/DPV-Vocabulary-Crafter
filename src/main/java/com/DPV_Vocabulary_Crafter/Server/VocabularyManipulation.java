@@ -38,29 +38,29 @@ public class VocabularyManipulation {
         }
 
         if (id.equals(0)){
-            if (queryProcessor.isDPVTerm(origModel, term)){
-                if (!queryProcessor.existsInModel(tempModel, term)){
+            if (queryProcessor.isDPVSubject(origModel, term)){
+                if (!queryProcessor.subjectExistsInModel(tempModel, term)){
                     // Launch "add" method here.
                     add(origModel, tempModel, term);
                     response += "Added Term: '" + term + "'\n";
                 }else {
-                    response += "Error: Term already exists!\n";
+                    response += "Error: Term '" + term + "' already exists in model!\n";
                 }
             }else {
-                response += "Error: Not a DPV term!\n";
+                response += "Error: Term '" + term + "' is not a DPV term!\n";
             }
         }
         else {
-            if (queryProcessor.isDPVTerm(origModel, term)){
-                if (queryProcessor.existsInModel(tempModel, term)){
+            if (queryProcessor.isDPVSubject(origModel, term)){
+                if (queryProcessor.subjectExistsInModel(tempModel, term)){
                     // Launch "remove" method here.
                     remove(origModel, tempModel, term);
                     response += "Removed Term: '" + term + "'\n";
                 }else {
-                    response += "Error: Term not in model!\n";
+                    response += "Error: Term '" + term + "' is not in model!\n";
                 }
             }else {
-                response += "Error: Not a DPV term!\n";
+                response += "Error: Term '" + term + "' is not a DPV term!\n";
             }
         }
 
