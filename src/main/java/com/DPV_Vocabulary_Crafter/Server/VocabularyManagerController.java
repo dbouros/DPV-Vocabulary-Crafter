@@ -28,6 +28,7 @@ public class VocabularyManagerController {
 
     // GET Command: "curl -X GET http://localhost:8080/api/editDPV/{dpvSubject}/{id}"
     @GetMapping("/editDPV/{dpvSubject}/{id}")
+    // "dpvSubject" is a Statement's subject.
     public String editDPV(@PathVariable("dpvSubject") String term, @PathVariable("id") Integer id){
 
         String response = "";

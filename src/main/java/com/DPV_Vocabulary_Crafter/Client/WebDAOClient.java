@@ -38,6 +38,7 @@ public class WebDAOClient extends LocalDAOClient{
             if (model_String != null) {
                 return model_String;
             }else {
+                // TODO: After project completion, remove the following message and simplify the second if-statement.
                 System.out.println("Model is empty! String representation of model is null.");
                 // This is the "null" that is sometimes printed in the console. DO NOT REMOVE IT we need
                 // it for the UI later!
@@ -48,7 +49,26 @@ public class WebDAOClient extends LocalDAOClient{
         }
     }
 
-    public String getSearchDPV(String Url){return "";}
+    public String getSearchDPV(String Url){
+
+        ResponseEntity<String> response = restTemplate.getForEntity(Url, String.class);
+        String model_String = response.getBody();
+
+        if (response.getStatusCode().is2xxSuccessful()){
+            if (model_String != null) {
+                return model_String;
+            }else {
+                // TODO: After project completion, remove the following message and simplify the second if-statement.
+                System.out.println("Search is empty! String representation of model is null.");
+                // This is the "null" that is sometimes printed in the console. DO NOT REMOVE IT we need
+                // it for the UI later! In the 'getSearchDPV' case this 'null' will probably never be
+                // returned since for most error cases there will be a response from the Server.
+                return null;
+            }
+        }else{
+            return "Internal Server Error! Status code: " + response.getStatusCode();
+        }
+    }
 
     public void getDownloadDPVrdfFile(String Url, String folder_Path, String filename){
 

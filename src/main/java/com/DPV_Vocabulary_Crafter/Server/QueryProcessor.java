@@ -44,17 +44,13 @@ public class QueryProcessor {
         IRI predicate = st.getPredicate();
         Value object = st.getObject();
 
-        //System.out.println(st.getSubject() + " >> " + st.getPredicate() + " >> " + st.getObject());
-
+        // Beautify each Statement according to Object's 'type'.
         if(object.isLiteral()){
             return subject.getLocalName() + " -->> " + predicate.getLocalName()  + " -->> " + ((Literal)object).getLabel() + "\n";
-            //System.out.println(subject.getLocalName() + " -->> " + predicate.getLocalName()  + " -->> " + ((Literal)object).getLabel());
         } else if (object.isIRI()) {
             return subject.getLocalName() + " -->> " + predicate.getLocalName()  + " -->> " + ((IRI)object).getLocalName() + "\n";
-            //System.out.println(subject.getLocalName() + " -->> " + predicate.getLocalName()  + " -->> " + ((IRI)object).getLocalName());
         }else {
             return subject.getLocalName() + " -->> " + predicate.getLocalName()  + " -->> " + object + "\n";
-            //System.out.println(subject.getLocalName() + " -->> " + predicate.getLocalName()  + " -->> " + object);
         }
     }
 
@@ -75,12 +71,32 @@ public class QueryProcessor {
 
     public String searchById(Model model, String term, String predicate, Integer id){
 
-        // TODO: Validate input for the variables (term, predicate, object), inside of each of the
-        //  "id" case's respective methods!
+        // TODO: Validate input for the variables {term(subject, predicate, object), predicate}.
+
+        // TODO: This method will return 5 'search' methods of type 'String' and those 5 methods will
+        //  all return the method 'view' with the following Model variable(searchModel) as parameter.
 
         Model searchModel = new LinkedHashModel();
         vocabularyManipulation.initializeEmptyDPV(model, searchModel);
 
+        if (id.equals(0)){
+            // TODO: Validate respective inputs and then launch the respective method.
+            System.out.println("Single Term - Subject Match-up search here!");
+        } else if (id.equals(1)) {
+            // TODO: Validate respective inputs and then launch the respective method.
+            System.out.println("All Terms - Subject Inclusion search here!");
+        } else if (id.equals(2)) {
+            // TODO: Validate respective inputs and then launch the respective method.
+            System.out.println("All Terms - Predicate Match-up search here!");
+        } else if (id.equals(3)) {
+            // TODO: Validate respective inputs and then launch the respective method.
+            System.out.println("All Terms - Object Match-up search here!");
+        }else {
+            // TODO: Validate respective inputs and then launch the respective method.
+            System.out.println("All Terms - Both Subject Inclusion and Predicate Match-up search here!");
+        }
+
+        // TODO: Remove the following 'return' statement when the method is completed.
         return "";
     }
 
