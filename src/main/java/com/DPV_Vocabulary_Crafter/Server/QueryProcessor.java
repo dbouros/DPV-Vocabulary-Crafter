@@ -5,12 +5,6 @@ import org.eclipse.rdf4j.model.impl.LinkedHashModel;
 
 public class QueryProcessor {
 
-    private final VocabularyManipulation vocabularyManipulation;
-
-    public QueryProcessor(){
-        this.vocabularyManipulation = new VocabularyManipulation();
-    }
-
     public String view(Model model){
 
         if (model.isEmpty()){
@@ -69,7 +63,7 @@ public class QueryProcessor {
         }
     }
 
-    public String searchById(Model model, String term, String predicate, Integer id){
+    public String searchById(Model dpvModel, String term, String predicate, Integer id){
 
         // TODO: Validate input for the variables {term(subject, predicate, object), predicate}.
 
@@ -77,7 +71,11 @@ public class QueryProcessor {
         //  all return the method 'view' with the following Model variable(searchModel) as parameter.
 
         Model searchModel = new LinkedHashModel();
-        vocabularyManipulation.initializeEmptyDPV(model, searchModel);
+        // Adding the namespaces from the dpvModel(Original, Personal) to the temporary "searchModel".
+        // Note: This is basically the 'initializeEmptyDPV' method from class "VocabularyManipulation".
+        for (Namespace ns : dpvModel.getNamespaces()){
+            searchModel.setNamespace(ns.getPrefix(), ns.getName());
+        }
 
         if (id.equals(0)){
             // TODO: Validate respective inputs and then launch the respective method.

@@ -74,7 +74,7 @@ public class VocabularyManagerController {
     public String searchDPV(
             @PathVariable("voc_id") Integer voc_id,
             @PathVariable("dpvTerm") String term,
-            @PathVariable("dpvPredicate") String predicate,
+            @PathVariable(value = "dpvPredicate", required = false) String predicate,
             @PathVariable("id") Integer id){
 
         // modelString = "" -->> modelString.isEmpty() == true

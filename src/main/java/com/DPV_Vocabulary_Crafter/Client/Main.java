@@ -32,7 +32,7 @@ public class Main {
 			*/
         //web_dao_clnt.getDownloadDPVrdfFile("http://localhost:8080/api/downloadDPVrdfFile", folderPath, filename);
 
-// Create or Upload, Edit, View, Download new DPV from "Server".
+// Create or Upload, Edit, View, Download Personal DPV (new_dpv.rdf) DPV from "Server".
         String filename2 = "new_dpv.rdf";
 
         // Create new empty personal DPV in "Server".
@@ -43,17 +43,29 @@ public class Main {
 
         // Edit new empty personal DPV in "Server".
         String dpvSubject = "Compliance Unknown";
-        // Removing all possible spaces from "dpvTerm".
+        // Removing(Trim) all possible spaces from "dpvTerm".
         dpvSubject = dpvSubject.replace(" ", "");
         // id == 0 (Method: add), id == 1 (Method: remove).
-        web_dao_clnt.getEditDPV("http://localhost:8080/api/editDPV/" + dpvSubject + "/0");
+        //web_dao_clnt.getEditDPV("http://localhost:8080/api/editDPV/" + dpvSubject + "/0");
 
         // View new personal DPV from "Server".
-        System.out.println("Personal DPV:");
-        System.out.println(web_dao_clnt.getViewDPV("http://localhost:8080/api/viewDPV/1"));
+        //System.out.println("Personal DPV:");
+        //System.out.println(web_dao_clnt.getViewDPV("http://localhost:8080/api/viewDPV/1"));
 
         // Download new personal DPV from "Server".
-        web_dao_clnt.getDownloadDPVrdfFile("http://localhost:8080/api/downloadDPVrdfFile", folderPath, filename2);
+        //web_dao_clnt.getDownloadDPVrdfFile("http://localhost:8080/api/downloadDPVrdfFile", folderPath, filename2);
+
+// Search Original DPV from "Server", Search Personal DPV from "Server".
+    // First search - Single Term (Subject Match-up).
+        // Original DPV.
+        System.out.println("Original DPV Search - Single Term (Subject Match-up): " + dpvSubject);
+        System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/0/" + dpvSubject + "/0"));
+
+        // Personal DPV.
+        System.out.println("Personal DPV Search - Single Term (Subject Match-up): " + dpvSubject);
+        System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/1/" + dpvSubject + "/0"));
+
+
     }
 }
 
