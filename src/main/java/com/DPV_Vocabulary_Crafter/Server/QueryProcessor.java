@@ -65,10 +65,8 @@ public class QueryProcessor {
 
     public String searchById(Model dpvModel, String term, String predicate, Integer id){
 
-        // TODO: Validate input for the variables {term(subject, predicate, object), predicate}.
-
-        // TODO: This method will return 5 'search' methods of type 'String' and those 5 methods will
-        //  all return the method 'view' with the following Model variable(searchModel) as parameter.
+        // This method returns 5 'search' methods of type 'String' and those 5 methods all return the
+        // method 'view' with the following Model variable 'searchModel' as parameter.
 
         Model searchModel = new LinkedHashModel();
         // Adding the namespaces from the dpvModel(Original, Personal) to the temporary "searchModel".
@@ -78,22 +76,20 @@ public class QueryProcessor {
         }
 
         if (id.equals(0)){
-            // Single Term - Subject Match-up.
+            // Search Single Term - Subject Match-up. (term = 'subject')
             return searchSingleTerm(dpvModel, searchModel, term);
         } else if (id.equals(1)) {
-            // All Terms - Subject Inclusion.
+            // Search All Terms - Subject Inclusion. (term = 'subject')
             return searchAllTermsSubject(dpvModel, searchModel, term);
         } else if (id.equals(2)) {
-            // All Terms - Predicate Match-up.
+            // Search All Terms - Predicate Match-up. (term = 'predicate')
             return searchAllTermsPredicate(dpvModel, searchModel, term);
         } else if (id.equals(3)) {
-            // All Terms - Object Match-up.
+            // Search All Terms - Object Match-up. (term = 'object')
             return searchAllTermsObject(dpvModel, searchModel, term);
         }else {
-            // TODO: Validate respective inputs and then launch the respective method.
-            System.out.println("All Terms - Subject Inclusion and Predicate Match-up search here!");
-            // All Terms - Subject Inclusion and Predicate Match-up.
-            return "";
+            // Search All Terms - Subject Inclusion and Predicate Match-up. (term = 'subject', predicate = 'predicate')
+            return searchAllTermsSubjectPredicate(dpvModel, searchModel, term, predicate);
         }
 
     }
@@ -116,18 +112,18 @@ public class QueryProcessor {
     }
 
     public String searchAllTermsSubject(Model dpvModel, Model searchModel, String term){
-        boolean result = false;
+        boolean subjectContainsTerm = false;
 
         for (Statement st : dpvModel){
             IRI subject = (IRI) st.getSubject();
 
             if (subject.getLocalName().contains(term)){
+                subjectContainsTerm = true;
                 searchModel.add(st);
-                result = true;
             }
         }
 
-        if (!result || searchModel.isEmpty()){
+        if (!subjectContainsTerm || searchModel.isEmpty()){
             return "Error: No subject that contains '" + term + "' found in model!";
         }else {
             return view(searchModel);
@@ -173,6 +169,34 @@ public class QueryProcessor {
         }
     }
 
+    public String searchAllTermsSubjectPredicate(Model dpvModel, Model searchModel, String term, String predicate){
+
+        if (isDPVPredicate(dpvModel, predicate)){
+
+            boolean subjectContainsTerm = false;
+
+            for (Statement st : dpvModel){
+                IRI subjectIRI = (IRI) st.getSubject();
+                IRI predicateIRI = st.getPredicate();
+
+                if (subjectIRI.getLocalName().contains(term) && predicateIRI.getLocalName().equals(predicate)){
+                    subjectContainsTerm = true;
+                    searchModel.add(st);
+                }
+            }
+
+            if (!subjectContainsTerm || searchModel.isEmpty()){
+                return "Error: No subject that contains '" + term + "' found in model!";
+            }else {
+                return view(searchModel);
+            }
+
+        }else {
+            return "Error: No predicate '" + predicate + "' found in model!";
+        }
+
+    }
+
     public boolean isDPVSubject(Model dpvModel, String subject){
 
         boolean isTerm = false;
@@ -200,7 +224,7 @@ public class QueryProcessor {
     }
 
     public boolean isDPVObject(Model dpvModel, String object){
-        // TODO: Requires Testing!!
+
         boolean isObject = false;
         for (Statement st : dpvModel){
             Value objectVAL = st.getObject();

@@ -151,13 +151,12 @@ public class Main {
 
         // Original DPV.
         // Note: The message below can be a good 'Panel title'. (voc_id == 0, id == 4)
-        System.out.println("Original DPV Search - All Terms (Subject Inclusion and Predicate Match-up): " + dpvSubject3 + ", " + dpvPredicate);
-        System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/0/" + dpvSubject3 + "/" + dpvPredicate + "/4"));
-
+        System.out.println("Original DPV Search - All Terms (Subject Inclusion and Predicate Match-up): " + dpvSubject4 + ", " + dpvPredicate2);
+        System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/0/" + dpvSubject4 + "/" + dpvPredicate2 + "/4"));
         // Personal DPV.
         // Note: The message below can be a good 'Panel title'. (voc_id == 1, id == 4)
-        System.out.println("Personal DPV Search - All Terms (Subject Inclusion and Predicate Match-up): " + dpvSubject3 + ", " + dpvPredicate);
-        System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/1/" + dpvSubject3 + "/" + dpvPredicate + "/4"));
+        System.out.println("Personal DPV Search - All Terms (Subject Inclusion and Predicate Match-up): " + dpvSubject4 + ", " + dpvPredicate2);
+        System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/1/" + dpvSubject4 + "/" + dpvPredicate2 + "/4"));
 
 
     }
