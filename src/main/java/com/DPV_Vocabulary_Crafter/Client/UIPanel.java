@@ -7,7 +7,7 @@ public class UIPanel {
 
     public void createAndShowGUI(String title, String text) {
 
-        Font monospacedFont = new Font(Font.MONOSPACED, Font.PLAIN, 24);
+        Font monospacedFont = new Font(Font.MONOSPACED, Font.PLAIN, 22);
 
         JTextArea textArea = new JTextArea();
         textAreaConfig(textArea, text, monospacedFont);
