@@ -81,22 +81,23 @@ public class Main {
         System.out.println("Personal DPV Search - Single Term (Subject Match-up): " + dpvSubject2);
         System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/1/" + dpvSubject2 + "/0"));
 
-    // Second search - All Terms (Predicate Match-up).
-        String dpvPredicate = "created";
-        String dpvPredicate2 = "subClassOf";
+    // Second search - All Terms (Subject Inclusion).
 
         // Original DPV.
         // Note: The message below can be a good 'Panel title'.
         // voc_id == 0, id == 1
-        System.out.println("Original DPV Search - All Terms (Predicate Match-up): " + dpvPredicate);
-        System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/0/" + dpvPredicate + "/1"));
+        System.out.println("Original DPV Search - All Terms (Subject Inclusion): " + dpvSubject);
+        System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/0/" + dpvSubject + "/1"));
 
         // Personal DPV.
         // Note: The message below can be a good 'Panel title'.
         // voc_id == 1, id == 1
-        System.out.println("Personal DPV Search - All Terms (Predicate Match-up): " + dpvPredicate);
-        System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/1/" + dpvPredicate + "/1"));
+        System.out.println("Personal DPV Search - All Terms (Subject Inclusion): " + dpvSubject);
+        System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/1/" + dpvSubject + "/1"));
 
+
+//        String dpvPredicate = "created";
+//        String dpvPredicate2 = "subClassOf";
     }
 }
 

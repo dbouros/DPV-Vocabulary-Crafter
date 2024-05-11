@@ -78,8 +78,6 @@ public class QueryProcessor {
         }
 
         if (id.equals(0)){
-            // TODO: Validate respective inputs and then launch the respective method.
-            System.out.println("Single Term - Subject Match-up search here!");
             return searchSingleTerm(dpvModel, searchModel, term);
         } else if (id.equals(1)) {
             // TODO: Validate respective inputs and then launch the respective method.
