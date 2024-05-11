@@ -80,27 +80,47 @@ public class QueryProcessor {
         if (id.equals(0)){
             // TODO: Validate respective inputs and then launch the respective method.
             System.out.println("Single Term - Subject Match-up search here!");
+            return searchSingleTerm(dpvModel, searchModel, term);
         } else if (id.equals(1)) {
             // TODO: Validate respective inputs and then launch the respective method.
             System.out.println("All Terms - Subject Inclusion search here!");
+            return "";
         } else if (id.equals(2)) {
             // TODO: Validate respective inputs and then launch the respective method.
             System.out.println("All Terms - Predicate Match-up search here!");
+            return "";
         } else if (id.equals(3)) {
             // TODO: Validate respective inputs and then launch the respective method.
             System.out.println("All Terms - Object Match-up search here!");
+            return "";
         }else {
             // TODO: Validate respective inputs and then launch the respective method.
             System.out.println("All Terms - Both Subject Inclusion and Predicate Match-up search here!");
+            return "";
         }
 
-        // TODO: Remove the following 'return' statement when the method is completed.
-        return "";
     }
 
-    public boolean isDPVSubject(Model origModel, String subject){
+    public String searchSingleTerm(Model dpvModel, Model searchModel, String term){
+
+        if (isDPVSubject(dpvModel, term)){
+            for (Statement st : dpvModel){
+                IRI subject = (IRI) st.getSubject();
+
+                if (subject.getLocalName().equals(term)){
+                    searchModel.add(st);
+                }
+            }
+
+            return view(searchModel);
+        }else {
+            return "Error: Subject '" + term + "' not found in model!";
+        }
+    }
+
+    public boolean isDPVSubject(Model dpvModel, String subject){
         boolean isTerm = false;
-        for (Statement st : origModel){
+        for (Statement st : dpvModel){
             IRI subjectIRI = (IRI) st.getSubject();
             if (subjectIRI.getLocalName().equals(subject)){
              isTerm = true;
@@ -110,10 +130,10 @@ public class QueryProcessor {
         return isTerm;
     }
 
-    public boolean isDPVPredicate(Model origModel, String predicate){
+    public boolean isDPVPredicate(Model dpvModel, String predicate){
         // TODO: Requires Testing!!
         boolean isPredicate = false;
-        for (Statement st : origModel){
+        for (Statement st : dpvModel){
             IRI predicateIRI = st.getPredicate();
             if (predicateIRI.getLocalName().equals(predicate)){
                 isPredicate = true;
@@ -123,10 +143,10 @@ public class QueryProcessor {
         return isPredicate;
     }
 
-    public boolean isDPVObject(Model origModel, String object){
+    public boolean isDPVObject(Model dpvModel, String object){
         // TODO: Requires Testing!!
         boolean isObject = false;
-        for (Statement st : origModel){
+        for (Statement st : dpvModel){
             Value objectVAL = st.getObject();
             if ((objectVAL.isLiteral() && ((Literal)objectVAL).getLabel().equals(object)) ||
                 (objectVAL.isIRI() && ((IRI)objectVAL).getLocalName().equals(object)) ||
