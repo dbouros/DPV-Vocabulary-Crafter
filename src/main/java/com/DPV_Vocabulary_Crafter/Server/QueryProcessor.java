@@ -78,18 +78,18 @@ public class QueryProcessor {
         }
 
         if (id.equals(0)){
+            // Single Term - Subject Match-up.
             return searchSingleTerm(dpvModel, searchModel, term);
         } else if (id.equals(1)) {
-            // TODO: Validate respective inputs and then launch the respective method.
-            System.out.println("All Terms - Subject Inclusion search here!");
-            return "";
+            // All Terms - Subject Inclusion.
+            return searchAllTermsSubject(dpvModel, searchModel, term);
         } else if (id.equals(2)) {
-            // TODO: Validate respective inputs and then launch the respective method.
-            System.out.println("All Terms - Predicate Match-up search here!");
-            return "";
+            // All Terms - Predicate Match-up.
+            return searchAllTermsPredicate(dpvModel, searchModel, term);
         } else if (id.equals(3)) {
             // TODO: Validate respective inputs and then launch the respective method.
             System.out.println("All Terms - Object Match-up search here!");
+            // All Terms - Object Match-up.
             return "";
         }else {
             // TODO: Validate respective inputs and then launch the respective method.
@@ -112,8 +112,44 @@ public class QueryProcessor {
 
             return view(searchModel);
         }else {
-            return "Error: Subject '" + term + "' not found in model!";
+            return "Error: No subject '" + term + "' found in model!";
         }
+    }
+
+    public String searchAllTermsSubject(Model dpvModel, Model searchModel, String term){
+        boolean result = false;
+
+        for (Statement st : dpvModel){
+            IRI subject = (IRI) st.getSubject();
+
+            if (subject.getLocalName().contains(term)){
+                searchModel.add(st);
+                result = true;
+            }
+        }
+
+        if (!result || searchModel.isEmpty()){
+            return "Error: No subject that contains '" + term + "' found in model!";
+        }else {
+            return view(searchModel);
+        }
+
+    }
+
+    public String searchAllTermsPredicate(Model dpvModel, Model searchModel, String term){
+
+        if (isDPVPredicate(dpvModel, term)){
+            for (Statement st : dpvModel){
+                IRI predicate = st.getPredicate();
+                if (predicate.getLocalName().equals(term)){
+                    searchModel.add(st);
+                }
+            }
+            return view(searchModel);
+        }else {
+            return "Error: No predicate '" + term + "' found in model!";
+        }
+
     }
 
     public boolean isDPVSubject(Model dpvModel, String subject){
@@ -121,8 +157,8 @@ public class QueryProcessor {
         for (Statement st : dpvModel){
             IRI subjectIRI = (IRI) st.getSubject();
             if (subjectIRI.getLocalName().equals(subject)){
-             isTerm = true;
-             break;
+                isTerm = true;
+                break;
             }
         }
         return isTerm;
@@ -149,6 +185,7 @@ public class QueryProcessor {
             if ((objectVAL.isLiteral() && ((Literal)objectVAL).getLabel().equals(object)) ||
                 (objectVAL.isIRI() && ((IRI)objectVAL).getLocalName().equals(object)) ||
                 objectVAL.stringValue().equals(object)){
+
                 isObject = true;
             }
         }

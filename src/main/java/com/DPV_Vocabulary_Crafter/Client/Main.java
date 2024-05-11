@@ -64,40 +64,63 @@ public class Main {
 // Search Original DPV from "Server", Search Personal DPV from "Server". (Kept uploaded Personal DPV from above!)
 
     // First search - Single Term (Subject Match-up).
+        // SOS!! -->> Make sure that the user doesn't input as a dpv term: "" or " ". Catch this in UI !!
         String dpvSubject2 = "Data Processor";
 
         // Removing(Trim) all possible spaces from "dpvSubject".
         dpvSubject2 = dpvSubject2.replace(" ", "");
 
         // Original DPV.
-        // Note: The message below can be a good 'Panel title'.
-        // voc_id == 0, id == 0
-        System.out.println("Original DPV Search - Single Term (Subject Match-up): " + dpvSubject2);
-        System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/0/" + dpvSubject2 + "/0"));
+        // Note: The message below can be a good 'Panel title'. (voc_id == 0, id == 0)
+        //System.out.println("Original DPV Search - Single Term (Subject Match-up): " + dpvSubject2);
+        //System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/0/" + dpvSubject2 + "/0"));
 
         // Personal DPV.
-        // Note: The message below can be a good 'Panel title'.
-        // voc_id == 1, id == 0
-        System.out.println("Personal DPV Search - Single Term (Subject Match-up): " + dpvSubject2);
-        System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/1/" + dpvSubject2 + "/0"));
+        // Note: The message below can be a good 'Panel title'. (voc_id == 1, id == 0)
+        //System.out.println("Personal DPV Search - Single Term (Subject Match-up): " + dpvSubject2);
+        //System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/1/" + dpvSubject2 + "/0"));
 
     // Second search - All Terms (Subject Inclusion).
+        // SOS!! -->> Make sure that the user doesn't input as a dpv term: "" or " ". Catch this in UI !!
+        String dpvSubject3 = "Data";
+        String dpvSubject4 = "Compliance";
+
+        // Removing(Trim) all possible spaces from "dpvSubject".
+        dpvSubject3 = dpvSubject3.replace(" ", "");
+        dpvSubject4 = dpvSubject4.replace(" ", "");
 
         // Original DPV.
-        // Note: The message below can be a good 'Panel title'.
-        // voc_id == 0, id == 1
-        System.out.println("Original DPV Search - All Terms (Subject Inclusion): " + dpvSubject);
-        System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/0/" + dpvSubject + "/1"));
+        // Note: The message below can be a good 'Panel title'. (voc_id == 0, id == 1)
+        //System.out.println("Original DPV Search - All Terms (Subject Inclusion): " + dpvSubject4);
+        //System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/0/" + dpvSubject4 + "/1"));
 
         // Personal DPV.
-        // Note: The message below can be a good 'Panel title'.
-        // voc_id == 1, id == 1
-        System.out.println("Personal DPV Search - All Terms (Subject Inclusion): " + dpvSubject);
-        System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/1/" + dpvSubject + "/1"));
+        // Note: The message below can be a good 'Panel title'. (voc_id == 1, id == 1)
+        //System.out.println("Personal DPV Search - All Terms (Subject Inclusion): " + dpvSubject4);
+        //System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/1/" + dpvSubject4 + "/1"));
 
 
-//        String dpvPredicate = "created";
-//        String dpvPredicate2 = "subClassOf";
+    // Third search - All Terms (Predicate Match-up).
+        // SOS!! -->> Make sure that the user doesn't input as a dpv term: "" or " ". Catch this in UI !!
+        String dpvPredicate = "created";
+        String dpvPredicate2 = "subClassOf";
+
+        // Removing(Trim) all possible spaces from "dpvSubject".
+        dpvPredicate = dpvPredicate.replace(" ", "");
+        dpvPredicate2 = dpvPredicate2.replace(" ", "");
+
+        // Original DPV.
+        // Note: The message below can be a good 'Panel title'. (voc_id == 0, id == 2)
+        System.out.println("Original DPV Search - All Terms (Predicate Match-up): " + dpvPredicate2);
+        System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/0/" + dpvPredicate2 + "/2"));
+
+        // Personal DPV.
+        // Note: The message below can be a good 'Panel title'. (voc_id == 1, id == 2)
+        System.out.println("Personal DPV Search - All Terms (Predicate Match-up): " + dpvPredicate2);
+        System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/1/" + dpvPredicate2 + "/2"));
+
+    // Forth search - All Terms (Object Match-up).
+
     }
 }
 
