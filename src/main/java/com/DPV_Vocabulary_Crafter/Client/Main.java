@@ -64,6 +64,7 @@ public class Main {
 // Search Original DPV from "Server", Search Personal DPV from "Server". (Kept uploaded Personal DPV from above!)
 
     // First search - Single Term (Subject Match-up).
+
         // SOS!! -->> Make sure that the user doesn't input as a dpv term: "" or " ". Catch this in UI !!
         String dpvSubject2 = "Data Processor";
 
@@ -81,6 +82,7 @@ public class Main {
         //System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/1/" + dpvSubject2 + "/0"));
 
     // Second search - All Terms (Subject Inclusion).
+
         // SOS!! -->> Make sure that the user doesn't input as a dpv term: "" or " ". Catch this in UI !!
         String dpvSubject3 = "Data";
         String dpvSubject4 = "Compliance";
@@ -101,9 +103,10 @@ public class Main {
 
 
     // Third search - All Terms (Predicate Match-up).
+
         // SOS!! -->> Make sure that the user doesn't input as a dpv term: "" or " ". Catch this in UI !!
-        String dpvPredicate = "created";
-        String dpvPredicate2 = "subClassOf";
+        String dpvPredicate = "subClassOf";
+        String dpvPredicate2 = "created";
 
         // Removing(Trim) all possible spaces from "dpvSubject".
         dpvPredicate = dpvPredicate.replace(" ", "");
@@ -111,15 +114,31 @@ public class Main {
 
         // Original DPV.
         // Note: The message below can be a good 'Panel title'. (voc_id == 0, id == 2)
-        System.out.println("Original DPV Search - All Terms (Predicate Match-up): " + dpvPredicate2);
-        System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/0/" + dpvPredicate2 + "/2"));
+        //System.out.println("Original DPV Search - All Terms (Predicate Match-up): " + dpvPredicate2);
+        //System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/0/" + dpvPredicate2 + "/2"));
 
         // Personal DPV.
         // Note: The message below can be a good 'Panel title'. (voc_id == 1, id == 2)
-        System.out.println("Personal DPV Search - All Terms (Predicate Match-up): " + dpvPredicate2);
-        System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/1/" + dpvPredicate2 + "/2"));
+        //System.out.println("Personal DPV Search - All Terms (Predicate Match-up): " + dpvPredicate2);
+        //System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/1/" + dpvPredicate2 + "/2"));
 
     // Forth search - All Terms (Object Match-up).
+
+        // SOS!! -->> Make sure that the user doesn't input as a dpv term: "" or " ". Catch this in UI !!
+        String dpvObject = "2021-04-07";
+        String dpvObject2 = "2022-09-07";
+
+        // SOS!! -->> DO NOT TRIM THE 'OBJECT' OF THE SPACES(" ").
+
+        // Original DPV.
+        // Note: The message below can be a good 'Panel title'. (voc_id == 0, id == 3)
+        System.out.println("Original DPV Search - All Terms (Object Match-up): " + dpvObject2);
+        System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/0/" + dpvObject2 + "/3"));
+
+        // Personal DPV.
+        // Note: The message below can be a good 'Panel title'. (voc_id == 1, id == 3)
+        System.out.println("Personal DPV Search - All Terms (Object Match-up): " + dpvObject2);
+        System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/1/" + dpvObject2 + "/3"));
 
     }
 }
