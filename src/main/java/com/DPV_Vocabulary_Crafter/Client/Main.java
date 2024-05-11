@@ -11,7 +11,7 @@ public class Main {
         System.out.println(web_dao_clnt.getHello("http://localhost:8080/api/hello"));
 
         // View original DPV from "Server".
-        //System.out.println("Original DPV:");
+        //System.out.println("Original DPV View:");
         //System.out.println(web_dao_clnt.getViewDPV("http://localhost:8080/api/viewDPV/0"));
 
 //======================================================================================================================
@@ -22,7 +22,7 @@ public class Main {
         //web_dao_clnt.postUploadDPVrdfFile("http://localhost:8080/api/uploadDPVrdfFile", folderPath, filename);
 
         // View uploaded personal DPV from "Server".
-        //System.out.println("Personal DPV:");
+        //System.out.println("Personal DPV View:");
         //System.out.println(web_dao_clnt.getViewDPV("http://localhost:8080/api/viewDPV/1"));
 
         // Download personal DPV from "Server".
@@ -54,7 +54,7 @@ public class Main {
         //web_dao_clnt.getEditDPV("http://localhost:8080/api/editDPV/" + dpvSubject + "/0");
 
         // View new personal DPV from "Server".
-        //System.out.println("Personal DPV:");
+        //System.out.println("Personal DPV View:");
         //System.out.println(web_dao_clnt.getViewDPV("http://localhost:8080/api/viewDPV/1"));
 
         // Download new personal DPV from "Server".
@@ -84,8 +84,8 @@ public class Main {
     // Second search - All Terms (Subject Inclusion).
 
         // SOS!! -->> Make sure that the user doesn't input as a dpv term: "" or " ". Catch this in UI !!
-        String dpvSubject3 = "Data";
-        String dpvSubject4 = "Compliance";
+        String dpvSubject3 = "Compliance";
+        String dpvSubject4 = "Data";
 
         // Removing(Trim) all possible spaces from "dpvSubject".
         dpvSubject3 = dpvSubject3.replace(" ", "");
@@ -105,8 +105,8 @@ public class Main {
     // Third search - All Terms (Predicate Match-up).
 
         // SOS!! -->> Make sure that the user doesn't input as a dpv term: "" or " ". Catch this in UI !!
-        String dpvPredicate = "subClassOf";
-        String dpvPredicate2 = "created";
+        String dpvPredicate = "created";
+        String dpvPredicate2 = "subClassOf";
 
         // Removing(Trim) all possible spaces from "dpvSubject".
         dpvPredicate = dpvPredicate.replace(" ", "");
@@ -125,20 +125,40 @@ public class Main {
     // Forth search - All Terms (Object Match-up).
 
         // SOS!! -->> Make sure that the user doesn't input as a dpv term: "" or " ". Catch this in UI !!
-        String dpvObject = "2021-04-07";
-        String dpvObject2 = "2022-09-07";
+        String dpvObject = "2022-09-07";
+        String dpvObject2 = "2021-04-07";
 
         // SOS!! -->> DO NOT TRIM THE 'OBJECT' OF THE SPACES(" ").
 
         // Original DPV.
         // Note: The message below can be a good 'Panel title'. (voc_id == 0, id == 3)
-        System.out.println("Original DPV Search - All Terms (Object Match-up): " + dpvObject2);
-        System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/0/" + dpvObject2 + "/3"));
+        //System.out.println("Original DPV Search - All Terms (Object Match-up): " + dpvObject2);
+        //System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/0/" + dpvObject2 + "/3"));
 
         // Personal DPV.
         // Note: The message below can be a good 'Panel title'. (voc_id == 1, id == 3)
-        System.out.println("Personal DPV Search - All Terms (Object Match-up): " + dpvObject2);
-        System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/1/" + dpvObject2 + "/3"));
+        //System.out.println("Personal DPV Search - All Terms (Object Match-up): " + dpvObject2);
+        //System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/1/" + dpvObject2 + "/3"));
+
+    // Fifth search - All Terms (Subject Inclusion and Predicate Match-up).
+
+        // SOS!! -->> Make sure that the user doesn't input as a dpv term: "" or " ". Catch this in UI !!
+        // Two tests with previously used variables.
+        // 1) dpvSubject3 + dpvPredicate.
+        // 2) dpvSubject4 + dpvPredicate2.
+
+        // SOS!! -->> VARIABLES ARE ALREADY TRIMMED OF THE SPACES(" ").
+
+        // Original DPV.
+        // Note: The message below can be a good 'Panel title'. (voc_id == 0, id == 4)
+        System.out.println("Original DPV Search - All Terms (Subject Inclusion and Predicate Match-up): " + dpvSubject3 + ", " + dpvPredicate);
+        System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/0/" + dpvSubject3 + "/" + dpvPredicate + "/4"));
+
+        // Personal DPV.
+        // Note: The message below can be a good 'Panel title'. (voc_id == 1, id == 4)
+        System.out.println("Personal DPV Search - All Terms (Subject Inclusion and Predicate Match-up): " + dpvSubject3 + ", " + dpvPredicate);
+        System.out.println(web_dao_clnt.getSearchDPV("http://localhost:8080/api/searchDPV/1/" + dpvSubject3 + "/" + dpvPredicate + "/4"));
+
 
     }
 }

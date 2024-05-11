@@ -38,7 +38,8 @@ public class WebDAOClient extends LocalDAOClient{
             if (model_String != null) {
                 return model_String;
             }else {
-                // TODO: After project completion, remove the following message and simplify the second if-statement.
+                // TODO: After project completion, remove the 'return null;' command, make it return the message
+                //  below and simplify the if-statement.
                 System.out.println("Model is empty! String representation of model is null.");
                 // This is the "null" that is sometimes printed in the console. DO NOT REMOVE IT we need
                 // it for the UI later!
@@ -58,7 +59,8 @@ public class WebDAOClient extends LocalDAOClient{
             if (model_String != null) {
                 return model_String;
             }else {
-                // TODO: After project completion, remove the following message and simplify the second if-statement.
+                // TODO: After project completion, remove the 'return null;' command, make it return the message
+                //  below and simplify the if-statement.
                 System.out.println("Search is empty! String representation of model is null.");
                 // This is the "null" that is sometimes printed in the console. DO NOT REMOVE IT we need
                 // it for the UI later! In the 'getSearchDPV' case this 'null' will probably never be

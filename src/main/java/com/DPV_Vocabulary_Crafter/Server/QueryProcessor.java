@@ -91,7 +91,8 @@ public class QueryProcessor {
             return searchAllTermsObject(dpvModel, searchModel, term);
         }else {
             // TODO: Validate respective inputs and then launch the respective method.
-            System.out.println("All Terms - Both Subject Inclusion and Predicate Match-up search here!");
+            System.out.println("All Terms - Subject Inclusion and Predicate Match-up search here!");
+            // All Terms - Subject Inclusion and Predicate Match-up.
             return "";
         }
 
