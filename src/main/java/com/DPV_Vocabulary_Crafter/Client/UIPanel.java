@@ -38,8 +38,8 @@ public class UIPanel {
         frame.setVisible(true);
     }
 
-    public void run() {
-        SwingUtilities.invokeLater(() -> { createAndShowGUI("Panel Title", "Your large text goes here... !!"); });
+    public void run(String title, String text) {
+        SwingUtilities.invokeLater(() -> { createAndShowGUI(title, text); });
     }
 
 }

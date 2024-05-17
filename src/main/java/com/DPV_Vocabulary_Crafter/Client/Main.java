@@ -178,7 +178,7 @@ public class Main {
             command = scanner.nextInt();
 
             if ( command == 0) break;
-            if (command == 1) uiPanel.run();
+            if (command == 1) uiPanel.run("Panel Title", "Your large text goes here... !!");
             blankLines15();
         }
 
