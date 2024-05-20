@@ -176,7 +176,7 @@ public class Main {
             System.out.println("Press '>1' to keep looping.");
             System.out.println("Press '1' to launch panel.");
             System.out.println("Press '0' to exit the program.");
-            System.out.p&t("Command: ");
+            System.out.print("Command: ");
 
             command = scanner.nextInt();
 
