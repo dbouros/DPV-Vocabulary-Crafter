@@ -43,7 +43,7 @@ public class WebDAOClient extends LocalDAOClient{
                 System.out.println("Model is empty! String representation of model is null.");
                 // This is the "null" that is sometimes printed in the console. DO NOT REMOVE IT we need
                 // it for the UI later!
-                return null;
+                return "Model is empty! String representation of model is null.";
             }
         }else{
             return "Internal Server Error! Status code: " + response.getStatusCode();
@@ -65,7 +65,7 @@ public class WebDAOClient extends LocalDAOClient{
                 // This is the "null" that is sometimes printed in the console. DO NOT REMOVE IT we need
                 // it for the UI later! In the 'getSearchDPV' case this 'null' will probably never be
                 // returned since for most error cases there will be a response from the Server.
-                return null;
+                return "Search is empty! String representation of model is null.";
             }
         }else{
             return "Internal Server Error! Status code: " + response.getStatusCode();
@@ -76,10 +76,12 @@ public class WebDAOClient extends LocalDAOClient{
 
         ResponseEntity<byte[]> response = restTemplate.getForEntity(Url, byte[].class);
 
-        if (response.getStatusCode().is2xxSuccessful())
+        if (response.getStatusCode().is2xxSuccessful()) {
             writeVocabularyToFile(response.getBody(), folder_Path, filename);
-        else
-            System.out.println("Failed to download file! Status code: " + response.getStatusCode());
+            System.out.print("File Saved Successfully! ");
+        } else {
+            System.out.println("Failed to save file! Status code: " + response.getStatusCode());
+        }
     }
 
     public void postUploadDPVrdfFile(String Url, String folder_Path, String filename){
@@ -99,13 +101,13 @@ public class WebDAOClient extends LocalDAOClient{
 
             if (response.getStatusCode().is2xxSuccessful()) {
                 // byte[] responseBody = response.getBody();
-                System.out.println("File uploaded successfully!");
+                System.out.print("File Loaded Successfully! ");
             } else {
                 throw new Exception();
             }
 
         }catch (Exception e){
-            System.out.println("Upload Failed!");
+            System.out.println("Error: Failed to load file!");
         }
     }
 

@@ -177,7 +177,13 @@ public class ConsoleUI {
 
             if (option.equals("1")){
                 view(0);
-            }else {
+            } else if (option.equals("2")) {
+                searchDPVMenu(input, 0);
+            } else if (option.equals("3")) {
+                System.out.println("Help Panel!");
+            } else if (option.equals("0")) {
+                return;
+            } else {
                 System.out.print("Invalid option! Press [T/t] to try again: ");
                 inputValidator.pressT(input);
             }
@@ -222,7 +228,7 @@ public class ConsoleUI {
 
     }
 
-    public void searchDPVMenu(Scanner input){
+    public void searchDPVMenu(Scanner input, Integer voc_id){
 
         while (true){
             System.out.println("Search:");
@@ -243,39 +249,46 @@ public class ConsoleUI {
 
     }
 
-    public void view(Integer voc_id){
-        if (voc_id.equals(0) || voc_id.equals(1)){
-            String Url = "http://localhost:8080/api/viewDPV/" + voc_id;
-            String modelString = web_dao_clnt.getViewDPV(Url);
-            if (voc_id.equals(0)){
-                uiPanel.run("Original DPV View", modelString);
-            }else {
-                uiPanel.run("Personal DPV View", modelString);
-            }
-        }else {
-            System.out.println("Error: Invalid 'vocabulary id' given in URL for method 'view'.");
-        }
-    }
-
     public void createNewPersonalDPV(){
         createNew = true;
         String Url = "http://localhost:8080/api/createNewDPV";
         web_dao_clnt.getCreateNewDPV(Url);
     }
 
+    public void view(Integer voc_id){
+
+        String Url = "http://localhost:8080/api/viewDPV/" + voc_id;
+        String modelString = web_dao_clnt.getViewDPV(Url);
+
+        if (voc_id.equals(0)){
+            uiPanel.run("Original DPV View", modelString);
+        }else {
+            uiPanel.run("Personal DPV View", modelString);
+        }
+
+    }
+
+    public void searchSingleTerm(Scanner input, Integer voc_id){}
+
+    public void savePersonalDPV(Scanner input){}
+
     public void loadPersonalDPV(Scanner input){
 
         String Url = "http://localhost:8080/api/uploadDPVrdfFile";
         String folder_path;
         String filename;
+
         while(true){
+
             System.out.print("Please type the 'absolute' folder path: ");
             folder_path = input.nextLine();
             System.out.print("Please type the name of the file to load: ");
             filename = input.nextLine();
+
             if (inputValidator.validateFolder(folder_path) && inputValidator.validateFile(folder_path, filename)){
                 load = true;
                 web_dao_clnt.postUploadDPVrdfFile(Url, folder_path, filename);
+                System.out.println("File: '" + filename + "'");
                 break;
             } else if (!inputValidator.validateFolder(folder_path)) {
                 System.out.println("Error: Invalid 'folder path', given for method 'load'.");
