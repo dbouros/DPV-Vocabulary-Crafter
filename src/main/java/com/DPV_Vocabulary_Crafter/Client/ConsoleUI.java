@@ -77,8 +77,19 @@ public class ConsoleUI {
             } else if (option.equals("2")) {
                 createNewPersonalDPV();
                 return;
+            } else if (option.equals("3")) {
+                loadPersonalDPV(input);
+                return;
+            } else if (option.equals("4")) {
+                System.out.println("Help Panel!");
+            } else if (option.equals("0")) {
+                exit = true;
+                // TODO: Remove the 'Bye Bye!' message in the end of the project.
+                System.out.println("Bye Bye!");
+                return;
             } else {
-                System.out.println("Invalid option! Please try again.");
+                System.out.print("Invalid option! Press [T/t] to try again: ");
+                inputValidator.pressT(input);
             }
         }
 
@@ -167,7 +178,8 @@ public class ConsoleUI {
             if (option.equals("1")){
                 view(0);
             }else {
-                System.out.println("Invalid option! Please try again.");
+                System.out.print("Invalid option! Press [T/t] to try again: ");
+                inputValidator.pressT(input);
             }
         }
 
@@ -251,6 +263,27 @@ public class ConsoleUI {
         web_dao_clnt.getCreateNewDPV(Url);
     }
 
-    public void loadPersonalDPV(){}
+    public void loadPersonalDPV(Scanner input){
+
+        String Url = "http://localhost:8080/api/uploadDPVrdfFile";
+        String folder_path;
+        String filename;
+        while(true){
+            System.out.print("Please type the 'absolute' folder path: ");
+            folder_path = input.nextLine();
+            System.out.print("Please type the name of the file to load: ");
+            filename = input.nextLine();
+            if (inputValidator.validateFolder(folder_path) && inputValidator.validateFile(folder_path, filename)){
+                load = true;
+                web_dao_clnt.postUploadDPVrdfFile(Url, folder_path, filename);
+                break;
+            } else if (!inputValidator.validateFolder(folder_path)) {
+                System.out.println("Error: Invalid 'folder path', given for method 'load'.");
+            }else {
+                System.out.println("Error: Invalid 'filename', given for method 'load'.");
+            }
+        }
+
+    }
 
 }
