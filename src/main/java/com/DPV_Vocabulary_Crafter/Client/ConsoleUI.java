@@ -589,4 +589,17 @@ public class ConsoleUI {
 
     }
 
+    public boolean exitWithoutSave(Scanner input){
+        System.out.println("You have unsaved changes!");
+        System.out.print("Do you want to save? [Y/N][y/n]: ");
+        String button = input.nextLine();
+        while (!button.equals("Y") && !button.equals("y") && !button.equals("N") && !button.equals("n")){
+            System.out.print("Do you want to save? [Y/N][y/n]: ");
+            button = input.nextLine();
+        }
+
+        return button.equals("Y") || button.equals("y");
+
+    }
+
 }
