@@ -401,7 +401,38 @@ public class ConsoleUI {
     }
 
     // Fifth Search.
-    public void searchAllTermsSubjectPredicate(Scanner input, Integer voc_id){}
+    public void searchAllTermsSubjectPredicate(Scanner input, Integer voc_id){
+        String Url = "http://localhost:8080/api/searchDPV/" + voc_id + "/";
+        String dpvSubject;
+        String dpvPredicate;
+
+        while (true){
+            System.out.print("Please type the 'subject' of the term to search: ");
+            dpvSubject = input.nextLine();
+            System.out.print("Please type the 'predicate' of the term to search: ");
+            dpvPredicate = input.nextLine();
+
+            dpvSubject = dpvSubject.replace(" ", "");
+            dpvPredicate = dpvPredicate.replace(" ", "");
+
+            if (inputValidator.validateTerm(dpvSubject) && inputValidator.validateTerm(dpvPredicate)){
+                // id = "/4".
+                Url = Url + dpvSubject + "/" + dpvPredicate + "/4";
+                String modelString = web_dao_clnt.getSearchDPV(Url);
+
+                if (voc_id.equals(0)){
+                    uiPanel.run("Original DPV Search - All Terms (Subject Inclusion & Predicate Match-up): " + dpvSubject + ", " + dpvPredicate, modelString);
+                }else {
+                    uiPanel.run("Personal DPV Search - All Terms (Subject Inclusion & Predicate Match-up): " + dpvSubject + ", " + dpvPredicate, modelString);
+                }
+                break;
+            }else if (!inputValidator.validateTerm(dpvSubject)){
+                System.out.println("Error: Invalid 'subject' given for method 'searchAllTermsSubjectPredicate'.");
+            }else {
+                System.out.println("Error: Invalid 'predicate' given for method 'searchAllTermsSubjectPredicate'.");
+            }
+        }
+    }
 
     public void savePersonalDPV(Scanner input){}
 
