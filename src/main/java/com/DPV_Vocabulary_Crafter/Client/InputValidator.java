@@ -6,22 +6,26 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class InputValidator {
+
     public boolean validateFolder(String folder_path){
         Path folderPath = Paths.get(folder_path);
-        if (Files.exists(folderPath) && Files.isDirectory(folderPath)){
-            return true;
-        }else {
-            return false;
-        }
+        return Files.exists(folderPath) && Files.isDirectory(folderPath);
     }
 
+    // For 'Save' method.
+    public boolean validateFilename(String filename){
+        return filename.contains(".rdf");
+    }
+
+    // For 'Load' method.
     public boolean validateFile(String folder_path, String filename){
         Path filePath = Paths.get(folder_path, filename);
-        if (Files.exists(filePath) && Files.isRegularFile(filePath) && filename.contains(".rdf")){
-            return true;
-        }else {
-            return false;
-        }
+        return Files.exists(filePath) && Files.isRegularFile(filePath) && filename.contains(".rdf");
+    }
+
+    // For 'Search' methods.
+    public boolean validateSubjectOrPredicate(String term){
+        return !term.isEmpty();
     }
 
     public void pressT(Scanner input){
@@ -39,4 +43,5 @@ public class InputValidator {
             button = input.nextLine();
         }
     }
+
 }

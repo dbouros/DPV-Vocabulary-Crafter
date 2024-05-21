@@ -245,6 +245,25 @@ public class ConsoleUI {
 
             String option = input.nextLine();
 
+            if (option.equals("1")){
+                searchSingleTerm(input, voc_id);
+            } else if (option.equals("2")) {
+                searchAllTermsSubject(input, voc_id);
+            }else if (option.equals("3")) {
+                searchAllTermsPredicate(input, voc_id);
+            }else if (option.equals("4")) {
+                searchAllTermsObject(input, voc_id);
+            } else if (option.equals("5")) {
+                searchAllTermsSubjectPredicate(input, voc_id);
+            } else if (option.equals("6")) {
+                System.out.println("Help Panel!");
+            } else if (option.equals("0")) {
+                return;
+            }else {
+                System.out.print("Invalid option! Press [T/t] to try again: ");
+                inputValidator.pressT(input);
+            }
+
         }
 
     }
@@ -268,7 +287,39 @@ public class ConsoleUI {
 
     }
 
-    public void searchSingleTerm(Scanner input, Integer voc_id){}
+    public void searchSingleTerm(Scanner input, Integer voc_id){
+        String Url = "http://localhost:8080/api/searchDPV/" + voc_id + "/";
+        String dpvSubject;
+        String modelString;
+
+        while (true){
+            System.out.print("Please type the 'subject' of the term to search: ");
+            dpvSubject = input.nextLine();
+            dpvSubject = dpvSubject.replace(" ", "");
+
+            if (inputValidator.validateSubjectOrPredicate(dpvSubject)){
+                Url = Url + dpvSubject + "/0";
+                modelString = web_dao_clnt.getSearchDPV(Url);
+                if (voc_id.equals(0)){
+                    uiPanel.run("Original DPV Search - Single Term (Subject Match-up): " + dpvSubject, modelString);
+                }else {
+                    uiPanel.run("Personal DPV Search - Single Term (Subject Match-up): " + dpvSubject, modelString);
+                }
+                break;
+            }else {
+                System.out.println("Error: Invalid 'subject' given for method 'searchSingleTerm'.");
+            }
+        }
+    }
+
+    public void searchAllTermsSubject(Scanner input, Integer voc_id){}
+
+    public void searchAllTermsPredicate(Scanner input, Integer voc_id){}
+
+    // Never replace " " with "" for 'Objects'.
+    public void searchAllTermsObject(Scanner input, Integer voc_id){}
+
+    public void searchAllTermsSubjectPredicate(Scanner input, Integer voc_id){}
 
     public void savePersonalDPV(Scanner input){}
 
@@ -291,9 +342,9 @@ public class ConsoleUI {
                 System.out.println("File: '" + filename + "'");
                 break;
             } else if (!inputValidator.validateFolder(folder_path)) {
-                System.out.println("Error: Invalid 'folder path', given for method 'load'.");
+                System.out.println("Error: Invalid 'folder path' given for method 'load'.");
             }else {
-                System.out.println("Error: Invalid 'filename', given for method 'load'.");
+                System.out.println("Error: Invalid 'filename' given for method 'load'.");
             }
         }
 

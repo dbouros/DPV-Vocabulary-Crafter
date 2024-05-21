@@ -50,16 +50,18 @@ public class QueryProcessor {
 
     public String search(Model origModel, Model tempModel, Integer voc_id, String term, String predicate, Integer id){
 
-        if (origModel.isEmpty()){
-            return "Error: Original DPV model is empty";
-        } else if (tempModel.isEmpty()) {
-            return "Error: Personal DPV model is empty";
-        }
-
         if (voc_id.equals(0)){
-            return searchById(origModel, term, predicate, id);
+            if (!origModel.isEmpty()){
+                return searchById(origModel, term, predicate, id);
+            }else {
+                return "Error: Original DPV model is empty.";
+            }
         }else {
-            return searchById(tempModel, term, predicate, id);
+            if (!tempModel.isEmpty()) {
+                return searchById(tempModel, term, predicate, id);
+            }else {
+                return "Error: Personal DPV model is empty.";
+            }
         }
     }
 
