@@ -180,7 +180,7 @@ public class ConsoleUI {
             System.out.println();
             System.out.print("Please select an option: ");
 
-            
+
             String option = input.nextLine();
 
         }
@@ -588,17 +588,20 @@ public class ConsoleUI {
 
     }
 
-    public boolean exitWithoutSave(Scanner input){
+    public void exitWithoutSave(Scanner input){
+
         System.out.println("You have unsaved changes!");
         System.out.print("Do you want to save? [Y/N][y/n]: ");
         String button = input.nextLine();
+
         while (!button.equals("Y") && !button.equals("y") && !button.equals("N") && !button.equals("n")){
             System.out.print("Do you want to save? [Y/N][y/n]: ");
             button = input.nextLine();
         }
 
-        return button.equals("Y") || button.equals("y");
-
+        if (button.equals("Y") || button.equals("y")){
+            savePersonalDPV(input);
+        }
     }
 
 }
