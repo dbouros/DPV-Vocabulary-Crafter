@@ -140,6 +140,10 @@ public class ConsoleUI {
                 originalDPVMenu(input);
             } else if (option.equals("2")) {
                 personalDPVMenu(input);
+                if (edit) {
+                    load = true;
+                    return;
+                }
             } else if (option.equals("3")) {
                 createNewPersonalDPV();
                 return;
@@ -320,13 +324,58 @@ public class ConsoleUI {
 
     public void createNewPersonalDPV(){
         createNew = true;
+        save = false;
         String Url = "http://localhost:8080/api/createNewDPV";
         web_dao_clnt.getCreateNewDPV(Url);
     }
 
-    public void add(Scanner input){}
+    public void add(Scanner input){
+        String Url = "http://localhost:8080/api/editDPV/";
+        String dpvSubject;
 
-    public void remove(Scanner input){}
+        while (true) {
+            System.out.print("Please type the 'subject' of the term to add: ");
+            dpvSubject = input.nextLine();
+            dpvSubject = dpvSubject.replace(" ", "");
+
+            if (inputValidator.validateTerm(dpvSubject)){
+                // id = "/0".
+                Url = Url + dpvSubject + "/0";
+                web_dao_clnt.getEditDPV(Url);
+
+                edit = true;
+                save = false;
+                break;
+            }else {
+                System.out.println("Error: Invalid 'subject' given for method 'add'.");
+            }
+        }
+
+    }
+
+    public void remove(Scanner input){
+        String Url = "http://localhost:8080/api/editDPV/";
+        String dpvSubject;
+
+        while (true) {
+            System.out.print("Please type the 'subject' of the term to remove: ");
+            dpvSubject = input.nextLine();
+            dpvSubject = dpvSubject.replace(" ", "");
+
+            if (inputValidator.validateTerm(dpvSubject)){
+                // id = "/1".
+                Url = Url + dpvSubject + "/1";
+                web_dao_clnt.getEditDPV(Url);
+
+                edit = true;
+                save = false;
+                break;
+            }else {
+                System.out.println("Error: Invalid 'subject' given for method 'remove'.");
+            }
+        }
+
+    }
 
     public void view(Integer voc_id){
 
@@ -484,7 +533,32 @@ public class ConsoleUI {
         }
     }
 
-    public void savePersonalDPV(Scanner input){}
+    public void savePersonalDPV(Scanner input){
+        String Url = "http://localhost:8080/api/downloadDPVrdfFile";
+        String folder_path;
+        String filename;
+
+        while (true) {
+            System.out.print("Please type the 'absolute' folder path: ");
+            folder_path = input.nextLine();
+            System.out.print("Please type the 'name' of the file to save: ");
+            filename = input.nextLine();
+
+            if (inputValidator.validateFolder(folder_path) && inputValidator.validateFilename(filename)){
+
+                web_dao_clnt.getDownloadDPVrdfFile(Url, folder_path, filename);
+                System.out.println("File: '" + filename + "'");
+
+                save = true;
+                break;
+            } else if (!inputValidator.validateFolder(folder_path)) {
+                System.out.println("Error: Invalid 'folder path' given for method 'save'.");
+            }else {
+                System.out.println("Error: Invalid 'filename' given for method 'save'.");
+            }
+        }
+
+    }
 
     public void loadPersonalDPV(Scanner input){
 
@@ -496,13 +570,15 @@ public class ConsoleUI {
 
             System.out.print("Please type the 'absolute' folder path: ");
             folder_path = input.nextLine();
-            System.out.print("Please type the name of the file to load: ");
+            System.out.print("Please type the 'name' of the file to load: ");
             filename = input.nextLine();
 
             if (inputValidator.validateFolder(folder_path) && inputValidator.validateFile(folder_path, filename)){
-                load = true;
+
                 web_dao_clnt.postUploadDPVrdfFile(Url, folder_path, filename);
                 System.out.println("File: '" + filename + "'");
+
+                load = true;
                 break;
             } else if (!inputValidator.validateFolder(folder_path)) {
                 System.out.println("Error: Invalid 'folder path' given for method 'load'.");

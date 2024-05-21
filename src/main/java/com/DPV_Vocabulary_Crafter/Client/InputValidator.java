@@ -14,13 +14,13 @@ public class InputValidator {
 
     // For 'Save' method.
     public boolean validateFilename(String filename){
-        return filename.contains(".rdf");
+        return filename.endsWith(".rdf");
     }
 
     // For 'Load' method.
     public boolean validateFile(String folder_path, String filename){
         Path filePath = Paths.get(folder_path, filename);
-        return Files.exists(filePath) && Files.isRegularFile(filePath) && filename.contains(".rdf");
+        return Files.exists(filePath) && Files.isRegularFile(filePath) && filename.endsWith(".rdf");
     }
 
     // For 'Search' methods.
