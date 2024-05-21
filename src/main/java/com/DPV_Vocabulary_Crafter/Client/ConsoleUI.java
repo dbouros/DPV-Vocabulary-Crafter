@@ -114,7 +114,6 @@ public class ConsoleUI {
 
             String option = input.nextLine();
 
-            return;
         }
 
     }
@@ -181,6 +180,7 @@ public class ConsoleUI {
             System.out.println();
             System.out.print("Please select an option: ");
 
+            
             String option = input.nextLine();
 
         }
@@ -317,7 +317,6 @@ public class ConsoleUI {
                 System.out.print("Invalid option! Press [T/t] to try again: ");
                 inputValidator.pressT(input);
             }
-
         }
 
     }
