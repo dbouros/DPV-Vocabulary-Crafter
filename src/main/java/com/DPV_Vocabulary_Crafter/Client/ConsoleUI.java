@@ -136,6 +136,28 @@ public class ConsoleUI {
 
             String option = input.nextLine();
 
+            if (option.equals("1")){
+                originalDPVMenu(input);
+            } else if (option.equals("2")) {
+                personalDPVMenu(input);
+            } else if (option.equals("3")) {
+                createNewPersonalDPV();
+                return;
+            } else if (option.equals("4")) {
+                loadPersonalDPV(input);
+                return;
+            } else if (option.equals("5")) {
+                System.out.println("Help Panel!");
+            } else if (option.equals("0")) {
+                exit = true;
+                // TODO: Remove the 'Bye Bye!' message in the end of the project.
+                System.out.println("Bye Bye!");
+                return;
+            } else {
+                System.out.print("Invalid option! Press [T/t] to try again: ");
+                inputValidator.pressT(input);
+            }
+
         }
     }
 
@@ -206,6 +228,21 @@ public class ConsoleUI {
 
             String option = input.nextLine();
 
+            if (option.equals("1")){
+                editPersonalDPVMenu(input);
+            } else if (option.equals("2")) {
+                view(1);
+            } else if (option.equals("3")) {
+                searchDPVMenu(input, 1);
+            } else if (option.equals("4")) {
+                System.out.println("Help Panel!");
+            } else if (option.equals("0")) {
+                return;
+            } else {
+                System.out.print("Invalid option! Press [T/t] to try again: ");
+                inputValidator.pressT(input);
+            }
+
         }
 
     }
@@ -223,6 +260,19 @@ public class ConsoleUI {
             System.out.print("Please select an option: ");
 
             String option = input.nextLine();
+
+            if (option.equals("1")){
+                add(input);
+            } else if (option.equals("2")) {
+                remove(input);
+            } else if (option.equals("3")) {
+                System.out.println("Help Panel!");
+            } else if (option.equals("0")) {
+                return;
+            } else {
+                System.out.print("Invalid option! Press [T/t] to try again: ");
+                inputValidator.pressT(input);
+            }
 
         }
 
