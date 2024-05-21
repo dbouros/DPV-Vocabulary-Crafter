@@ -372,9 +372,33 @@ public class ConsoleUI {
         }
     }
 
-    // Never replace " " with "" for 'Objects'.
     // Forth Search.
-    public void searchAllTermsObject(Scanner input, Integer voc_id){}
+    public void searchAllTermsObject(Scanner input, Integer voc_id){
+        String Url = "http://localhost:8080/api/searchDPV/" + voc_id + "/";
+        String dpvObject;
+
+        while (true){
+            System.out.print("Please type the 'object' of the term to search: ");
+            dpvObject = input.nextLine();
+            // Never replace " " with "" for 'Objects'.
+
+            if (inputValidator.validateTerm(dpvObject)){
+                // id = "/3".
+                Url = Url + dpvObject + "/3";
+                String modelString = web_dao_clnt.getSearchDPV(Url);
+
+                if (voc_id.equals(0)){
+                    uiPanel.run("Original DPV Search - All Terms (Object Match-up): " + dpvObject, modelString);
+                }else {
+                    uiPanel.run("Personal DPV Search - All Terms (Object Match-up): " + dpvObject, modelString);
+                }
+                break;
+            }else {
+                System.out.println("Error: Invalid 'object' given for method 'searchAllTermsObject'.");
+            }
+
+        }
+    }
 
     // Fifth Search.
     public void searchAllTermsSubjectPredicate(Scanner input, Integer voc_id){}
