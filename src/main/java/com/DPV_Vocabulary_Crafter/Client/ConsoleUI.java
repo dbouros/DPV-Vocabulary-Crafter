@@ -291,6 +291,7 @@ public class ConsoleUI {
 
     }
 
+    // First Search.
     public void searchSingleTerm(Scanner input, Integer voc_id){
         String Url = "http://localhost:8080/api/searchDPV/" + voc_id + "/";
         String dpvSubject;
@@ -317,6 +318,7 @@ public class ConsoleUI {
         }
     }
 
+    // Second Search.
     public void searchAllTermsSubject(Scanner input, Integer voc_id){
         String Url = "http://localhost:8080/api/searchDPV/" + voc_id + "/";
         String dpvSubject;
@@ -343,11 +345,38 @@ public class ConsoleUI {
         }
     }
 
-    public void searchAllTermsPredicate(Scanner input, Integer voc_id){}
+    // Third Search.
+    public void searchAllTermsPredicate(Scanner input, Integer voc_id){
+        String Url = "http://localhost:8080/api/searchDPV/" + voc_id + "/";
+        String dpvPredicate;
+
+        while (true){
+            System.out.print("Please type the 'predicate' of the term to search: ");
+            dpvPredicate = input.nextLine();
+            dpvPredicate = dpvPredicate.replace(" ", "");
+
+            if (inputValidator.validateTerm(dpvPredicate)){
+                // id = "/2".
+                Url = Url + dpvPredicate + "/2";
+                String modelString = web_dao_clnt.getSearchDPV(Url);
+
+                if (voc_id.equals(0)){
+                    uiPanel.run("Original DPV Search - All Terms (Predicate Match-up): " + dpvPredicate, modelString);
+                }else {
+                    uiPanel.run("Personal DPV Search - All Terms (Predicate Match-up): " + dpvPredicate, modelString);
+                }
+                break;
+            }else {
+                System.out.println("Error: Invalid 'predicate' given for method 'searchAllTermsPredicate'.");
+            }
+        }
+    }
 
     // Never replace " " with "" for 'Objects'.
+    // Forth Search.
     public void searchAllTermsObject(Scanner input, Integer voc_id){}
 
+    // Fifth Search.
     public void searchAllTermsSubjectPredicate(Scanner input, Integer voc_id){}
 
     public void savePersonalDPV(Scanner input){}
