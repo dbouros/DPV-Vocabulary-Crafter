@@ -274,6 +274,10 @@ public class ConsoleUI {
         web_dao_clnt.getCreateNewDPV(Url);
     }
 
+    public void add(Scanner input){}
+
+    public void remove(Scanner input){}
+
     public void view(Integer voc_id){
 
         String Url = "http://localhost:8080/api/viewDPV/" + voc_id;
@@ -290,16 +294,17 @@ public class ConsoleUI {
     public void searchSingleTerm(Scanner input, Integer voc_id){
         String Url = "http://localhost:8080/api/searchDPV/" + voc_id + "/";
         String dpvSubject;
-        String modelString;
 
         while (true){
             System.out.print("Please type the 'subject' of the term to search: ");
             dpvSubject = input.nextLine();
             dpvSubject = dpvSubject.replace(" ", "");
 
-            if (inputValidator.validateSubjectOrPredicate(dpvSubject)){
+            if (inputValidator.validateTerm(dpvSubject)){
+                // id = "/0".
                 Url = Url + dpvSubject + "/0";
-                modelString = web_dao_clnt.getSearchDPV(Url);
+                String modelString = web_dao_clnt.getSearchDPV(Url);
+
                 if (voc_id.equals(0)){
                     uiPanel.run("Original DPV Search - Single Term (Subject Match-up): " + dpvSubject, modelString);
                 }else {
@@ -312,7 +317,31 @@ public class ConsoleUI {
         }
     }
 
-    public void searchAllTermsSubject(Scanner input, Integer voc_id){}
+    public void searchAllTermsSubject(Scanner input, Integer voc_id){
+        String Url = "http://localhost:8080/api/searchDPV/" + voc_id + "/";
+        String dpvSubject;
+
+        while (true){
+            System.out.print("Please type the 'subject' of the term to search: ");
+            dpvSubject = input.nextLine();
+            dpvSubject = dpvSubject.replace(" ", "");
+
+            if (inputValidator.validateTerm(dpvSubject)){
+                // id = "/1".
+                Url = Url + dpvSubject + "/1";
+                String modelString = web_dao_clnt.getSearchDPV(Url);
+
+                if (voc_id.equals(0)){
+                    uiPanel.run("Original DPV Search - All Terms (Subject Inclusion): " + dpvSubject, modelString);
+                }else {
+                    uiPanel.run("Personal DPV Search - All Terms (Subject Inclusion): " + dpvSubject, modelString);
+                }
+                break;
+            }else {
+                System.out.println("Error: Invalid 'subject' given for method 'searchAllTermsSubject'.");
+            }
+        }
+    }
 
     public void searchAllTermsPredicate(Scanner input, Integer voc_id){}
 

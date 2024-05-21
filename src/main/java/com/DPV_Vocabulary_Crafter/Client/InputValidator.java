@@ -24,7 +24,7 @@ public class InputValidator {
     }
 
     // For 'Search' methods.
-    public boolean validateSubjectOrPredicate(String term){
+    public boolean validateTerm(String term){
         return !term.isEmpty();
     }
 
