@@ -111,8 +111,34 @@ public class ConsoleUI {
             System.out.println();
             System.out.print("Please select an option: ");
 
-
             String option = input.nextLine();
+
+            if (option.equals("1")){
+                originalDPVMenu(input);
+            } else if (option.equals("2")) {
+                personalDPVMenu(input);
+            } else if (option.equals("3")) {
+                createNewPersonalDPV();
+                return;
+            } else if (option.equals("4")) {
+                savePersonalDPV(input);
+            } else if (option.equals("5")) {
+                loadPersonalDPV(input);
+                return;
+            } else if (option.equals("6")) {
+                System.out.println("Help Panel!");
+            } else if (option.equals("0")) {
+                if (!save) {
+                    saveBeforeExit(input);
+                }
+                exit = true;
+                // TODO: Remove the 'Bye Bye!' message in the end of the project.
+                System.out.println("Bye Bye!");
+                return;
+            } else {
+                System.out.print("Invalid option! Press [T/t] to try again: ");
+                inputValidator.pressT(input);
+            }
 
         }
 
@@ -180,8 +206,34 @@ public class ConsoleUI {
             System.out.println();
             System.out.print("Please select an option: ");
 
-
             String option = input.nextLine();
+
+            if (option.equals("1")){
+                originalDPVMenu(input);
+            } else if (option.equals("2")) {
+                personalDPVMenu(input);
+            } else if (option.equals("3")) {
+                createNewPersonalDPV();
+                return;
+            } else if (option.equals("4")) {
+                savePersonalDPV(input);
+            } else if (option.equals("5")) {
+                loadPersonalDPV(input);
+                return;
+            } else if (option.equals("6")) {
+                System.out.println("Help Panel!");
+            } else if (option.equals("0")) {
+                if (!save) {
+                    saveBeforeExit(input);
+                }
+                exit = true;
+                // TODO: Remove the 'Bye Bye!' message in the end of the project.
+                System.out.println("Bye Bye!");
+                return;
+            } else {
+                System.out.print("Invalid option! Press [T/t] to try again: ");
+                inputValidator.pressT(input);
+            }
 
         }
 
@@ -588,7 +640,7 @@ public class ConsoleUI {
 
     }
 
-    public void exitWithoutSave(Scanner input){
+    public void saveBeforeExit(Scanner input){
 
         System.out.println("You have unsaved changes!");
         System.out.print("Do you want to save? [Y/N][y/n]: ");
