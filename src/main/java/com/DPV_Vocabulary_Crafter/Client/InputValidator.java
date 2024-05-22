@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class InputValidator {
 
+    // For 'Save' and 'Load' methods.
     public boolean validateFolder(String folder_path){
         Path folderPath = Paths.get(folder_path);
         return Files.exists(folderPath) && Files.isDirectory(folderPath);
