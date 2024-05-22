@@ -594,12 +594,12 @@ public class ConsoleUI {
         System.out.print("Do you want to save? [Y/N][y/n]: ");
         String button = input.nextLine();
 
-        while (!button.startsWith("Y") && !button.startsWith("y") && !button.startsWith("N") && !button.startsWith("n")){
+        while (!button.equals("Y") && !button.equals("y") && !button.equals("N") && !button.equals("n")){
             System.out.print("Do you want to save? [Y/N][y/n]: ");
             button = input.nextLine();
         }
 
-        if (button.startsWith("Y") || button.startsWith("y")){
+        if (button.equals("Y") || button.equals("y")){
             savePersonalDPV(input);
         }
     }
