@@ -50,4 +50,15 @@ public class LocalDAOClient {
         }
     }
 
+    public String readTextFromFile(String filename){
+
+        Path filePath = Paths.get("src/main/resources", filename);
+
+        try{
+            return Files.readString(filePath);
+        } catch (IOException e){
+            return "IOException occurred! Please check the 'txt' files in the 'resources' folder.";
+        }
+    }
+
 }
