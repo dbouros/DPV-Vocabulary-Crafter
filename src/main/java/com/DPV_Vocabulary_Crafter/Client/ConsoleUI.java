@@ -83,7 +83,7 @@ public class ConsoleUI {
             } else if (option.equals("4")) {
                 System.out.println("Help Panel!");
                 // TODO: Complete ALL the 'Help' options and their respective '.txt' files in the 'resources' folder.
-                uiPanel.run("Help Panel", web_dao_clnt.readTextFromResources("Help/HelpInfo.txt"));
+                uiPanel.run("Help Panel", web_dao_clnt.readTextFromResources("HelpInfo.txt"));
             } else if (option.equals("0")) {
                 exit = true;
                 // TODO: Remove the 'Bye Bye!' message in the end of the project.

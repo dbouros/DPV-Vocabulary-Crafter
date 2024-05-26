@@ -52,7 +52,7 @@ public class LocalDAOClient {
 
     public String readTextFromResources(String filename){
 
-        Path resourcesPath = Paths.get("src/main/resources/Help", filename);
+        Path resourcesPath = Paths.get("src/main/resources/HelpTexts", filename);
 
         try{
             return Files.readString(resourcesPath);
