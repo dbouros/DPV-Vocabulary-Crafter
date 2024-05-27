@@ -59,6 +59,7 @@ public class ConsoleUI {
     // First Menu. (No choices were made!)
     private void mainMenu1(Scanner input){
 
+        clearConsole();
         while (true){
             System.out.println("Main Menu:");
             System.out.println();
@@ -92,6 +93,8 @@ public class ConsoleUI {
                 System.out.print("Invalid option! Press [T/t] to try again: ");
                 inputValidator.pressT(input);
             }
+
+            clearConsole();
         }
 
     }
@@ -99,6 +102,7 @@ public class ConsoleUI {
     // Second Menu. (User chose option 2!)
     private void mainMenu2(Scanner input){
 
+        clearConsole();
         while (true){
             System.out.println("Main Menu:");
             System.out.println();
@@ -142,6 +146,7 @@ public class ConsoleUI {
                 inputValidator.pressT(input);
             }
 
+            clearConsole();
         }
 
     }
@@ -149,6 +154,7 @@ public class ConsoleUI {
     // Third Menu. (User chose option 3 without editing!)
     private void mainMenu3(Scanner input){
 
+        clearConsole();
         while (true){
             System.out.println("Main Menu:");
             System.out.println();
@@ -189,12 +195,14 @@ public class ConsoleUI {
                 inputValidator.pressT(input);
             }
 
+            clearConsole();
         }
     }
 
     // Forth Menu. (User chose option 3 and edited as well!)
     private void mainMenu4(Scanner input){
 
+        clearConsole();
         while (true){
             System.out.println("Main Menu:");
             System.out.println();
@@ -238,12 +246,14 @@ public class ConsoleUI {
                 inputValidator.pressT(input);
             }
 
+            clearConsole();
         }
 
     }
 
     private void originalDPVMenu(Scanner input){
 
+        clearConsole();
         while (true){
             System.out.println("Original DPV:");
             System.out.println();
@@ -268,12 +278,15 @@ public class ConsoleUI {
                 System.out.print("Invalid option! Press [T/t] to try again: ");
                 inputValidator.pressT(input);
             }
+
+            clearConsole();
         }
 
     }
 
     private void personalDPVMenu(Scanner input){
 
+        clearConsole();
         while (true){
             System.out.println("Personal DPV:");
             System.out.println();
@@ -302,12 +315,14 @@ public class ConsoleUI {
                 inputValidator.pressT(input);
             }
 
+            clearConsole();
         }
 
     }
 
     private void editPersonalDPVMenu(Scanner input){
 
+        clearConsole();
         while (true){
             System.out.println("Edit:");
             System.out.println();
@@ -333,12 +348,14 @@ public class ConsoleUI {
                 inputValidator.pressT(input);
             }
 
+            clearConsole();
         }
 
     }
 
     private void searchDPVMenu(Scanner input, Integer voc_id){
 
+        clearConsole();
         while (true){
             System.out.println("Search:");
             System.out.println();
@@ -372,6 +389,8 @@ public class ConsoleUI {
                 System.out.print("Invalid option! Press [T/t] to try again: ");
                 inputValidator.pressT(input);
             }
+
+            clearConsole();
         }
 
     }
