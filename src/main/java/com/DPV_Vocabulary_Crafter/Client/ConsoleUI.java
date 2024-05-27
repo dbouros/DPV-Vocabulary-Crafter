@@ -84,7 +84,7 @@ public class ConsoleUI {
             if (option.equals("1")){
                 originalDPVMenu(input);
             } else if (option.equals("2")) {
-                createNewPersonalDPV();
+                createNewPersonalDPV(input);
                 return;
             } else if (option.equals("3")) {
                 loadPersonalDPV(input);
@@ -95,6 +95,7 @@ public class ConsoleUI {
             } else if (option.equals("0")) {
                 exit = true;
 
+                System.out.println();
                 System.out.println("Bye Bye!");
                 return;
             } else {
@@ -133,10 +134,12 @@ public class ConsoleUI {
             } else if (option.equals("2")) {
                 personalDPVMenu(input);
             } else if (option.equals("3")) {
-                createNewPersonalDPV();
+                createNewPersonalDPV(input);
                 return;
             } else if (option.equals("4")) {
                 savePersonalDPV(input);
+                System.out.print("Press [C/c] to continue: ");
+                inputValidator.pressC(input);
             } else if (option.equals("5")) {
                 loadPersonalDPV(input);
                 return;
@@ -149,6 +152,7 @@ public class ConsoleUI {
                 }
                 exit = true;
 
+                System.out.println();
                 System.out.println("Bye Bye!");
                 return;
             } else {
@@ -190,7 +194,7 @@ public class ConsoleUI {
                     return;
                 }
             } else if (option.equals("3")) {
-                createNewPersonalDPV();
+                createNewPersonalDPV(input);
                 return;
             } else if (option.equals("4")) {
                 loadPersonalDPV(input);
@@ -200,6 +204,7 @@ public class ConsoleUI {
             } else if (option.equals("0")) {
                 exit = true;
 
+                System.out.println();
                 System.out.println("Bye Bye!");
                 return;
             } else {
@@ -237,10 +242,12 @@ public class ConsoleUI {
             } else if (option.equals("2")) {
                 personalDPVMenu(input);
             } else if (option.equals("3")) {
-                createNewPersonalDPV();
+                createNewPersonalDPV(input);
                 return;
             } else if (option.equals("4")) {
                 savePersonalDPV(input);
+                System.out.print("Press [C/c] to continue: ");
+                inputValidator.pressC(input);
             } else if (option.equals("5")) {
                 loadPersonalDPV(input);
                 return;
@@ -253,6 +260,7 @@ public class ConsoleUI {
                 }
                 exit = true;
 
+                System.out.println();
                 System.out.println("Bye Bye!");
                 return;
             } else {
@@ -417,11 +425,14 @@ public class ConsoleUI {
 
     }
 
-    private void createNewPersonalDPV(){
+    private void createNewPersonalDPV(Scanner input){
         createNew = true;
         save = false;
         String Url = "http://localhost:8080/api/createNewDPV";
         web_dao_clnt.getCreateNewDPV(Url);
+
+        System.out.print("Press [C/c] to continue: ");
+        inputValidator.pressC(input);
     }
 
     private void add(Scanner input){
@@ -446,6 +457,9 @@ public class ConsoleUI {
             }
         }
 
+        System.out.print("Press [C/c] to continue: ");
+        inputValidator.pressC(input);
+
     }
 
     private void remove(Scanner input){
@@ -469,6 +483,9 @@ public class ConsoleUI {
                 System.out.println("Error: Invalid 'subject' given for method 'remove'.");
             }
         }
+
+        System.out.print("Press [C/c] to continue: ");
+        inputValidator.pressC(input);
 
     }
 
@@ -686,6 +703,9 @@ public class ConsoleUI {
                 System.out.println("Error: Invalid 'filename' given for method 'load'.");
             }
         }
+
+        System.out.print("Press [C/c] to continue: ");
+        inputValidator.pressC(input);
 
     }
 
