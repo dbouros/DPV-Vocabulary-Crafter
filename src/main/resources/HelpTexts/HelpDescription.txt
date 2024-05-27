@@ -1,1 +1,5 @@
-Help Description
+Welcome to the "DPV Vocabulary Crafter" application, created by Dimitris Bouros. By using this application
+you can interact with the 'original DPV' as well as create/load your own 'personal DPV' containing the 'terms'
+that best suit your needs.
+
+
