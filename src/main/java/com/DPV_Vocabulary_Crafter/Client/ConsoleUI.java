@@ -57,7 +57,7 @@ public class ConsoleUI {
     }
 
     // First Menu. (No choices were made!)
-    public void mainMenu1(Scanner input){
+    private void mainMenu1(Scanner input){
 
         while (true){
             System.out.println("Main Menu:");
@@ -81,12 +81,11 @@ public class ConsoleUI {
                 loadPersonalDPV(input);
                 return;
             } else if (option.equals("4")) {
-                System.out.println("Help Panel!");
-                // TODO: Complete ALL the 'Help' options and their respective '.txt' files in the 'resources' folder.
-                uiPanel.run("Help Panel", web_dao_clnt.readTextFromResources("HelpInfo.txt"));
+                // TODO: Write ALL the 'Help.txt' files in the 'resources' folder.
+                uiPanel.run("Help Main Menu", web_dao_clnt.readTextFromResources("HelpMenu1.txt"));
             } else if (option.equals("0")) {
                 exit = true;
-                // TODO: Remove the 'Bye Bye!' message in the end of the project.
+
                 System.out.println("Bye Bye!");
                 return;
             } else {
@@ -98,7 +97,7 @@ public class ConsoleUI {
     }
 
     // Second Menu. (User chose option 2!)
-    public void mainMenu2(Scanner input){
+    private void mainMenu2(Scanner input){
 
         while (true){
             System.out.println("Main Menu:");
@@ -128,13 +127,14 @@ public class ConsoleUI {
                 loadPersonalDPV(input);
                 return;
             } else if (option.equals("6")) {
-                System.out.println("Help Panel!");
+                uiPanel.run("Help Main Menu", web_dao_clnt.readTextFromResources("HelpMenu2.txt"));
             } else if (option.equals("0")) {
+
                 if (!save) {
                     saveBeforeExit(input);
                 }
                 exit = true;
-                // TODO: Remove the 'Bye Bye!' message in the end of the project.
+
                 System.out.println("Bye Bye!");
                 return;
             } else {
@@ -147,7 +147,7 @@ public class ConsoleUI {
     }
 
     // Third Menu. (User chose option 3 without editing!)
-    public void mainMenu3(Scanner input){
+    private void mainMenu3(Scanner input){
 
         while (true){
             System.out.println("Main Menu:");
@@ -178,10 +178,10 @@ public class ConsoleUI {
                 loadPersonalDPV(input);
                 return;
             } else if (option.equals("5")) {
-                System.out.println("Help Panel!");
+                uiPanel.run("Help Main Menu", web_dao_clnt.readTextFromResources("HelpMenu3.txt"));
             } else if (option.equals("0")) {
                 exit = true;
-                // TODO: Remove the 'Bye Bye!' message in the end of the project.
+
                 System.out.println("Bye Bye!");
                 return;
             } else {
@@ -193,7 +193,7 @@ public class ConsoleUI {
     }
 
     // Forth Menu. (User chose option 3 and edited as well!)
-    public void mainMenu4(Scanner input){
+    private void mainMenu4(Scanner input){
 
         while (true){
             System.out.println("Main Menu:");
@@ -223,13 +223,14 @@ public class ConsoleUI {
                 loadPersonalDPV(input);
                 return;
             } else if (option.equals("6")) {
-                System.out.println("Help Panel!");
+                uiPanel.run("Help Main Menu", web_dao_clnt.readTextFromResources("HelpMenu4.txt"));
             } else if (option.equals("0")) {
+
                 if (!save) {
                     saveBeforeExit(input);
                 }
                 exit = true;
-                // TODO: Remove the 'Bye Bye!' message in the end of the project.
+
                 System.out.println("Bye Bye!");
                 return;
             } else {
@@ -241,7 +242,7 @@ public class ConsoleUI {
 
     }
 
-    public void originalDPVMenu(Scanner input){
+    private void originalDPVMenu(Scanner input){
 
         while (true){
             System.out.println("Original DPV:");
@@ -260,7 +261,7 @@ public class ConsoleUI {
             } else if (option.equals("2")) {
                 searchDPVMenu(input, 0);
             } else if (option.equals("3")) {
-                System.out.println("Help Panel!");
+                uiPanel.run("Help Original DPV Menu", web_dao_clnt.readTextFromResources("HelpOriginalDPVMenu.txt"));
             } else if (option.equals("0")) {
                 return;
             } else {
@@ -271,7 +272,7 @@ public class ConsoleUI {
 
     }
 
-    public void personalDPVMenu(Scanner input){
+    private void personalDPVMenu(Scanner input){
 
         while (true){
             System.out.println("Personal DPV:");
@@ -293,7 +294,7 @@ public class ConsoleUI {
             } else if (option.equals("3")) {
                 searchDPVMenu(input, 1);
             } else if (option.equals("4")) {
-                System.out.println("Help Panel!");
+                uiPanel.run("Help Personal DPV Menu", web_dao_clnt.readTextFromResources("HelpPersonalDPVMenu.txt"));
             } else if (option.equals("0")) {
                 return;
             } else {
@@ -305,7 +306,7 @@ public class ConsoleUI {
 
     }
 
-    public void editPersonalDPVMenu(Scanner input){
+    private void editPersonalDPVMenu(Scanner input){
 
         while (true){
             System.out.println("Edit:");
@@ -324,7 +325,7 @@ public class ConsoleUI {
             } else if (option.equals("2")) {
                 remove(input);
             } else if (option.equals("3")) {
-                System.out.println("Help Panel!");
+                uiPanel.run("Help Edit DPV Menu", web_dao_clnt.readTextFromResources("HelpEditDPVMenu.txt"));
             } else if (option.equals("0")) {
                 return;
             } else {
@@ -336,7 +337,7 @@ public class ConsoleUI {
 
     }
 
-    public void searchDPVMenu(Scanner input, Integer voc_id){
+    private void searchDPVMenu(Scanner input, Integer voc_id){
 
         while (true){
             System.out.println("Search:");
@@ -364,7 +365,7 @@ public class ConsoleUI {
             } else if (option.equals("5")) {
                 searchAllTermsSubjectPredicate(input, voc_id);
             } else if (option.equals("6")) {
-                System.out.println("Help Panel!");
+                uiPanel.run("Help Search DPV Menu", web_dao_clnt.readTextFromResources("HelpSearchDPVMenu.txt"));
             } else if (option.equals("0")) {
                 return;
             }else {
@@ -375,14 +376,14 @@ public class ConsoleUI {
 
     }
 
-    public void createNewPersonalDPV(){
+    private void createNewPersonalDPV(){
         createNew = true;
         save = false;
         String Url = "http://localhost:8080/api/createNewDPV";
         web_dao_clnt.getCreateNewDPV(Url);
     }
 
-    public void add(Scanner input){
+    private void add(Scanner input){
         String Url = "http://localhost:8080/api/editDPV/";
         String dpvSubject;
 
@@ -406,7 +407,7 @@ public class ConsoleUI {
 
     }
 
-    public void remove(Scanner input){
+    private void remove(Scanner input){
         String Url = "http://localhost:8080/api/editDPV/";
         String dpvSubject;
 
@@ -430,7 +431,7 @@ public class ConsoleUI {
 
     }
 
-    public void view(Integer voc_id){
+    private void view(Integer voc_id){
 
         String Url = "http://localhost:8080/api/viewDPV/" + voc_id;
         String modelString = web_dao_clnt.getViewDPV(Url);
@@ -444,7 +445,7 @@ public class ConsoleUI {
     }
 
     // First Search.
-    public void searchSingleTerm(Scanner input, Integer voc_id){
+    private void searchSingleTerm(Scanner input, Integer voc_id){
         String Url = "http://localhost:8080/api/searchDPV/" + voc_id + "/";
         String dpvSubject;
 
@@ -471,7 +472,7 @@ public class ConsoleUI {
     }
 
     // Second Search.
-    public void searchAllTermsSubject(Scanner input, Integer voc_id){
+    private void searchAllTermsSubject(Scanner input, Integer voc_id){
         String Url = "http://localhost:8080/api/searchDPV/" + voc_id + "/";
         String dpvSubject;
 
@@ -498,7 +499,7 @@ public class ConsoleUI {
     }
 
     // Third Search.
-    public void searchAllTermsPredicate(Scanner input, Integer voc_id){
+    private void searchAllTermsPredicate(Scanner input, Integer voc_id){
         String Url = "http://localhost:8080/api/searchDPV/" + voc_id + "/";
         String dpvPredicate;
 
@@ -525,7 +526,7 @@ public class ConsoleUI {
     }
 
     // Forth Search.
-    public void searchAllTermsObject(Scanner input, Integer voc_id){
+    private void searchAllTermsObject(Scanner input, Integer voc_id){
         String Url = "http://localhost:8080/api/searchDPV/" + voc_id + "/";
         String dpvObject;
 
@@ -553,7 +554,7 @@ public class ConsoleUI {
     }
 
     // Fifth Search.
-    public void searchAllTermsSubjectPredicate(Scanner input, Integer voc_id){
+    private void searchAllTermsSubjectPredicate(Scanner input, Integer voc_id){
         String Url = "http://localhost:8080/api/searchDPV/" + voc_id + "/";
         String dpvSubject;
         String dpvPredicate;
@@ -586,7 +587,12 @@ public class ConsoleUI {
         }
     }
 
-    public void savePersonalDPV(Scanner input){
+    /*
+     No matter the pre-specified "filename" from the "Server", we as a "Client" can specify our own
+     preferred name for the file when we save it. Using the name of an already existing file will
+     overwrite that file with the one we will save.
+    */
+    private void savePersonalDPV(Scanner input){
         String Url = "http://localhost:8080/api/downloadDPVrdfFile";
         String folder_path;
         String filename;
@@ -613,7 +619,7 @@ public class ConsoleUI {
 
     }
 
-    public void loadPersonalDPV(Scanner input){
+    private void loadPersonalDPV(Scanner input){
 
         String Url = "http://localhost:8080/api/uploadDPVrdfFile";
         String folder_path;
@@ -642,7 +648,7 @@ public class ConsoleUI {
 
     }
 
-    public void saveBeforeExit(Scanner input){
+    private void saveBeforeExit(Scanner input){
 
         System.out.println("You have unsaved changes!");
         System.out.print("Do you want to save? [Y/N][y/n]: ");
@@ -655,6 +661,24 @@ public class ConsoleUI {
 
         if (button.equals("Y") || button.equals("y")){
             savePersonalDPV(input);
+        }
+    }
+
+    // Clears the console by printing multiple new lines.
+    /*
+    Note -> Many IDEs including 'IntelliJ IDEA', do not fully support ANSI escape codes in their
+    built-in consoles.
+
+    // ANSI escape code to clear the console
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+
+    For a cross-environment solution, sticking with the simpler method of printing multiple new lines
+    is often more reliable and simpler to understand.
+    */
+    private void clearConsole() {
+        for (int i = 0; i < 20; i++) {
+            System.out.println();
         }
     }
 

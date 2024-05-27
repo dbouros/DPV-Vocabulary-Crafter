@@ -29,11 +29,6 @@ public class Main {
         //System.out.println(web_dao_clnt.getViewDPV("http://localhost:8080/api/viewDPV/1"));
 
         // Download personal DPV from "Server".
-        /*
-			 No matter the specified "filename" from the "Server" we as a "Client" can specify our own
-			 preferred name for the file when we download it. Keeping the name of an already existing
-			 model will overwrite that model with the one we will download.
-			*/
         //web_dao_clnt.getDownloadDPVrdfFile("http://localhost:8080/api/downloadDPVrdfFile", folderPath, filename);
 
 //======================================================================================================================
@@ -164,40 +159,3 @@ public class Main {
 
     }
 }
-
-//======================================================================================================================
-// UI Panel checking code. (Method: "main()") !!
-/*
-    UIPanel uiPanel = new UIPanel();
-        Scanner scanner = new Scanner(System.in);
-        int command;
-        blankLines15();
-        while (true){
-            System.out.println("Press '>1' to keep looping.");
-            System.out.println("Press '1' to launch panel.");
-            System.out.println("Press '0' to exit the program.");
-            System.out.print("Command: ");
-
-            command = scanner.nextInt();
-
-            if ( command == 0) {
-                break;
-            } else if (command == 1) {
-                uiPanel.run("Panel Title", "Your large text goes here... !!");
-            }
-            blankLines15();
-        }
-
-        scanner.nextLine(); // Clear the scanner's buffer!
-        System.out.print("Please give a Folder path: ");
-        String folder_Path = scanner.nextLine();
-        System.out.println("Folder Path: " + folder_Path);
-
-        System.out.println("Bye bye!");
-
-    }
-
-    public static void blankLines15(){
-        for (int i=0; i<15; i++) System.out.println();
-    }
-*/
