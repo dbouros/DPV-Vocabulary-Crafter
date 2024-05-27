@@ -10,6 +10,7 @@ public class ConsoleUI {
 
     private boolean exit;
     private boolean firstMenu;
+    private boolean describe;
     private boolean createNew;
     private boolean load;
     private boolean save;
@@ -22,6 +23,7 @@ public class ConsoleUI {
 
         this.exit = false;
         this.firstMenu = true;
+        this.describe = false;
         this.createNew = false;
         this.load = false;
         this.save = false;
@@ -60,6 +62,10 @@ public class ConsoleUI {
     private void mainMenu1(Scanner input){
 
         clearConsole();
+        if (!describe){
+            describe = true;
+            System.out.println(web_dao_clnt.readTextFromResources("HelpDescription.txt"));
+        }
         while (true){
             System.out.println("Main Menu:");
             System.out.println();
