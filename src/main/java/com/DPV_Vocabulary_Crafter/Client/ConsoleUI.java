@@ -67,6 +67,8 @@ public class ConsoleUI {
             System.out.println(web_dao_clnt.readTextFromResources("HelpDescription.txt"));
         }
         while (true){
+
+            displayTitle();
             System.out.println("Main Menu:");
             System.out.println();
             System.out.println("1. Original DPV");
@@ -110,6 +112,8 @@ public class ConsoleUI {
 
         clearConsole();
         while (true){
+
+            displayTitle();
             System.out.println("Main Menu:");
             System.out.println();
             System.out.println("1. Original DPV");
@@ -162,6 +166,8 @@ public class ConsoleUI {
 
         clearConsole();
         while (true){
+
+            displayTitle();
             System.out.println("Main Menu:");
             System.out.println();
             System.out.println("1. Original DPV");
@@ -210,6 +216,8 @@ public class ConsoleUI {
 
         clearConsole();
         while (true){
+
+            displayTitle();
             System.out.println("Main Menu:");
             System.out.println();
             System.out.println("1. Original DPV");
@@ -261,6 +269,8 @@ public class ConsoleUI {
 
         clearConsole();
         while (true){
+
+            displayTitle();
             System.out.println("Original DPV:");
             System.out.println();
             System.out.println("1. View");
@@ -294,6 +304,8 @@ public class ConsoleUI {
 
         clearConsole();
         while (true){
+
+            displayTitle();
             System.out.println("Personal DPV:");
             System.out.println();
             System.out.println("1. Edit");
@@ -330,6 +342,8 @@ public class ConsoleUI {
 
         clearConsole();
         while (true){
+
+            displayTitle();
             System.out.println("Edit:");
             System.out.println();
             System.out.println("1. Add");
@@ -363,6 +377,8 @@ public class ConsoleUI {
 
         clearConsole();
         while (true){
+
+            displayTitle();
             System.out.println("Search:");
             System.out.println();
             System.out.println("1. Single Term (Subject Match-up)");
@@ -687,6 +703,13 @@ public class ConsoleUI {
         if (button.equals("Y") || button.equals("y")){
             savePersonalDPV(input);
         }
+    }
+
+    private void displayTitle(){
+        // The title is "11 tabs" from the beginning of the console.
+        System.out.println("                                            DPV Vocabulary Crafter");
+        System.out.println();
+        System.out.println();
     }
 
     // Clears the console by printing multiple new lines.
