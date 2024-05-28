@@ -1,1 +1,89 @@
-Help Menu 1
+# Main Menu Help
+
+## Introduction
+
+    Welcome to the Main Menu help section. This guide will provide detailed information on how to
+    navigate and use each option available in the main menu.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Option 1: Original DPV
+
+    **Description:**
+        This option allows you to interact with the predefined DPV vocabulary.
+
+    **How to Use:**
+        1. Select option 1 from the main menu.
+        2. Follow the on-screen instructions to explore the DPV.
+
+    **Example:**
+        After selecting this option, you might see a list of predefined terms you can work with.
+
+    **Tips:**
+        - Use this option if you want to explore the standard DPV terms.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Option 2: Create New Personal DPV
+
+    **Description:**
+        This option guides you through creating a new personal DPV tailored to your needs.
+
+    **How to Use:**
+        1. Select option 2 from the main menu.
+        2. Enter the required information to create your DPV.
+
+    **Example:**
+        You will be prompted to input terms and definitions for your personal DPV.
+
+    **Tips:**
+        - Think about the specific terms you need before starting.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Option 3: Load Personal DPV
+
+    **Description:**
+        Load and manage a previously created personal DPV.
+
+    **How to Use:**
+        1. Select option 3 from the main menu.
+        2. Choose the DPV file you want to load.
+
+    **Example:**
+        After loading, you can edit or view the terms in your personal DPV.
+
+    **Tips:**
+        - Make sure your DPV file is accessible.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Option 4: Help
+
+    **Description:**
+        Displays this help menu, providing detailed information on each menu option.
+
+    **How to Use:**
+        1. Select option 4 from the main menu.
+        2. Read through the help content.
+
+    **Tips:**
+        - Use this section if you are unsure about any menu option.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Option 0: Exit
+
+    **Description:**
+        Exits the application.
+
+    **How to Use:**
+        1. Select option 0 from the main menu.
+
+    **Tips:**
+        - Save your work before exiting to avoid losing any changes.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Additional Notes
+    For more detailed instructions, please contact support.

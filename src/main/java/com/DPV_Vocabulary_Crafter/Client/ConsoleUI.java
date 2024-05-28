@@ -368,7 +368,7 @@ public class ConsoleUI {
             } else if (option.equals("2")) {
                 remove(input);
             } else if (option.equals("3")) {
-                uiPanel.run("Help Edit DPV Menu", web_dao_clnt.readTextFromResources("HelpEditDPVMenu.txt"));
+                uiPanel.run("Help Edit Menu", web_dao_clnt.readTextFromResources("HelpEditDPVMenu.txt"));
             } else if (option.equals("0")) {
                 return;
             } else {
@@ -412,7 +412,7 @@ public class ConsoleUI {
             } else if (option.equals("5")) {
                 searchAllTermsSubjectPredicate(input, voc_id);
             } else if (option.equals("6")) {
-                uiPanel.run("Help Search DPV Menu", web_dao_clnt.readTextFromResources("HelpSearchDPVMenu.txt"));
+                uiPanel.run("Help Search Menu", web_dao_clnt.readTextFromResources("HelpSearchDPVMenu.txt"));
             } else if (option.equals("0")) {
                 return;
             }else {
