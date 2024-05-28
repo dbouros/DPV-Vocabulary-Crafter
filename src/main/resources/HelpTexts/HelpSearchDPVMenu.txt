@@ -1,1 +1,150 @@
-Help Search DPV Menu
+# Search Menu Help
+
+## Introduction
+
+    Welcome to the Search Menu help section. This guide will provide detailed information on how to
+    navigate and use each option available in the search menu.
+
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Option 1: Single Term (Subject Match-up)
+
+    **Description:**
+        This option allows you to search for a single term within a DPV based on a specific
+        'subject' of the statements of that term.
+
+    **How to Use:**
+        1. Select option 1 from the main menu.
+        2. Type the 'subject' of the term you want to search.
+        3. Click at the new icon that will appear at the 'Taskbar' to open a panel containing
+           the results of your search.
+
+    **Example:**
+        Please select an option: 1
+        Please type the 'subject' of the term to search: ComplianceUnknown
+
+    **Tips:**
+        - Make sure that the information you provided for the search does not contain any
+          errors.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Option 2: All Terms (Subject Inclusion)
+
+    **Description:**
+        This option allows you to give a specific pattern and then search for all the terms within
+        a DPV that the 'subject' of the statements of those terms contain that pattern.
+
+    **How to Use:**
+        1. Select option 2 from the main menu.
+        2. Type the 'subject' of the term you want to search.
+        3. Click at the new icon that will appear at the 'Taskbar' to open a panel containing
+           the results of your search.
+
+    **Example:**
+        Please select an option: 2
+        Please type the 'subject' of the term to search: Compliance
+
+    **Tips:**
+        - Make sure that the information you provided for the search does not contain any
+          errors.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Option 3: All Terms (Predicate Match-up)
+
+    **Description:**
+        This option allows you to search for all the terms within a DPV based on a specific
+        'predicate' of the statements of that term.
+
+    **How to Use:**
+        1. Select option 3 from the main menu.
+        2. Type the 'predicate' of the term you want to search.
+        3. Click at the new icon that will appear at the 'Taskbar' to open a panel containing
+           the results of your search.
+
+    **Example:**
+        Please select an option: 3
+        Please type the 'predicate' of the term to search: created
+
+    **Tips:**
+        - Make sure that the information you provided for the search does not contain any
+          errors.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Option 4: All Terms (Object Match-up)
+
+    **Description:**
+        This option allows you to search for all the terms within a DPV based on a specific
+        'object' of the statements of that term.
+
+    **How to Use:**
+        1. Select option 4 from the main menu.
+        2. Type the 'object' of the term you want to search.
+        3. Click at the new icon that will appear at the 'Taskbar' to open a panel containing
+           the results of your search.
+
+    **Example:**
+        Please select an option: 4
+        Please type the 'object' of the term to search: 2021-04-07
+
+    **Tips:**
+        - Make sure that the information you provided for the search does not contain any
+          errors.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Option 5: All Terms (Subject Inclusion & Predicate Match-up)
+
+    **Description:**
+        This option allows you to search for all the terms within a DPV based on a specific
+        'predicate' and the 'subject' of the statements of the terms that contain a certain
+        pattern.
+
+    **How to Use:**
+        1. Select option 5 from the main menu.
+        2. Type the 'subject' of the term you want to search.
+        3. Type the 'predicate' of the term you want to search.
+        4. Click at the new icon that will appear at the 'Taskbar' to open a panel containing
+           the results of your search.
+
+    **Example:**
+        Please select an option: 5
+        Please type the 'subject' of the term to search: Compliance
+        Please type the 'predicate' of the term to search: created
+
+    **Tips:**
+        - Make sure that the information you provided for the search does not contain any
+          errors.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Option 6: Help
+
+    **Description:**
+        Displays this help menu, providing detailed information on each menu option.
+
+    **How to Use:**
+        1. Select option 6 from the main menu.
+        2. Read through the help content.
+
+    **Tips:**
+        - Use this section if you are unsure about any menu option.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Option 0: Back
+
+    **Description:**
+        Returns to the previous menu.
+
+    **How to Use:**
+        1. Select option 0 from the current menu.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Additional Notes
+    For more detailed information or problems, please contact support.
+    
