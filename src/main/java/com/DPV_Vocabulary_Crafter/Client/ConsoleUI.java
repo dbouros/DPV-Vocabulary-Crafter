@@ -658,7 +658,7 @@ public class ConsoleUI {
         while (true) {
             System.out.print("Please type the 'absolute' folder path: ");
             folder_path = input.nextLine();
-            System.out.print("Please type the 'name' of the file to save: ");
+            System.out.print("Please type the 'name' of the file: ");
             filename = input.nextLine();
 
             if (inputValidator.validateFolder(folder_path) && inputValidator.validateFilename(filename)){
@@ -687,7 +687,7 @@ public class ConsoleUI {
 
             System.out.print("Please type the 'absolute' folder path: ");
             folder_path = input.nextLine();
-            System.out.print("Please type the 'name' of the file to load: ");
+            System.out.print("Please type the 'name' of the file: ");
             filename = input.nextLine();
 
             if (inputValidator.validateFolder(folder_path) && inputValidator.validateFile(folder_path, filename)){
