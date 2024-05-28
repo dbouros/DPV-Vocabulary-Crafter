@@ -14,11 +14,11 @@
 
     **How to Use:**
         1. Select option 1 from the main menu.
-        2. Follow the on-screen instructions to explore the DPV.
+        2. Follow the on-screen instructions to explore the original DPV.
 
     **Example:**
         After selecting this option, you will be taken to another menu corresponding to the
-        Original DPV vocabulary in which you can see the interacting options.
+        original DPV vocabulary in which you can see the interacting options.
 
     **Tips:**
         - Use this option if you want to explore the standard DPV terms.
@@ -39,8 +39,8 @@
 
     **Tips:**
         - Think about the specific terms you need before starting.
-        - In case you select this options AFTER already loading and editing an existing personal DPV
-          from your computer, make sure to save your work to avoid losing any changes.
+        - In case you select this options AFTER already loading and editing an existing personal
+          DPV from your computer, make sure to save your work to avoid losing any changes.
 
 #-----------------------------------------------------------------------------------------------------------------------
 
@@ -64,11 +64,11 @@
 
     **Tips:**
         - Make sure your DPV file exists and is accessible.
-        - Make sure you give the 'absolute' path. This means starting from the disk's name (ex. 'C')
-          and all the way to the folder that contains the 'rdf' file you want to load.
+        - Make sure you give the 'absolute' path. This means starting from the hard drive's name
+          (ex. 'C:') and all the way to the folder that contains the 'rdf' file you want to load.
         - Make sure you give the 'name' of the file, followed by the file type '.rdf'.
-        - In case you select this options AFTER already creating and editing a new personal DPV , make
-          sure to save your work to avoid losing any changes.
+        - In case you select this options AFTER already creating and editing a new personal
+          DPV , make sure to save your work to avoid losing any changes.
 
 #-----------------------------------------------------------------------------------------------------------------------
 
@@ -112,4 +112,4 @@
 #-----------------------------------------------------------------------------------------------------------------------
 
 ## Additional Notes
-    For more detailed instructions or problems, please contact support.
+    For more detailed information or problems, please contact support.
