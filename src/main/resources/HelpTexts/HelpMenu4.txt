@@ -1,1 +1,157 @@
-Help Menu 4
+# Main Menu Help
+
+## Introduction
+
+    Welcome to the Main Menu help section. This guide will provide detailed information on how to
+    navigate and use each option available in the main menu.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Option 1: Original DPV
+
+    **Description:**
+        This option allows you to interact with the predefined DPV vocabulary.
+
+    **How to Use:**
+        1. Select option 1 from the main menu.
+        2. Follow the on-screen instructions to explore the DPV.
+
+    **Example:**
+        After selecting this option, you will be taken to another menu corresponding to the
+        original DPV vocabulary in which you can see the interacting options.
+
+    **Tips:**
+        - Use this option if you want to explore the standard DPV terms.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Option 2: Personal DPV
+
+    **Description:**
+        This option allows you to interact with your personal DPV vocabulary.
+
+    **How to Use:**
+        1. Select option 2 from the main menu.
+        2. Follow the on-screen instructions to explore/edit the personal DPV.
+
+    **Example:**
+        After selecting this option, you will be taken to another menu corresponding to the
+        personal DPV vocabulary in which you can see the interacting options.
+
+    **Tips:**
+        - Use this option if you want to explore/edit your personal DPV's terms.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Option 3: Create New Personal DPV
+
+    **Description:**
+        This option allows you to create a new personal DPV and edit it to your needs.
+
+    **How to Use:**
+        1. Select option 3 from the main menu.
+        2. A new empty personal DPV will be created and a new option called 'Personal DPV'
+           will be added to the main menu.
+        3. Select the option 'Personal DPV' to interact with the newly created personal DPV
+           vocabulary.
+
+    **Tips:**
+        - Think about the specific terms you need before starting.
+        - In case you select this options AFTER already loading and editing an existing personal
+          DPV from your computer, make sure to save your work to avoid losing any changes.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Option 4: Save Personal DPV
+
+    **Description:**
+        This option allows you to save a newly created personal DPV vocabulary or overwrite
+        an already existing one.
+
+    **How to Use:**
+        1. Select option 4 from the main menu.
+        2. Type the 'absolute' folder path of the file you want to save.
+        3. Type the 'name' of the file you want to save.
+
+    **Example:**
+        Please select an option: 4
+        Please type the 'absolute' folder path: C:\Users\User\Desktop
+        Please type the 'name' of the file: my_dpv.rdf
+
+    **Tips:**
+        - Make sure your DPV folder exists and is accessible.
+        - Make sure you give the 'absolute' path. This means starting from the disk's name
+          (ex. 'C:') and all the way to the folder that contains the 'rdf' file you want to save.
+        - Make sure you give the 'name' of the file, followed by the file type '.rdf'.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Option 5: Re-Load Personal DPV
+
+    **Description:**
+        This option allows you to load and interact with/edit a previously created personal DPV
+        vocabulary.
+
+    **How to Use:**
+        1. Select option 5 from the main menu.
+        2. Type the 'absolute' folder path of the file you want to load.
+        3. Type the 'name' of the file you want to load.
+        4. A new option called 'Personal DPV' will be added to the main menu.
+        5. Select the option 'Personal DPV' to interact with the loaded personal DPV vocabulary.
+
+    **Example:**
+        Please select an option: 5
+        Please type the 'absolute' folder path: C:\Users\User\Desktop
+        Please type the 'name' of the file: my_dpv.rdf
+
+    **Tips:**
+        - Make sure your DPV file exists and is accessible.
+        - Make sure you give the 'absolute' path. This means starting from the hard drive's name
+          (ex. 'C:') and all the way to the folder that contains the 'rdf' file you want to load.
+        - Make sure you give the 'name' of the file, followed by the file type '.rdf'.
+        - In case you select this options AFTER already creating and editing a new personal
+          DPV , make sure to save your work to avoid losing any changes.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Option 6: Help
+
+    **Description:**
+        Displays this help menu, providing detailed information on each menu option.
+
+    **How to Use:**
+        1. Select option 6 from the main menu.
+        2. Read through the help content.
+
+    **Tips:**
+        - Use this section if you are unsure about any menu option.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Option 0: Exit
+
+    **Description:**
+        Exits the application.
+
+    **How to Use:**
+        1. Select option 0 from the main menu.
+        2. You may be prompted to save your work before exiting to avoid losing any changes.
+
+    **Example:**
+        Please select an option: 0
+        You have unsaved changes!
+        Do you want to save? [Y/N][y/n]: Y
+        Please type the 'absolute' folder path: C:\Users\User\Desktop
+        Please type the 'name' of the file: my_dpv.rdf
+        File downloaded successfully! Path: C:\Users\User\Desktop\my_dpv.rdf
+        File Saved Successfully! File: 'my_dpv.rdf'
+
+        Bye Bye!
+
+    **Tips:**
+        - Make sure to save you work often to avoid losing any changes.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Additional Notes
+    For more detailed information or problems, please contact support.
