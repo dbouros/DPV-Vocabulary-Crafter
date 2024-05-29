@@ -29,6 +29,7 @@ public class InputValidator {
         return !term.isEmpty();
     }
 
+    // Looping through invalid input until [T/t] is pressed.
     public void pressT(Scanner input){
         String button = input.nextLine();
         while (!button.equals("T") && !button.equals("t")){
@@ -37,6 +38,7 @@ public class InputValidator {
         }
     }
 
+    // Looping through invalid input until [C/c] is pressed.
     public void pressC(Scanner input){
         String button = input.nextLine();
         while (!button.equals("C") && !button.equals("c")){
