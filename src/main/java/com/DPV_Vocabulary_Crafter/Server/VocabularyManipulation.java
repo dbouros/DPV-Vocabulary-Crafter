@@ -11,7 +11,8 @@ public class VocabularyManipulation {
     }
 
     public void initializeEmptyDPV(Model origModel, Model tempModel){
-        // The xml declaration "<?xml version="1.0" encoding="UTF-8"?>" is added automatically.
+        // The xml declaration "<?xml version="1.0" encoding="UTF-8"?>" is added automatically to the
+        // model and also to the '.rdf' file when downloaded from the user.
 
         // Adding only the namespaces from the "original DPV" to the "temporary DPV".
         for (Namespace ns : origModel.getNamespaces()){
@@ -26,17 +27,19 @@ public class VocabularyManipulation {
         response += "Auto-Created new model: New empty personal DPV.\n";
 
         addOntologyAndSchemes(origModel, tempModel);
-        response += "Added Ontology Term: 'dpv' + all 'ConceptSchemes'. \n";
+        response += "Added Ontology Term: 'dpv' + all 'ConceptSchemes'.\n";
 
         return response;
     }
 
+    // Edit based on Operation ID (id).
     public String edit(Model origModel, Model tempModel, String term, Integer id, String response){
 
         if (tempModel.isEmpty()){
             response += personalModelIsEmpty(origModel, tempModel, response);
         }
 
+        // id == '0' == Add operation, id == '1' == Remove operation.
         if (id.equals(0)){
             if (queryProcessor.isDPVSubject(origModel, term)){
                 if (!queryProcessor.subjectExistsInModel(tempModel, term)){
@@ -89,6 +92,8 @@ public class VocabularyManipulation {
         }
     }
 
+    // This method is used only when the creates a completely new or loads an empty Personal DPV.
+    // Adds the term 'dpv' and all the 'ConceptScheme' terms.
     public void addOntologyAndSchemes(Model origModel, Model tempModel){
 
         for (Statement st : origModel){
@@ -96,9 +101,12 @@ public class VocabularyManipulation {
             IRI subject = (IRI) st.getSubject();
             Value object = st.getObject();
 
+            // Adding all statements with subject == 'dpv'.
             if (subject.getLocalName().equals("dpv")){
                 tempModel.add(st);
             }
+
+            // Adding all statements with object == 'ConceptScheme'.
             if (object.isIRI() && ((IRI)object).getLocalName().equals("ConceptScheme")){
                 tempModel.add(st);
             }
