@@ -17,6 +17,7 @@ public class ConsoleUI {
     private boolean edit;
 
     public ConsoleUI(){
+
         this.inputValidator = new InputValidator();
         this.web_dao_clnt = new WebDAOClient();
         this.uiPanel = new UIPanel();
@@ -62,10 +63,12 @@ public class ConsoleUI {
     private void mainMenu1(Scanner input){
 
         clearConsole();
+        // The description menu runs only once.
         if (!describe){
             describe = true;
             System.out.println(web_dao_clnt.readTextFromResources("HelpDescription.txt"));
         }
+
         while (true){
 
             displayTitle();
@@ -145,10 +148,12 @@ public class ConsoleUI {
             } else if (option.equals("6")) {
                 uiPanel.run("Help Main Menu", web_dao_clnt.readTextFromResources("HelpMenu2.txt"));
             } else if (option.equals("0")) {
-
+                // Checks if progress is saved before exit.
                 if (!save) {
+                    // Prompt the user to save progress.
                     saveBeforeExit(input);
                 }
+                // The user can now exit the application safely.
                 exit = true;
 
                 System.out.println();
@@ -188,7 +193,9 @@ public class ConsoleUI {
                 originalDPVMenu(input);
             } else if (option.equals("2")) {
                 personalDPVMenu(input);
+                // Checks if any editing happened to the model.
                 if (edit) {
+                    // Making sure we enter the load == true case in the 'run()' method.
                     load = true;
                     return;
                 }
@@ -253,10 +260,12 @@ public class ConsoleUI {
             } else if (option.equals("6")) {
                 uiPanel.run("Help Main Menu", web_dao_clnt.readTextFromResources("HelpMenu4.txt"));
             } else if (option.equals("0")) {
-
+                // Checks if progress is saved before exit.
                 if (!save) {
+                    // Prompt the user to save progress.
                     saveBeforeExit(input);
                 }
+                // The user can now exit the application safely.
                 exit = true;
 
                 System.out.println();
@@ -444,7 +453,7 @@ public class ConsoleUI {
             dpvSubject = dpvSubject.replace(" ", "");
 
             if (inputValidator.validateTerm(dpvSubject)){
-                // id = "/0".
+                // Operation id = "/0".
                 Url = Url + dpvSubject + "/0";
                 web_dao_clnt.getEditDPV(Url);
 
@@ -471,7 +480,7 @@ public class ConsoleUI {
             dpvSubject = dpvSubject.replace(" ", "");
 
             if (inputValidator.validateTerm(dpvSubject)){
-                // id = "/1".
+                // Operation id = "/1".
                 Url = Url + dpvSubject + "/1";
                 web_dao_clnt.getEditDPV(Url);
 
@@ -512,7 +521,7 @@ public class ConsoleUI {
             dpvSubject = dpvSubject.replace(" ", "");
 
             if (inputValidator.validateTerm(dpvSubject)){
-                // id = "/0".
+                // Operation id = "/0".
                 Url = Url + dpvSubject + "/0";
                 String modelString = web_dao_clnt.getSearchDPV(Url);
 
@@ -539,7 +548,7 @@ public class ConsoleUI {
             dpvSubject = dpvSubject.replace(" ", "");
 
             if (inputValidator.validateTerm(dpvSubject)){
-                // id = "/1".
+                // Operation id = "/1".
                 Url = Url + dpvSubject + "/1";
                 String modelString = web_dao_clnt.getSearchDPV(Url);
 
@@ -566,7 +575,7 @@ public class ConsoleUI {
             dpvPredicate = dpvPredicate.replace(" ", "");
 
             if (inputValidator.validateTerm(dpvPredicate)){
-                // id = "/2".
+                // Operation id = "/2".
                 Url = Url + dpvPredicate + "/2";
                 String modelString = web_dao_clnt.getSearchDPV(Url);
 
@@ -593,7 +602,7 @@ public class ConsoleUI {
             // Never replace " " with "" for 'Objects'.
 
             if (inputValidator.validateTerm(dpvObject)){
-                // id = "/3".
+                // Operation id = "/3".
                 Url = Url + dpvObject + "/3";
                 String modelString = web_dao_clnt.getSearchDPV(Url);
 
@@ -626,7 +635,7 @@ public class ConsoleUI {
             dpvPredicate = dpvPredicate.replace(" ", "");
 
             if (inputValidator.validateTerm(dpvSubject) && inputValidator.validateTerm(dpvPredicate)){
-                // id = "/4".
+                // Operation id = "/4".
                 Url = Url + dpvSubject + "/" + dpvPredicate + "/4";
                 String modelString = web_dao_clnt.getSearchDPV(Url);
 
@@ -645,9 +654,9 @@ public class ConsoleUI {
     }
 
     /*
-     No matter the pre-specified "filename" from the "Server", we as a "Client" can specify our own
-     preferred name for the file when we save it. Using the name of an already existing file will
-     overwrite that file with the one we will save.
+     No matter the pre-specified "filename" from the "Server", the "Client" can specify their own
+     preferred name for the file when saving it. Using the name of an already existing file will
+     overwrite that file with the new one.
     */
     private void savePersonalDPV(Scanner input){
         String Url = "http://localhost:8080/api/downloadDPVrdfFile";
