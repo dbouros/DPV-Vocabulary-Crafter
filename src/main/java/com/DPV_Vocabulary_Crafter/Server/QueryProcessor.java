@@ -8,8 +8,7 @@ public class QueryProcessor {
     public String view(Model model){
 
         if (model.isEmpty()){
-            // Needs to be removed at the end, so it's not printed on the "Server" console.
-            System.out.println("The requested model is empty!");
+            // The model requested to 'view' is empty.
             return "";
         }else{
 
@@ -48,16 +47,19 @@ public class QueryProcessor {
         }
     }
 
+    // Search based on Vocabulary ID (voc_id).
     public String search(Model origModel, Model tempModel, Integer voc_id, String term, String predicate, Integer id){
 
         if (voc_id.equals(0)){
             if (!origModel.isEmpty()){
+                // Search based on Operation ID (id).
                 return searchById(origModel, term, predicate, id);
             }else {
                 return "Error: Original DPV model is empty.";
             }
         }else {
             if (!tempModel.isEmpty()) {
+                // Search based on Operation ID (id).
                 return searchById(tempModel, term, predicate, id);
             }else {
                 return "Error: Personal DPV model is empty.";
@@ -65,11 +67,15 @@ public class QueryProcessor {
         }
     }
 
+    // Search based on Operation ID (id).
     public String searchById(Model dpvModel, String term, String predicate, Integer id){
 
         // This method returns 5 'search' methods of type 'String' and those 5 methods all return the
         // method 'view' with the following Model variable 'searchModel' as parameter.
 
+        // Initializing a temporary empty searchModel.
+        // 1) To hold the search's results.
+        // 2) To be given as a parameter to the 'view()' method to be returned and printed to the user.
         Model searchModel = new LinkedHashModel();
         // Adding the namespaces from the dpvModel(Original, Personal) to the temporary "searchModel".
         // Note: This is basically the 'initializeEmptyDPV' method from class "VocabularyManipulation".
@@ -240,6 +246,7 @@ public class QueryProcessor {
         return isObject;
     }
 
+    // This method is used ONLY for the 'tempDPV' that the user loads.
     public boolean subjectExistsInModel(Model tempModel, String term){
         boolean exists = false;
         for (Statement st : tempModel){
