@@ -1,1 +1,78 @@
-Help Edit DPV Menu
+# Edit Menu Help
+
+## Introduction
+
+    Welcome to the Edit Menu help section. This guide will provide detailed information on how to
+    navigate and use each option available in the edit menu.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Option 1: Add
+
+    **Description:**
+        This option allows you to add a single term in your personal DPV vocabulary by giving
+        a specific 'subject' of the statements of that term.
+
+    **How to Use:**
+        1. Select option 1 from the edit menu.
+        2. Type the 'subject' of the term you want to add.
+
+    **Example:**
+        Please select an option: 1
+        Please type the 'subject' of the term to add: ComplianceUnknown
+        Added Term: 'ComplianceUnknown'
+
+    **Tips:**
+        - Make sure that the term you provided does not contain any errors.
+        - Make sure that the term you provided is not already inside your personal
+          DPV vocabulary.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Option 2: Remove
+
+    **Description:**
+        This option allows you to remove a single term in your personal DPV vocabulary by
+        giving a specific 'subject' of the statements of that term.
+
+    **How to Use:**
+        1. Select option 2 from the edit menu.
+        2. Type the 'subject' of the term you want to remove.
+
+    **Example:**
+        Please select an option: 2
+        Please type the 'subject' of the term to remove: ComplianceUnknown
+        Removed Term: 'ComplianceUnknown'
+
+    **Tips:**
+        - Make sure that the term you provided does not contain any errors.
+        - Make sure that the term you provided exists inside your personal DPV vocabulary.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Option 3: Help
+
+    **Description:**
+        Displays this help menu, providing detailed information on each menu option.
+
+    **How to Use:**
+        1. Select option 3 from the edit menu.
+        2. Read through the help content.
+
+    **Tips:**
+        - Use this section if you are unsure about any menu option.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Option 0: Back
+
+    **Description:**
+        Returns to the previous menu.
+
+    **How to Use:**
+        1. Select option 0 from the edit menu.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Additional Notes
+    For more detailed information or problems, please contact support.
