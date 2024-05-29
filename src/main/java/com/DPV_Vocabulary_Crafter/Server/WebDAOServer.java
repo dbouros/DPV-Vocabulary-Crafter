@@ -25,7 +25,6 @@ public class WebDAOServer {
     }
 
     public Model getDPVghb(){
-
         try {
 
             ResponseEntity<String> response = restTemplate.getForEntity(dpv_Url, String.class);
@@ -51,7 +50,7 @@ public class WebDAOServer {
             throw new NullPointerException();
         }
     }
-    // Convert "Model" to RDF/XML ByteArray.
+    // Convert "Model" to RDF/XML ByteArray. (For download)
     public byte[] convertModelToRDFXMLBtArr(Model model){
         try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()){
             Rio.write(model, outputStream, RDFFormat.RDFXML);
@@ -62,7 +61,7 @@ public class WebDAOServer {
         }
     }
 
-    // Convert RDF/XML ByteArray to "Model".
+    // Convert RDF/XML ByteArray to "Model". (For upload)
     public Model convertRDFXMLBtArrToModel(byte[] fileBytes){
         try (ByteArrayInputStream inputStream = new ByteArrayInputStream(fileBytes)){
             return Rio.parse(inputStream, "", RDFFormat.RDFXML);

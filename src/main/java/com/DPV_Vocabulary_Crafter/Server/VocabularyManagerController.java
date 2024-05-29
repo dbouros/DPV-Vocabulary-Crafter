@@ -27,8 +27,9 @@ public class VocabularyManagerController {
     }
 
     // GET Command: "curl -X GET http://localhost:8080/api/editDPV/{dpvSubject}/{id}"
-    @GetMapping("/editDPV/{dpvSubject}/{id}")
     // "dpvSubject" is a Statement's subject.
+    // id == Operation ID == which operation the following API is going to execute.
+    @GetMapping("/editDPV/{dpvSubject}/{id}")
     public String editDPV(@PathVariable("dpvSubject") String term, @PathVariable("id") Integer id){
 
         String response = "";
@@ -41,7 +42,8 @@ public class VocabularyManagerController {
         return response;
     }
 
-    // GET Command: "curl -X GET http://localhost:8080/api/viewDPV/{id}"
+    // GET Command: "curl -X GET http://localhost:8080/api/viewDPV/{voc_id}"
+    // voc_id == Vocabulary ID == Either the Original DPV or the user's uploaded Personal DPV.
     @GetMapping("/viewDPV/{voc_id}")
     public String viewDPV(@PathVariable("voc_id") Integer voc_id){
 
@@ -68,9 +70,13 @@ public class VocabularyManagerController {
         }
     }
 
+    // GET Command: "curl -X GET http://localhost:8080/api/searchDPV/{voc_id}/{dpvTerm}/{id}"
+    // GET Command: "curl -X GET http://localhost:8080/api/searchDPV/{voc_id}/{dpvTerm}/{dpvPredicate}/{id}"
+    // "dpvTerm" can be a Statement's subject, predicate, or object.
+    // voc_id == Vocabulary ID == Either the Original DPV or the user's uploaded Personal DPV.
+    // id == Operation ID == Which operation the following API is going to execute.
     @GetMapping({"/searchDPV/{voc_id}/{dpvTerm}/{id}",
                 "/searchDPV/{voc_id}/{dpvTerm}/{dpvPredicate}/{id}",})
-    // "dpvTerm" can be a Statement's subject, predicate, or object.
     public String searchDPV(
             @PathVariable("voc_id") Integer voc_id,
             @PathVariable("dpvTerm") String term,
