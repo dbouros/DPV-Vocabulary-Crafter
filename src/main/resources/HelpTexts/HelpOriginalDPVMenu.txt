@@ -10,7 +10,7 @@
 ## Option 1: View
 
     **Description:**
-        This option allows you to view the terms contained in the base/core 'Data Privacy
+        This option allows you to view all the terms contained in the base/core 'Data Privacy
         Vocabulary'(DPV) as it is provided from the following official 'Url'.
 
         Official Url: "https://github.com/w3c/dpv/blob/master/dpv/dpv.rdf"
@@ -33,7 +33,7 @@
 
     **How to Use:**
         1. Select option 2 from the original DPV menu.
-        2. Follow the on-screen instructions to explore search menu.
+        2. Follow the on-screen instructions to explore the search menu.
 
     **Example:**
         Please select an option: 2

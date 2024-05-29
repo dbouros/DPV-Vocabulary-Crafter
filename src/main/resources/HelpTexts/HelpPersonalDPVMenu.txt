@@ -1,1 +1,87 @@
-Help Personal DPV Menu
+# Personal DPV Menu Help
+
+## Introduction
+
+    Welcome to the Personal DPV Menu help section. This guide will provide detailed information
+    on how to navigate and use each option available in the personal DPV menu.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Option 1: Edit
+
+    **Description:**
+        This option allows you to edit(add/remove) a single or many term(s) within a DPV
+        based on a specific 'subject' of the statements of that term.
+
+    **How to Use:**
+        1. Select option 1 from the personal DPV menu.
+        2. Follow the on-screen instructions to explore the edit menu.
+
+    **Example:**
+        Please select an option: 1
+
+    **Tips:**
+        - Think about the specific term(s) you want to add/remove.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Option 2: View
+
+    **Description:**
+        This option allows you to view all the terms contained in your newly created/loaded
+        personal DPV vocabulary.
+
+    **How to Use:**
+        1. Select option 2 from the personal DPV menu.
+        2. Click at the new icon that will appear at the 'Taskbar' to open a panel containing
+           all the terms of your newly created/loaded personal DPV vocabulary.
+
+    **Example:**
+        Please select an option: 2
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Option 3: Search
+
+    **Description:**
+        This option allows you to search for a single or many term(s) within a DPV based
+        on a 'subject', 'predicate' or 'object' of the statements of that term.
+
+    **How to Use:**
+        1. Select option 3 from the personal DPV menu.
+        2. Follow the on-screen instructions to explore the search menu.
+
+    **Example:**
+        Please select an option: 3
+
+    **Tips:**
+        - Think about the specific term(s) you want to search.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Option 4: Help
+
+    **Description:**
+        Displays this help menu, providing detailed information on each menu option.
+
+    **How to Use:**
+        1. Select option 4 from the personal DPV menu.
+        2. Read through the help content.
+
+    **Tips:**
+        - Use this section if you are unsure about any menu option.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Option 0: Back
+
+    **Description:**
+        Returns to the previous menu.
+
+    **How to Use:**
+        1. Select option 0 from the personal DPV menu.
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+## Additional Notes
+    For more detailed information or problems, please contact support.
