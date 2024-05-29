@@ -12,6 +12,7 @@ public class WebDAOClient extends LocalDAOClient{
     }
 
     public void getCreateNewDPV(String Url){
+        // GET Request.
         ResponseEntity<String> response = restTemplate.getForEntity(Url, String.class);
         if (response.getStatusCode().is2xxSuccessful()){
             System.out.println(response.getBody());
@@ -21,6 +22,7 @@ public class WebDAOClient extends LocalDAOClient{
     }
 
     public void getEditDPV(String Url){
+        // GET Request.
         ResponseEntity<String> response = restTemplate.getForEntity(Url, String.class);
         if (response.getStatusCode().is2xxSuccessful()){
             System.out.println(response.getBody());
@@ -30,7 +32,7 @@ public class WebDAOClient extends LocalDAOClient{
     }
 
     public String getViewDPV(String Url){
-
+        // GET Request.
         ResponseEntity<String> response = restTemplate.getForEntity(Url, String.class);
         String model_String = response.getBody();
 
@@ -46,7 +48,7 @@ public class WebDAOClient extends LocalDAOClient{
     }
 
     public String getSearchDPV(String Url){
-
+        // GET Request.
         ResponseEntity<String> response = restTemplate.getForEntity(Url, String.class);
         String model_String = response.getBody();
 
@@ -62,10 +64,11 @@ public class WebDAOClient extends LocalDAOClient{
     }
 
     public void getDownloadDPVrdfFile(String Url, String folder_Path, String filename){
-
+        // GET Request.
         ResponseEntity<byte[]> response = restTemplate.getForEntity(Url, byte[].class);
 
         if (response.getStatusCode().is2xxSuccessful()) {
+            // Writes ByteArray[] to File.
             writeVocabularyToFile(response.getBody(), folder_Path, filename);
             System.out.print("File Saved Successfully! ");
         } else {
@@ -76,16 +79,17 @@ public class WebDAOClient extends LocalDAOClient{
     public void postUploadDPVrdfFile(String Url, String folder_Path, String filename){
 
         try {
-
+            // Reads File to ByteArray[].
             byte[] fileBytes = readVocabularyFromFile(folder_Path, filename);
 
+            // Set Headers.
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_XML);
 
-            // Set the byte array as the request body and the content type header
+            // Set the byte array as the request body and the content type header.
             HttpEntity<byte[]> request = new HttpEntity<>(fileBytes, headers);
 
-            // POST request
+            // POST Request.
             ResponseEntity<byte[]> response = restTemplate.exchange(Url, HttpMethod.POST, request, byte[].class);
 
             if (response.getStatusCode().is2xxSuccessful()) {
