@@ -147,9 +147,4 @@ public class VocabularyManagerController {
         }
     }
 
-    // GET Command: "curl -X GET http://localhost:8080/api/hello"
-    @GetMapping("/hello")
-    public String hello() {
-        return "Hello from REST controller!";
-    }
 }

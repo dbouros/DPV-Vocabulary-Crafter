@@ -38,11 +38,6 @@ public class WebDAOClient extends LocalDAOClient{
             if (model_String != null) {
                 return model_String;
             }else {
-                // TODO: After project completion, remove the 'return null;' command, make it return the message
-                //  below and simplify the if-statement.
-                System.out.println("Model is empty! String representation of model is null.");
-                // This is the "null" that is sometimes printed in the console. DO NOT REMOVE IT we need
-                // it for the UI later!
                 return "Model is empty! String representation of model is null.";
             }
         }else{
@@ -59,12 +54,6 @@ public class WebDAOClient extends LocalDAOClient{
             if (model_String != null) {
                 return model_String;
             }else {
-                // TODO: After project completion, remove the 'return null;' command, make it return the message
-                //  below and simplify the if-statement.
-                System.out.println("Search is empty! String representation of model is null.");
-                // This is the "null" that is sometimes printed in the console. DO NOT REMOVE IT we need
-                // it for the UI later! In the 'getSearchDPV' case this 'null' will probably never be
-                // returned since for most error cases there will be a response from the Server.
                 return "Search is empty! String representation of model is null.";
             }
         }else{
@@ -108,16 +97,6 @@ public class WebDAOClient extends LocalDAOClient{
 
         }catch (Exception e){
             System.out.println("Error: Failed to load file!");
-        }
-    }
-
-    public String getHello(String Url){
-
-        ResponseEntity<String> response = restTemplate.getForEntity(Url, String.class);
-        if (response.getStatusCode().is2xxSuccessful()){
-            return response.getBody();
-        }else{
-            return "Internal Server Error! Status code: " + response.getStatusCode();
         }
     }
 

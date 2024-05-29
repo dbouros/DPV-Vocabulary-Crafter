@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DpvVocabularyCrafterApplication {
 
 	public static void main(String[] args) {
-		// The Spring Boot Application Server runs here!!
+		// The Spring Boot server application runs here!!
 		SpringApplication.run(DpvVocabularyCrafterApplication.class, args);
 	}
 

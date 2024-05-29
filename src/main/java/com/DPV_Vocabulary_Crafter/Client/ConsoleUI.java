@@ -90,7 +90,6 @@ public class ConsoleUI {
                 loadPersonalDPV(input);
                 return;
             } else if (option.equals("4")) {
-                // TODO: Write ALL the 'Help.txt' files in the 'resources' folder.
                 uiPanel.run("Help Main Menu", web_dao_clnt.readTextFromResources("HelpMenu1.txt"));
             } else if (option.equals("0")) {
                 exit = true;
