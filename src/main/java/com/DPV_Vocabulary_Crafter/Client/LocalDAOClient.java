@@ -11,6 +11,7 @@ public class LocalDAOClient {
 
     public void writeVocabularyToFile(byte[] fileBytes, String folder_Path, String filename){
 
+        // Combines 'folder_Path' and 'filename' into a single 'Path' variable.
         Path filePath = Paths.get(folder_Path, filename);
 
         /*
@@ -36,11 +37,12 @@ public class LocalDAOClient {
 
     public byte[] readVocabularyFromFile(String folder_Path, String filename){
 
+        // Combines 'folder_Path' and 'filename' into a single 'Path' variable.
         Path filePath = Paths.get(folder_Path, filename);
 
         try {
             System.out.println("Read bytes from RDF file successfully!");
-            // Read the file's content from the "Path" variable and return it as "byte[]"(ByteArray).
+            // Read the file's content from the "Path" variable and return it as "byte[]" (ByteArray).
             return Files.readAllBytes(filePath);
         } catch (IOException e) {
             System.out.println("IOException occurred when reading vocabulary from file!");
@@ -52,6 +54,7 @@ public class LocalDAOClient {
 
     public String readTextFromResources(String filename){
 
+        // Combines 'folder_Path' and 'filename' into a single 'Path' variable.
         Path resourcesPath = Paths.get("src/main/resources/HelpTexts", filename);
 
         try{
