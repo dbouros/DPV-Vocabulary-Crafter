@@ -5,6 +5,11 @@ import java.awt.*;
 
 public class UIPanel {
 
+    public void run(String title, String text) {
+        // Using lambda expression.
+        SwingUtilities.invokeLater(() -> { createAndShowGUI(title, text); });
+    }
+
     public void createAndShowGUI(String title, String text) {
 
         Font monospacedFont = new Font(Font.MONOSPACED, Font.PLAIN, 22);
@@ -37,11 +42,6 @@ public class UIPanel {
         frame.setLocationRelativeTo(null); // Set 'Frame's Position' to center.
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Dispose 'Frame' on close.
         frame.setVisible(true); // Set the 'Frame' to visible.
-    }
-
-    public void run(String title, String text) {
-        // Using lambda expression.
-        SwingUtilities.invokeLater(() -> { createAndShowGUI(title, text); });
     }
 
 }
