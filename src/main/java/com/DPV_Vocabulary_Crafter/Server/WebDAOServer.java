@@ -20,7 +20,12 @@ public class WebDAOServer {
     
     public WebDAOServer(){
         this.restTemplate = new RestTemplate();
-        this.dpv_Url = "https://raw.githubusercontent.com/w3c/dpv/master/dpv/dpv.rdf";
+
+        // Version: Latest.
+        //this.dpv_Url = "https://raw.githubusercontent.com/w3c/dpv/master/dpv/dpv.rdf";
+
+        // Version: June 10 2024.
+        this.dpv_Url = "https://raw.githubusercontent.com/w3c/dpv/2d86caf0ccffce1287b6505bf38d9e67a07da16b/dpv/dpv.rdf";
     }
 
     // Gets the base/core 'Data Privacy Vocabulary'(DPV) from GitHub in a 'Raw' form.
