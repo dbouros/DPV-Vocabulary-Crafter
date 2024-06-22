@@ -25,18 +25,27 @@ public class UIPanel {
     }
 
     public void textAreaConfigurations(JTextArea textArea, String text, Font font){
+
         textArea.setText(text); // Set 'Text'.
         textArea.setFont(font); // Set 'Font'.
         textArea.setEditable(false); // Make the text area read-only.
+
         textArea.setBackground(new Color(0x1e1f22)); // Set text's background color to black (Color.BLACK) or intellij IDEA's color: "0x1e1f22" (new Color(0x1e1f22)).
         textArea.setForeground(new Color(0xbcbec4)); // Set text's color to white (Color.WHITE) or intellij IDEA's color: "0x1e1f22" (new Color(0xbcbec4)).
 
+        // For "Thesis Paper" Screenshots.
+        //textArea.setBackground(Color.WHITE);
+        //textArea.setForeground(Color.BLACK);
     }
 
     public void frameConfigurations(JFrame frame, JScrollPane scrollPane, String title){
+
         frame.getContentPane().add(scrollPane); // Adding the 'Scroll Panel' to the 'Frame'.
+
         // Set 'Background'.
         frame.getContentPane().setBackground(new Color(0x1e1f22)); // intellij IDEA's color: "0x1e1f22" (new Color(0x1e1f22)).
+        // For "Thesis Paper" Screenshots.
+        //frame.getContentPane().setBackground(Color.WHITE);
         frame.setTitle(title); // Set 'Title'.
         frame.setSize(1366, 545); // Set 'Frame's Size'.
         frame.setLocationRelativeTo(null); // Set 'Frame's Position' to center.
