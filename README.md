@@ -37,7 +37,7 @@ The **Server** folder manages the backend logic of the application. It is built 
 
     # or
     
-    java -cp target/classes com.DPV_Vocabulary_Crafter.Server
+    java -cp target/classes com.DPV_Vocabulary_Crafter.Server.DpvVocabularyCrafterApplication
 
 ```
 
@@ -45,6 +45,6 @@ The **Server** folder manages the backend logic of the application. It is built 
 
 ```bash
     cd Client
-    java -cp target/classes com.DPV_Vocabulary_Crafter.Client
+    java -cp target/classes com.DPV_Vocabulary_Crafter.Client.Main
 
 ```
