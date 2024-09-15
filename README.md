@@ -1,6 +1,6 @@
 # DPV Vocabulary Crafter
 
-DPV Vocabulary Crafter is a web-based tool designed to assist with the creation and management of vocabularies. This application is structured using two main components: the **Client** and the **Server**.
+DPV Vocabulary Crafter is a Java-based web application using Spring Boot that was designed to assist with the creation and management of personal sub-vocabularies created from the Base/Core Data Privacy Vocabulary(DPV) which was created based mostly on the General Data Protection Regulation (GDPR). This application is structured using two main components: the **Client** and the **Server**.
 
 ## Project Structure
 
@@ -11,9 +11,9 @@ The **Client** folder contains a Java-based terminal user interface (UI) that al
 
 ### 2. Server
 The **Server** folder manages the backend logic of the application. It is built with:
-- **Java** as the core programming language
-- **Spring Boot** for setting up the server
-- **REST APIs** to handle data requests from the client
+- **Java** as the core programming language (17 or higher).
+- **Spring Boot** for setting up the server.
+- **REST APIs** to handle data requests from the client.
 
 ## Features
 - **Vocabulary Management**: Create and update vocabularies.
