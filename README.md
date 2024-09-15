@@ -4,8 +4,6 @@ DPV Vocabulary Crafter is a Java-based web application using Spring Boot that wa
 
 ## Project Structure
 
-The project is divided into the following main folders:
-
 ### 1. Client
 The **Client** folder contains a Java-based terminal user interface (UI) that allows users to interact with the vocabulary system. The client communicates directly with the server to send and receive data, and all operations are handled via command-line inputs.
 
